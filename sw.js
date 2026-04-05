@@ -1,58 +1,43 @@
-// Pick3Geny Service Worker — v1.0
-// Caches the app shell for full offline support
-
-const CACHE_NAME = 'pick3geny-v1';
-const ASSETS = [
-  './',
-  './index.html',
-  './manifest.json',
-  './icon-192.png',
-  './icon-512.png'
+// Pick3Geny Service Worker v2
+const CACHE = 'pick3geny-v2';
+const FILES = [
+  '/Pick3geny-/',
+  '/Pick3geny-/index.html',
+  '/Pick3geny-/manifest.json',
+  '/Pick3geny-/icon-192.png',
+  '/Pick3geny-/icon-512.png'
 ];
 
-// Install — cache all assets
-self.addEventListener('install', event => {
-  event.waitUntil(
-    caches.open(CACHE_NAME).then(cache => {
-      return cache.addAll(ASSETS);
-    }).then(() => self.skipWaiting())
+self.addEventListener('install', e => {
+  e.waitUntil(
+    caches.open(CACHE)
+      .then(c => c.addAll(FILES))
+      .then(() => self.skipWaiting())
   );
 });
 
-// Activate — delete old caches
-self.addEventListener('activate', event => {
-  event.waitUntil(
-    caches.keys().then(keys =>
-      Promise.all(
-        keys
-          .filter(key => key !== CACHE_NAME)
-          .map(key => caches.delete(key))
+self.addEventListener('activate', e => {
+  e.waitUntil(
+    caches.keys()
+      .then(keys => Promise.all(
+        keys.filter(k => k !== CACHE).map(k => caches.delete(k))
+      ))
+      .then(() => self.clients.claim())
+  );
+});
+
+self.addEventListener('fetch', e => {
+  e.respondWith(
+    caches.match(e.request)
+      .then(r => r || fetch(e.request)
+        .then(res => {
+          if(res && res.status === 200 && res.type === 'basic'){
+            const clone = res.clone();
+            caches.open(CACHE).then(c => c.put(e.request, clone));
+          }
+          return res;
+        })
       )
-    ).then(() => self.clients.claim())
-  );
-});
-
-// Fetch — serve from cache first, fallback to network
-self.addEventListener('fetch', event => {
-  // Only handle same-origin requests
-  if (!event.request.url.startsWith(self.location.origin)) return;
-
-  event.respondWith(
-    caches.match(event.request).then(cached => {
-      if (cached) return cached;
-      return fetch(event.request).then(response => {
-        // Cache valid responses
-        if (response && response.status === 200 && response.type === 'basic') {
-          const clone = response.clone();
-          caches.open(CACHE_NAME).then(cache => cache.put(event.request, clone));
-        }
-        return response;
-      }).catch(() => {
-        // Offline fallback — return index.html for navigation requests
-        if (event.request.mode === 'navigate') {
-          return caches.match('./index.html');
-        }
-      });
-    })
+      .catch(() => caches.match('/Pick3geny-/index.html'))
   );
 });
