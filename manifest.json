@@ -1,36 +1,44 @@
+
 {
-  "name": "Pick3Geny — Statistical Number Analyzer",
+  "name": "Pick3Geny \u2014 Statistical Number Analyzer",
   "short_name": "Pick3Geny",
   "description": "Free Pick 3 lottery statistical number analyzer. 4 algorithms, AI Smart Pick, hit tracking, and full history.",
-  "start_url": "./index.html",
-  "scope": "./",
+  "start_url": "/Pick3geny-/index.html",
+  "scope": "/Pick3geny-/",
   "display": "standalone",
   "orientation": "portrait-primary",
   "background_color": "#050810",
   "theme_color": "#050810",
   "lang": "en",
-  "categories": ["utilities", "entertainment"],
+  "categories": [
+    "utilities",
+    "entertainment"
+  ],
+  "prefer_related_applications": false,
   "icons": [
     {
       "src": "icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
+    },
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
     },
     {
       "src": "icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any maskable"
-    }
-  ],
-  "screenshots": [
+      "purpose": "any"
+    },
     {
-      "src": "screenshot1.png",
-      "sizes": "1080x1920",
+      "src": "icon-512.png",
+      "sizes": "512x512",
       "type": "image/png",
-      "form_factor": "narrow",
-      "label": "Run Analysis screen"
+      "purpose": "maskable"
     }
   ]
 }
