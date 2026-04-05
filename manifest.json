@@ -1,19 +1,15 @@
-
 {
-  "name": "Pick3Geny \u2014 Statistical Number Analyzer",
+  "name": "Pick3Geny — Statistical Number Analyzer",
   "short_name": "Pick3Geny",
   "description": "Free Pick 3 lottery statistical number analyzer. 4 algorithms, AI Smart Pick, hit tracking, and full history.",
-  "start_url": "/Pick3geny-/index.html",
+  "start_url": "./index.html",
   "scope": "/Pick3geny-/",
   "display": "standalone",
   "orientation": "portrait-primary",
   "background_color": "#050810",
   "theme_color": "#050810",
   "lang": "en",
-  "categories": [
-    "utilities",
-    "entertainment"
-  ],
+  "categories": ["utilities", "entertainment"],
   "prefer_related_applications": false,
   "icons": [
     {
