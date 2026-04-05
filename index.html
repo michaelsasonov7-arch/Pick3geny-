@@ -750,9 +750,6 @@ details .det-body strong{color:var(--t1);}
       <p style="font-size:.82rem;color:var(--t2);margin-bottom:.75rem;line-height:1.6;">Pick3Geny is free to use. If it has helped your analysis or saved you time, consider supporting the developer. Every contribution — large or small — helps fund new features, improvements, and maintenance.</p>
       <div class="support-grid">
         <div class="sc" id="scPaypal"><div class="sc-icon">💳</div><div class="sc-title">PayPal</div><div class="sc-sub">paypal.me/pick3geny</div></div>
-        <div class="sc" id="scVenmo"><div class="sc-icon">💵</div><div class="sc-title">Venmo</div><div class="sc-sub">@pick3geny</div></div>
-        <div class="sc" id="scCashapp"><div class="sc-icon">💸</div><div class="sc-title">Cash App</div><div class="sc-sub">$pick3geny</div></div>
-        <div class="sc" id="scCrypto"><div class="sc-icon">🪙</div><div class="sc-title">Crypto</div><div class="sc-sub">BTC / ETH / USDT</div></div>
       </div>
     </div>
     <div class="card">
@@ -765,13 +762,10 @@ details .det-body strong{color:var(--t1);}
       <div class="card-title">🛒 Shop & Affiliate Partners</div>
       <p style="font-size:.82rem;color:var(--t2);margin-bottom:.65rem;">Support at no extra cost — when you shop through these links, the developer earns a small commission from the retailer at no charge to you.</p>
       <div class="support-grid">
-        <div class="sc" id="scShop"><div class="sc-icon">🛒</div><div class="sc-title">Pick3Geny Shop</div><div class="sc-sub">Official merchandise</div></div>
         <div class="sc" id="scAmazon"><div class="sc-icon">📦</div><div class="sc-title">Amazon</div><div class="sc-sub">Affiliate link</div></div>
         <div class="sc" id="scEbay"><div class="sc-icon">🏷️</div><div class="sc-title">eBay</div><div class="sc-sub">Affiliate link</div></div>
         <div class="sc" id="scWalmart"><div class="sc-icon">🏪</div><div class="sc-title">Walmart</div><div class="sc-sub">Affiliate link</div></div>
         <div class="sc" id="scEtsy"><div class="sc-icon">🎨</div><div class="sc-title">Etsy</div><div class="sc-sub">Affiliate link</div></div>
-        <div class="sc" id="scAliExpress"><div class="sc-icon">🛍️</div><div class="sc-title">AliExpress</div><div class="sc-sub">Affiliate link</div></div>
-        <div class="sc" id="scShare"><div class="sc-icon">📱</div><div class="sc-title">Share App</div><div class="sc-sub">Invite a friend</div></div>
       </div>
     </div>
     <!-- AdSense banner slot for Support tab — uncomment and configure when ready:
@@ -2152,16 +2146,10 @@ document.addEventListener('DOMContentLoaded',()=>{
 
   // Support
   document.getElementById('scPaypal').onclick=()=>window.open('https://paypal.me/pick3geny','_blank');
-  document.getElementById('scVenmo').onclick=()=>alert('Venmo: @pick3geny\n\nOpen the Venmo app and search @pick3geny to send support.');
-  document.getElementById('scCashapp').onclick=()=>alert('Cash App: $pick3geny\n\nOpen Cash App and search $pick3geny.');
-  document.getElementById('scCrypto').onclick=()=>alert('Crypto Donations:\n\nContact: support@pick3geny.com\nWe accept BTC, ETH, USDT\n\nWe will provide a wallet address upon request.');
-  document.getElementById('scShop').onclick=()=>window.open('https://shop.pick3geny.com','_blank');
-  document.getElementById('scAmazon').onclick=()=>window.open('https://amazon.com','_blank'); // Replace with affiliate URL
-  document.getElementById('scEbay').onclick=()=>window.open('https://ebay.com','_blank'); // Replace with affiliate URL
-  document.getElementById('scWalmart').onclick=()=>window.open('https://walmart.com','_blank'); // Replace with affiliate URL
-  document.getElementById('scEtsy').onclick=()=>window.open('https://etsy.com','_blank'); // Replace with affiliate URL
-  document.getElementById('scAliExpress').onclick=()=>window.open('https://www.aliexpress.com','_blank'); // Replace with affiliate URL
-  document.getElementById('scShare').onclick=()=>{if(navigator.share)navigator.share({title:'Pick3Geny',text:'Free Pick 3 number analyzer — try it!',url:location.href});else{navigator.clipboard?.writeText(location.href);alert('App link copied! Share it with friends.');}};
+  document.getElementById('scAmazon').onclick=()=>{history.pushState(null,'',location.href);window.open('https://amazon.com','_blank');}; // Replace with affiliate URL
+  document.getElementById('scEbay').onclick=()=>{history.pushState(null,'',location.href);window.open('https://ebay.com','_blank');}; // Replace with affiliate URL
+  document.getElementById('scWalmart').onclick=()=>{history.pushState(null,'',location.href);window.open('https://walmart.com','_blank');}; // Replace with affiliate URL
+  document.getElementById('scEtsy').onclick=()=>{history.pushState(null,'',location.href);window.open('https://etsy.com','_blank');}; // Replace with affiliate URL
   document.getElementById('premiumBtn').onclick=()=>{
     if(confirm('Activate Premium?\n\n✅ Removes ALL ads from every screen\n✅ Stored on your device\n✅ No account required\n\nThe only difference from free is: no ads. All features remain identical.')){
       S.isPremium=true;localStorage.setItem('p3g_premium','true');
