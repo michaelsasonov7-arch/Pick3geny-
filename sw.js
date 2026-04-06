@@ -1,35 +1,39 @@
-const CACHE_NAME = 'pick3geny-v2';
-const GHPATH = '/Pick3geny-/';
+const CACHE_NAME = 'pick3geny-v3';
+
+const FILES_TO_CACHE = [
+  './',
+  './index.html',
+  './manifest.json',
+  './icon-192.png',
+  './icon-512.png'
+];
 
 self.addEventListener('install', event => {
-  self.skipWaiting();
-  console.log('✅ Service Worker installed');
+  event.waitUntil(
+    caches.open(CACHE_NAME)
+      .then(cache => cache.addAll(FILES_TO_CACHE))
+      .then(() => self.skipWaiting())
+  );
 });
 
 self.addEventListener('activate', event => {
-  event.waitUntil(self.clients.claim());
-  console.log('✅ Service Worker activated');
+  event.waitUntil(
+    caches.keys().then(keys => {
+      return Promise.all(
+        keys.filter(key => key !== CACHE_NAME).map(key => caches.delete(key))
+      );
+    }).then(() => self.clients.claim())
+  );
 });
 
 self.addEventListener('fetch', event => {
-  // בקשות חיצוניות - תן להן לעבור
-  if (!event.request.url.startsWith(self.location.origin)) {
-    return;
-  }
-
-  // ניווטים (עמודים)
-  if (event.request.mode === 'navigate') {
-    event.respondWith(
-      fetch(event.request).catch(() => 
-        caches.match(GHPATH + 'index.html')
-      )
-    );
-    return;
-  }
-
-  // שאר הקבצים - Cache First
   event.respondWith(
     caches.match(event.request)
-      .then(response => response || fetch(event.request))
+      .then(response => {
+        if (response) return response;
+        return fetch(event.request).catch(() => {
+          return caches.match('./index.html');
+        });
+      })
   );
 });
