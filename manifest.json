@@ -11,17 +11,8 @@
   "theme_color": "#050810",
   "lang": "en",
   "dir": "ltr",
-  "categories": [
-    "utilities",
-    "entertainment"
-  ],
+  "categories": ["utilities", "entertainment"],
   "prefer_related_applications": false,
-  "related_applications": [
-    {
-      "platform": "play",
-      "id": "com.pick3geny.app"
-    }
-  ],
   "icons": [
     {
       "src": "/Pick3geny-/icon-192.png",
