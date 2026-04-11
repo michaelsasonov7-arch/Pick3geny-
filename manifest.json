@@ -1,7 +1,7 @@
 {
   "name": "Pick3Geny — Statistical Number Analyzer",
   "short_name": "Pick3Geny",
-  "description": "Free Pick 3 lottery statistical number analyzer. 4 algorithms, AI Smart Pick, hit tracking, and full history.",
+  "description": "Free Pick 3 lottery statistical number analyzer. 4 algorithms, AI Smart Pick, hit tracking, and full history. For entertainment only. 18+",
   "start_url": "/Pick3geny-/index.html",
   "id": "/Pick3geny-/",
   "scope": "/Pick3geny-/",
@@ -10,8 +10,15 @@
   "background_color": "#050810",
   "theme_color": "#050810",
   "lang": "en",
+  "dir": "ltr",
   "categories": ["utilities", "entertainment"],
   "prefer_related_applications": false,
+  "related_applications": [
+    {
+      "platform": "play",
+      "id": "com.pick3geny.app"
+    }
+  ],
   "icons": [
     {
       "src": "/Pick3geny-/icon-192.png",
@@ -30,6 +37,15 @@
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/Pick3geny-/feature-graphic.png",
+      "sizes": "1024x500",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Pick3Geny Number Pattern Analyzer"
     }
   ]
 }
