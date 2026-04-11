@@ -11,7 +11,10 @@
   "theme_color": "#050810",
   "lang": "en",
   "dir": "ltr",
-  "categories": ["utilities", "entertainment"],
+  "categories": [
+    "utilities",
+    "entertainment"
+  ],
   "prefer_related_applications": false,
   "related_applications": [
     {
