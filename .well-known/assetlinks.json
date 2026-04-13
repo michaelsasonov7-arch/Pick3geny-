@@ -1,11 +1,1 @@
 
-[{
-  "relation": ["delegate_permission/common.handle_all_urls"],
-  "target": {
-    "namespace": "android_app",
-    "package_name": "com.pick3geny.app",
-    "sha256_cert_fingerprints": [
-      "F6:8B:BD:4A:AE:95:3A:45:C0:05:0C:9D:69:3F:16:C9:79:F2:10:EB:1E:CE:F5:5D:02:06:DC:1A:62:D9:43:01"
-    ]
-  }
-}]
