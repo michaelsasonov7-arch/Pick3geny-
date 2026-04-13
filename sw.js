@@ -1,4 +1,4 @@
-const CACHE_NAME = 'pick3geny-v3';
+const CACHE_NAME = 'pick3geny-v4';
 
 const FILES_TO_CACHE = [
   './',
