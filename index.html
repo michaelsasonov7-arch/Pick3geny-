@@ -1,0 +1,2438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+<title>Pick3Geny — Statistical Number Analyzer</title>
+
+<!-- ═══ SEO & SOCIAL SHARING ═══ -->
+<meta name="description" content="Free Pick 3 lottery statistical number analyzer. 4 algorithms, AI Smart Pick, hit tracking, and full history. For entertainment only. 18+">
+<meta name="keywords" content="Pick 3, lottery, number analyzer, pick3, statistical analysis, number generator, Pick3Geny">
+<meta name="author" content="Pick3Geny">
+<meta name="robots" content="index, follow">
+
+<!-- Open Graph — WhatsApp, Facebook, Telegram -->
+<meta property="og:title" content="Pick3Geny — Number Pattern Analyzer">
+<meta property="og:description" content="Free Pick 3 statistical number analyzer. 4 algorithms, AI Smart Pick, hit tracking. For entertainment only. 18+">
+<meta property="og:url" content="https://michaelsasonov7-arch.github.io/Pick3geny-/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://michaelsasonov7-arch.github.io/Pick3geny-/icon-512.png">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Pick3Geny — Number Pattern Analyzer">
+<meta name="twitter:description" content="Free Pick 3 statistical number analyzer. For entertainment only.">
+<meta name="twitter:image" content="https://michaelsasonov7-arch.github.io/Pick3geny-/icon-512.png">
+<!-- ═══ END SEO ═══ -->
+
+<!-- ═══ PWA — DO NOT REMOVE ═══ -->
+<link rel="manifest" href="manifest.json" type="application/manifest+json">
+<meta name="theme-color" content="#050810">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Pick3Geny">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="description" content="Free Pick 3 lottery statistical number analyzer. 4 algorithms, AI Smart Pick, hit tracking.">
+<script>
+  if('serviceWorker' in navigator){
+    window.addEventListener('load',()=>{
+      navigator.serviceWorker.register('sw.js')
+        .then(r=>{})
+        .catch(e=>{});
+    });
+  }
+</script>
+<!-- ═══ END PWA ═══ -->
+
+<!--
+  ╔══════════════════════════════════════════════════════╗
+  ║  GOOGLE ADSENSE SETUP                                ║
+  ║  1. Replace ca-pub-XXXXXXXXXXXXXXXX with your ID    ║
+  ║  2. Replace each data-ad-slot="XXXXXXXXXX"          ║
+  ║  3. Remove the comment tags &lt;!-- and --&gt;           ║
+  ╚══════════════════════════════════════════════════════╝
+-->
+<!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script> -->
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  /* Neo-Futuristic / Vibrant Gradient UI */
+  --bg:#050810;--bg2:#080d18;--bg3:#0c1220;--card:#0f1726;--card2:#131e30;
+  --border:#1a2540;--border2:#243060;
+  --t1:#f0f4ff;--t2:#7b92c8;--t3:#3d5080;
+  /* Vibrant accent colors */
+  --blue:#4d8bff;--blue2:#1a5fd4;--blue-glow:rgba(77,139,255,.3);
+  --green:#00f0a0;--green2:#00b878;--green-glow:rgba(0,240,160,.25);
+  --red:#ff3d55;--red2:#c41e35;
+  --gold:#ffbe00;--gold2:#cc8c00;
+  --purple:#b06aff;--purple2:#7c30f0;
+  --cyan:#00e5ff;--pink:#ff5fa0;--orange:#ff7a30;
+  --tiktok1:#ff0050;--tiktok2:#00f2ea;
+  --ig1:#f77737;--ig2:#c13584;--ig3:#405de6;
+  --overlap1:#ff3d55;--overlap2:#ffbe00;--overlap3:#00f0a0;--overlap4:#c8d8ff;
+  --r:14px;--r2:10px;--r3:6px;
+  --sh:0 8px 40px rgba(0,0,0,.6);
+  --tr:.16s cubic-bezier(.4,0,.2,1);
+  /* Gradient presets */
+  --grad-blue:linear-gradient(135deg,#4d8bff,#b06aff);
+  --grad-green:linear-gradient(135deg,#00f0a0,#00e5ff);
+  --grad-fire:linear-gradient(135deg,#ff7a30,#ff3d55);
+  --grad-gold:linear-gradient(135deg,#ffbe00,#ff7a30);
+  --grad-tiktok:linear-gradient(135deg,#ff0050,#00f2ea);
+  --grad-ig:linear-gradient(135deg,#f77737,#c13584,#405de6);
+  --grad-card:linear-gradient(135deg,rgba(77,139,255,.08),rgba(176,106,255,.06));
+}
+html{font-size:16px;scroll-behavior:smooth;overflow-x:hidden;background:#06080f;overscroll-behavior-y:none;}
+body{background:var(--bg);color:var(--t1);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;min-height:100vh;overflow-x:hidden;width:100%;
+  /* Fill iOS safe-area (notch/status-bar) with the topbar background color */
+  padding-top:env(safe-area-inset-top);
+  padding-left:env(safe-area-inset-left);
+  padding-right:env(safe-area-inset-right);
+  background-color:var(--bg);
+}
+
+/* ─── TOPBAR ─── */
+.topbar{display:flex;align-items:stretch;background:linear-gradient(90deg,#08111f 0%,#0c1530 50%,#080e1c 100%);border-bottom:1px solid rgba(77,139,255,.2);position:sticky;top:0;z-index:300;box-shadow:0 2px 30px rgba(0,0,0,.8),0 1px 0 rgba(77,139,255,.15);width:100%;overflow:hidden;}
+#scrollTopBtn{position:fixed;bottom:1.2rem;right:1rem;z-index:500;background:var(--grad-blue);color:#fff;border:none;border-radius:50%;width:40px;height:40px;font-size:1.1rem;cursor:pointer;box-shadow:0 4px 14px rgba(77,139,255,.4);display:none;align-items:center;justify-content:center;transition:opacity .3s;}
+.tabs{display:flex;flex:1;overflow-x:auto;scrollbar-width:none;min-width:0;}
+.tabs::-webkit-scrollbar{display:none;}
+.tab-btn{display:flex;align-items:center;gap:.35rem;padding:.7rem .9rem;background:none;border:none;color:var(--t3);font-size:.8rem;font-weight:600;cursor:pointer;white-space:nowrap;border-bottom:3px solid transparent;transition:color var(--tr),border-color var(--tr),background var(--tr);flex-shrink:0;}
+.tab-btn:hover{color:var(--t2);background:rgba(255,255,255,.04);}
+.tab-btn.active{color:var(--blue);border-bottom-color:var(--blue);background:linear-gradient(180deg,rgba(77,139,255,.1),transparent);}
+.topbar-right{display:flex;align-items:center;gap:.4rem;padding:.4rem .75rem;border-left:1px solid var(--border);}
+.tab-content{display:none;padding:1rem;max-width:920px;margin:0 auto;width:100%;box-sizing:border-box;}
+.tab-content.active{display:block;}
+
+/* ─── CARDS ─── */
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:1rem;margin-bottom:.85rem;position:relative;overflow:hidden;width:100%;box-sizing:border-box;}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--grad-blue);opacity:.35;transition:opacity var(--tr);}
+.card:hover::before{opacity:1;}
+.card-title{font-size:.95rem;font-weight:700;margin-bottom:.75rem;display:flex;align-items:center;gap:.45rem;}
+.card-sub{font-size:.72rem;color:var(--t2);margin-top:.5rem;padding:.5rem .65rem;background:linear-gradient(90deg,rgba(77,139,255,.08),rgba(176,106,255,.04));border-radius:var(--r3);border-left:3px solid;border-image:var(--grad-blue) 1;line-height:1.55;}
+
+/* ─── BUTTONS ─── */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.3rem;padding:.48rem .85rem;border-radius:var(--r2);font-size:.78rem;font-weight:600;cursor:pointer;border:none;transition:all var(--tr);white-space:normal;word-break:keep-all;position:relative;overflow:hidden;max-width:100%;}
+.btn::after{content:'';position:absolute;inset:0;background:white;opacity:0;transition:opacity .1s;}
+.btn:active::after{opacity:.08;}
+.btn:active{transform:scale(.96);}
+.btn-primary{background:var(--grad-blue);color:#fff;box-shadow:0 4px 18px rgba(77,139,255,.35);}
+.btn-primary:hover{box-shadow:0 6px 22px var(--blue-glow);filter:brightness(1.1);}
+.btn-success{background:linear-gradient(135deg,var(--green),var(--green2));color:#031a0f;box-shadow:0 4px 15px var(--green-glow);}
+.btn-danger{background:linear-gradient(135deg,var(--red),var(--red2));color:#fff;box-shadow:0 4px 12px rgba(255,71,87,.3);}
+.btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#1a0800;box-shadow:0 4px 12px rgba(255,176,32,.3);}
+.btn-purple{background:linear-gradient(135deg,var(--purple),var(--purple2));color:#fff;box-shadow:0 4px 12px rgba(168,85,247,.3);}
+.btn-cyan{background:linear-gradient(135deg,var(--cyan),#0891b2);color:#051215;box-shadow:0 4px 12px rgba(34,211,238,.25);}
+.btn-orange{background:linear-gradient(135deg,var(--orange),#ea580c);color:#fff;}
+.btn-ghost{background:rgba(255,255,255,.06);color:var(--t2);border:1px solid var(--border2);}
+.btn-ghost:hover{background:rgba(255,255,255,.1);color:var(--t1);}
+.btn-lg{padding:.8rem 1.4rem;font-size:.95rem;border-radius:var(--r);}
+.btn-sm{padding:.32rem .6rem;font-size:.72rem;border-radius:var(--r3);}
+.btn-run{background:var(--grad-tiktok);color:#fff;font-size:1.05rem;font-weight:900;padding:1rem;border-radius:var(--r);box-shadow:0 6px 35px rgba(255,0,80,.4),0 0 0 1px rgba(0,242,234,.3);letter-spacing:.04em;text-shadow:0 1px 4px rgba(0,0,0,.3);}
+.btn-run:hover{filter:brightness(1.12);box-shadow:0 10px 45px rgba(255,0,80,.5),0 0 20px rgba(0,242,234,.2);transform:translateY(-1px);}
+.btn-run:active{transform:scale(.97) translateY(0);}
+.btn-group{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:.65rem;}
+
+/* ─── METHOD BADGES ─── */
+.method-badge{display:inline-flex;align-items:center;gap:.4rem;padding:.45rem .75rem;background:var(--card2);border:1px solid var(--border2);border-radius:var(--r2);cursor:pointer;font-size:.8rem;font-weight:500;transition:all var(--tr);}
+.method-badge:hover{border-color:var(--blue);box-shadow:0 0 0 2px var(--blue-glow);}
+.method-badge input{accent-color:var(--blue);}
+.method-badge:has(input:checked){border-color:transparent;background:linear-gradient(var(--card2),var(--card2)) padding-box,var(--grad-blue) border-box;box-shadow:0 0 8px rgba(77,139,255,.2);}
+
+/* ─── INPUTS ─── */
+.input-row{display:grid;grid-template-columns:65px 1fr;align-items:center;gap:.5rem;margin-bottom:.5rem;width:100%;}
+.input-row label{font-size:.78rem;font-weight:700;color:var(--t2);text-align:right;padding-right:.25rem;}
+.draw-inp{padding:.65rem .75rem;background:var(--bg2);border:1.5px solid var(--border2);border-radius:var(--r2);color:var(--t1);font-size:1.05rem;text-align:center;font-family:'SF Mono',monospace;font-weight:800;letter-spacing:.12em;transition:all var(--tr);width:100%;max-width:100%;box-sizing:border-box;}
+.draw-inp:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px var(--blue-glow),0 2px 8px rgba(0,0,0,.3);}
+.draw-inp.valid{border-color:var(--green);background:rgba(0,229,153,.05);box-shadow:0 0 0 2px var(--green-glow);}
+.draw-inp.partial{border-color:var(--gold);background:rgba(255,190,0,.05);box-shadow:0 0 0 2px rgba(255,190,0,.2);}
+.hint{font-size:.68rem;color:var(--t3);margin-top:.2rem;padding-left:.25rem;}
+
+/* ─── MONEY TABLE ─── */
+.money-number{display:inline-block;padding:.42rem .6rem;margin:.2rem;border-radius:var(--r3);font-family:monospace;font-size:.85rem;font-weight:800;cursor:pointer;transition:all .12s;letter-spacing:.04em;word-break:keep-all;}
+.money-number:hover{transform:scale(1.1) translateY(-1px);z-index:1;position:relative;}
+.money-number.overlap-0{background:var(--card2);color:var(--t2);}
+.money-number.overlap-1{background:linear-gradient(135deg,#ff3d55,#c41e35);color:#fff;box-shadow:0 3px 12px rgba(255,61,85,.5);}
+.money-number.overlap-2{background:linear-gradient(135deg,#ffbe00,#ff7a30);color:#0f0800;box-shadow:0 3px 12px rgba(255,190,0,.5);}
+.money-number.overlap-3{background:linear-gradient(135deg,#00f0a0,#00c0c0);color:#001a12;box-shadow:0 3px 12px rgba(0,240,160,.5);}
+.money-number.overlap-4{background:linear-gradient(135deg,#c8d8ff,#a0b8ff);color:#050a1a;box-shadow:0 3px 12px rgba(160,184,255,.4);outline:2px solid var(--gold);}
+.money-number.hit-highlight{animation:hitPulse 1s ease infinite alternate;transform:scale(1.15);z-index:5;position:relative;outline:3px solid var(--green) !important;}
+@media(prefers-reduced-motion:reduce){
+  .money-number.hit-highlight{animation:none;transform:scale(1.12);}
+  .btn-run:hover{transform:none;}
+  .sc:hover{transform:none;}
+}
+@keyframes hitPulse{0%{box-shadow:0 0 10px var(--green),0 0 20px rgba(0,240,160,.5);transform:scale(1.12);}50%{box-shadow:0 0 25px var(--cyan),0 0 50px rgba(0,240,160,.8),0 0 80px rgba(0,229,255,.4);transform:scale(1.18);}100%{box-shadow:0 0 10px var(--green),0 0 20px rgba(0,240,160,.5);transform:scale(1.12);}}
+
+/* ─── COLOR GUIDE ─── */
+.color-guide{display:flex;gap:.5rem;flex-wrap:wrap;padding:.5rem .6rem;background:rgba(255,255,255,.03);border-radius:var(--r3);margin-bottom:.6rem;width:100%;}
+.cg-item{display:flex;align-items:center;gap:.3rem;font-size:.7rem;font-weight:500;flex:1;min-width:140px;}
+.cg-dot{width:16px;height:16px;border-radius:4px;flex-shrink:0;}
+
+/* ─── HISTORY ─── */
+.history-item{background:var(--card2);border:1px solid var(--border);border-radius:var(--r2);padding:.75rem;margin-bottom:.5rem;transition:border-color var(--tr);}
+.history-item:hover{border-color:var(--border2);}
+.history-item.hit{border-left:4px solid var(--green);background:linear-gradient(90deg,rgba(0,240,160,.1),rgba(0,229,255,.04),var(--card2));box-shadow:inset 3px 0 12px rgba(0,240,160,.1);}
+.history-item.miss{border-left:4px solid var(--border);}
+.h-meta{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:.3rem;margin-bottom:.35rem;}
+.h-date{font-size:.73rem;color:var(--t2);font-weight:600;}
+.h-actions{display:flex;gap:.3rem;flex-shrink:0;}
+.h-body{font-size:.75rem;color:var(--t2);line-height:1.5;}
+.hit-label{color:var(--green);font-weight:800;font-size:.8rem;}
+.miss-label{color:var(--t3);font-size:.75rem;}
+
+/* ─── QUICK STATS BAR ─── */
+.qs-bar{display:flex;flex-wrap:wrap;gap:.4rem .85rem;padding:.6rem .85rem;background:linear-gradient(90deg,rgba(77,139,255,.1),rgba(176,106,255,.08),rgba(0,240,160,.06));border:1px solid rgba(77,139,255,.25);border-radius:var(--r2);margin-bottom:.85rem;align-items:center;box-shadow:inset 0 1px 0 rgba(255,255,255,.05);}
+.qs-item{font-size:.75rem;color:var(--t2);}
+.qs-item strong{color:var(--t1);font-weight:700;}
+.qs-hit strong{color:var(--green);}
+
+/* ─── STATS ─── */
+.stats-nav{display:flex;flex-wrap:wrap;gap:.3rem;margin-bottom:.85rem;padding:.5rem;background:var(--bg2);border-radius:var(--r2);border:1px solid var(--border);}
+.snav-btn{padding:.35rem .65rem;border-radius:var(--r3);font-size:.7rem;font-weight:600;background:transparent;color:var(--t3);border:1px solid transparent;cursor:pointer;transition:all var(--tr);}
+.snav-btn:hover{color:var(--t1);background:rgba(255,255,255,.06);}
+.snav-btn.active{background:var(--grad-tiktok);color:#fff;box-shadow:0 3px 15px rgba(255,0,80,.35),0 0 0 1px rgba(0,242,234,.2);}
+.stats-section{display:none;}
+.stats-section.active{display:block;}
+
+/* ─── STAT TILES ─── */
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:.5rem;margin-bottom:.85rem;}
+.stat-tile{background:var(--card2);border:1px solid var(--border);border-radius:var(--r2);padding:.65rem .5rem;text-align:center;position:relative;overflow:hidden;}
+.stat-tile::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(79,138,255,.06),rgba(168,85,247,.04));pointer-events:none;}
+.sv{font-size:1.45rem;font-weight:900;background:var(--grad-blue);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:drop-shadow(0 0 8px rgba(77,139,255,.4));}
+.sv.green{background:var(--grad-green);-webkit-background-clip:text;background-clip:text;filter:drop-shadow(0 0 8px rgba(0,240,160,.4));}
+.sv.gold{background:var(--grad-gold);-webkit-background-clip:text;background-clip:text;filter:drop-shadow(0 0 8px rgba(255,190,0,.4));}
+.sl{font-size:.63rem;color:var(--t3);margin-top:.15rem;font-weight:500;}
+
+/* ─── BARS ─── */
+.bar-row{display:flex;align-items:center;gap:.4rem;margin:.22rem 0;width:100%;min-width:0;}
+.bar-lbl{font-size:.7rem;font-family:monospace;font-weight:600;min-width:36px;max-width:36px;text-align:right;color:var(--t2);flex-shrink:0;}
+.bar-track{flex:1;background:rgba(255,255,255,.06);border-radius:4px;height:15px;overflow:hidden;min-width:0;}
+.bar-fill{height:100%;border-radius:4px;transition:width .5s cubic-bezier(.4,0,.2,1);}
+.bar-val{font-size:.67rem;font-family:monospace;min-width:52px;max-width:80px;color:var(--t2);flex-shrink:0;overflow:hidden;text-overflow:ellipsis;}
+
+/* ─── TABLES ─── */
+.table-wrap{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.mini-table{width:100%;border-collapse:collapse;font-size:.74rem;min-width:300px;}
+.mini-table th{background:rgba(79,138,255,.1);padding:.35rem .45rem;text-align:left;border:1px solid var(--border);font-weight:700;color:var(--t2);font-size:.68rem;white-space:nowrap;}
+.mini-table td{padding:.3rem .45rem;border:1px solid var(--border);white-space:nowrap;}
+.mini-table tr:nth-child(even) td{background:rgba(255,255,255,.02);}
+.mini-table tr:hover td{background:rgba(79,138,255,.05);}
+
+/* ─── BADGES ─── */
+.badge{display:inline-block;padding:.12rem .42rem;border-radius:3px;font-size:.64rem;font-weight:800;letter-spacing:.02em;}
+.badge-red{background:var(--grad-fire);color:#fff;}
+.badge-yellow{background:var(--grad-gold);color:#0f0800;}
+.badge-green{background:var(--grad-green);color:#001a12;}
+.badge-white{background:var(--overlap4);color:#080d1a;}
+.badge-blue{background:var(--grad-blue);color:#fff;}
+.badge-purple{background:linear-gradient(135deg,var(--purple),var(--blue));color:#fff;}
+
+/* ─── WAVE ─── */
+.wave-wrap{display:flex;gap:2px;align-items:flex-end;height:52px;padding:.25rem .4rem;background:rgba(255,255,255,.03);border-radius:var(--r3);margin:.5rem 0;border:1px solid rgba(255,255,255,.05);overflow-x:auto;}
+.wave-bar{min-width:6px;flex:1;border-radius:3px 3px 0 0;min-height:4px;cursor:pointer;transition:filter .1s;}
+.wave-bar:hover{filter:brightness(1.4);}
+.hot-pill{background:linear-gradient(90deg,rgba(255,71,87,.12),transparent);border-left:3px solid var(--red);padding:.38rem .65rem;border-radius:var(--r3);margin:.25rem 0;font-size:.75rem;}
+.cold-pill{background:linear-gradient(90deg,rgba(79,138,255,.08),transparent);border-left:3px solid var(--blue);padding:.38rem .65rem;border-radius:var(--r3);margin:.25rem 0;font-size:.75rem;}
+
+/* ─── OVERLAP LOG ─── */
+.log-item{background:var(--bg2);border-radius:var(--r3);padding:.5rem .65rem;margin-bottom:.38rem;font-size:.73rem;border-left:2px solid var(--border2);transition:border-color var(--tr);}
+.log-item.has-hit{border-left-color:var(--green);background:rgba(0,229,153,.04);}
+
+/* ─── WARNING MODAL ─── */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.92);display:flex;align-items:center;justify-content:center;z-index:1000;padding:1rem;backdrop-filter:blur(4px);}
+.modal-box{background:var(--card);border:1px solid var(--border2);border-radius:16px;padding:1.5rem;max-width:440px;width:100%;box-shadow:var(--sh);max-height:90vh;overflow-y:auto;}
+.warn-title{font-size:1.2rem;font-weight:900;background:var(--grad-fire);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-align:center;margin-bottom:1rem;filter:drop-shadow(0 0 12px rgba(255,61,85,.5));}
+.warn-list{list-style:none;margin-bottom:1.1rem;}
+.warn-list li{display:flex;gap:.5rem;font-size:.81rem;padding:.4rem 0;border-bottom:1px solid rgba(255,255,255,.06);line-height:1.55;}
+.warn-list li:last-child{border:none;}
+.warn-icon{font-size:1rem;flex-shrink:0;line-height:1.55;}
+.check-label{display:flex;align-items:flex-start;gap:.5rem;font-size:.82rem;margin-bottom:.5rem;cursor:pointer;padding:.4rem;border-radius:var(--r3);transition:background var(--tr);}
+.check-label:hover{background:rgba(255,255,255,.04);}
+.check-label input{accent-color:var(--blue);margin-top:.18rem;flex-shrink:0;width:16px;height:16px;}
+
+/* ─── AD SLOTS ─── */
+/* Fullscreen ad (after warning + after 5 runs) */
+.ad-fullscreen{position:fixed;inset:0;background:rgba(0,0,0,.95);z-index:900;display:flex;flex-direction:column;align-items:center;justify-content:center;backdrop-filter:blur(6px);}
+.ad-fullscreen-inner{background:var(--card);border:1px solid var(--border2);border-radius:var(--r);max-width:380px;width:90%;padding:1.5rem;text-align:center;position:relative;}
+.ad-fs-timer{position:absolute;top:.75rem;left:.75rem;font-size:.75rem;color:var(--t2);}
+.ad-fs-close{position:absolute;top:.75rem;right:.75rem;background:var(--red);color:#fff;border:none;border-radius:50%;width:28px;height:28px;font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;font-weight:900;opacity:.3;transition:opacity var(--tr);}
+.ad-fs-close.ready{opacity:1;}
+/* Slide-in quarter ad - appears bottom-right after results, quarter screen */
+.ad-quarter{position:fixed;bottom:0;right:0;width:50%;max-width:320px;height:40vh;background:var(--card);border-top:1px solid var(--border2);border-left:1px solid var(--border2);z-index:800;transform:translateY(100%);transition:transform .4s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;border-radius:var(--r) 0 0 0;}
+.ad-quarter.show{transform:translateY(0);}
+.ad-quarter-close{position:absolute;top:.5rem;right:.6rem;background:var(--red);color:#fff;border:none;border-radius:50%;width:30px;height:30px;font-size:1rem;cursor:pointer;font-weight:900;z-index:1;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(255,71,87,.4);}
+.ad-quarter-close.locked{opacity:.35;cursor:not-allowed;}
+.ad-quarter-timer{font-size:.68rem;color:var(--t3);text-align:center;padding:.3rem;}
+.ad-quarter-inner{flex:1;overflow:hidden;padding:.5rem;display:flex;flex-direction:column;justify-content:center;align-items:center;}
+@media(max-width:600px){.ad-quarter{width:75%;height:35vh;}}
+
+/* ─── SUPPORT CARDS ─── */
+.support-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:.5rem;margin:.65rem 0;width:100%;}
+.sc{background:var(--card2);border:1px solid var(--border);border-radius:var(--r2);padding:.7rem .5rem;text-align:center;cursor:pointer;transition:all var(--tr);min-width:0;}
+.sc:hover{border-color:transparent;background:linear-gradient(var(--card2),var(--card2)) padding-box,var(--grad-blue) border-box;transform:translateY(-3px);box-shadow:0 8px 25px rgba(77,139,255,.3);}
+.sc-icon{font-size:1.5rem;margin-bottom:.3rem;}
+.sc-title{font-size:.8rem;font-weight:700;margin-bottom:.1rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.sc-sub{font-size:.65rem;color:var(--t2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+
+/* ─── HOW TO ─── */
+details{background:var(--card2);border:1px solid var(--border);border-radius:var(--r2);margin-bottom:.4rem;overflow:hidden;}
+details summary{
+  padding:.65rem .8rem;cursor:pointer;font-size:.83rem;font-weight:700;
+  display:flex;align-items:center;gap:.4rem;
+  list-style:none;-webkit-appearance:none;appearance:none;
+  -webkit-user-select:none;user-select:none;
+  transition:background var(--tr);
+  outline:none;
+}
+details summary:focus{outline:none;}
+details summary:hover{background:rgba(79,138,255,.07);}
+details summary::-webkit-details-marker{display:none !important;width:0;height:0;}
+details summary::marker{display:none !important;font-size:0;width:0;}
+details summary::before{content:'▶';font-size:.58rem;color:var(--blue);transition:transform .22s;flex-shrink:0;margin-right:.15rem;}
+details[open] summary::before{transform:rotate(90deg);}
+details .det-body{padding:.65rem .85rem;font-size:.8rem;line-height:1.7;background:var(--card);color:var(--t2);}
+details .det-body p{margin-bottom:.5rem;}
+details .det-body ul{margin-left:1.2rem;margin-bottom:.5rem;}
+details .det-body li{margin-bottom:.25rem;}
+details .det-body strong{color:var(--t1);}
+
+/* ─── HIT CELEBRATION CSS removed (popup disabled) ─── */
+
+/* ─── SCROLL ─── */
+.scroll-box{overflow-y:auto;padding-right:.25rem;}
+.scroll-box::-webkit-scrollbar{width:4px;}
+.scroll-box::-webkit-scrollbar-track{background:var(--bg2);border-radius:2px;}
+.scroll-box::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px;}
+
+/* ─── FILTER ACTIVE ─── */
+.filter-btn.af{background:var(--grad-blue);color:#fff;box-shadow:0 3px 14px rgba(77,139,255,.4);}
+
+/* ─── RESULT BLOCKS ─── */
+.method-block{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r2);padding:.65rem .75rem;margin-bottom:.5rem;}
+.method-block-nums{display:flex;flex-wrap:wrap;gap:.18rem;margin-top:.35rem;width:100%;}
+.m-chip{background:var(--card);padding:.2rem .48rem;border-radius:var(--r3);font-family:monospace;font-size:.8rem;font-weight:600;border:1px solid var(--border2);}
+
+/* ─── SECTION SEP ─── */
+.sep{height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);margin:.7rem 0;}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:600px){
+  .tab-content{padding:.65rem;}
+  .input-row{grid-template-columns:58px 1fr;}
+  .topbar-right{display:none;}
+  .stat-grid{grid-template-columns:repeat(2,1fr);}
+  .ad-quarter{width:90%;max-width:none;}
+  .support-grid{grid-template-columns:repeat(2,1fr);}
+  .money-number{padding:.38rem .55rem;font-size:.82rem;margin:.15rem;}
+  .btn-run{font-size:.95rem;padding:.85rem;}
+  .tabs .tab-btn{padding:.65rem .75rem;font-size:.77rem;}
+  .qs-bar{padding:.45rem .65rem;gap:.3rem .65rem;}
+  .qs-item{font-size:.7rem;}
+  .card{padding:.8rem;}
+  .card-title{font-size:.88rem;}
+  .mini-table{font-size:.68rem;}
+  .mini-table th,.mini-table td{padding:.28rem .38rem;}
+  .method-block-nums{gap:.15rem;}
+  .m-chip{font-size:.74rem;padding:.18rem .38rem;}
+}
+@media(min-width:601px) and (max-width:900px){
+  .tab-content{padding:.85rem;}
+  .stat-grid{grid-template-columns:repeat(3,1fr);}
+}
+@media(min-width:901px){
+  .tab-content{padding:1.1rem;}
+  .money-number{font-size:.9rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════ WARNING MODAL ═══════════ -->
+<div id="warningOverlay" class="modal-overlay">
+  <div class="modal-box">
+    <div class="warn-title">⚠️ IMPORTANT WARNING ⚠️</div>
+    <ul class="warn-list">
+      <li><span class="warn-icon">📢</span><div><strong>1 in 1,000 chance</strong> — Pick 3 has 1,000 possible outcomes (000–999). Normalized numbers reduce this to ~220. This tool analyzes statistical patterns only. It does NOT guarantee wins.</div></li>
+      <li><span class="warn-icon">🎲</span><div><strong>Gambling is addictive.</strong> Play responsibly. Set strict money and time limits. Never chase your losses. If you feel out of control, stop immediately.</div></li>
+      <li><span class="warn-icon">💰</span><div><strong>Only play with money you can afford to lose entirely.</strong> Do not use rent money, savings, or borrowed money for gambling.</div></li>
+      <li><span class="warn-icon">🚫</span><div><strong>No system guarantees lottery wins.</strong> The lottery is random. Past patterns do not predict future results with certainty.</div></li>
+      <li><span class="warn-icon">💡</span><div><strong>If you need money, gambling is NOT the solution.</strong> Real solutions: find work, learn budgeting, reduce expenses, and seek professional financial advice.</div></li>
+      <li><span class="warn-icon">👨‍👩‍👧</span><div><strong>Adults 18+ only.</strong> Keep this application away from minors at all times.</div></li>
+      <li><span class="warn-icon">⭐</span><div><strong>Best combination:</strong> Method 60 + X-Circle together gives the highest hit rate among individual pairs. Using all 4 methods gives approximately <strong>1 hit every 1.98 runs</strong> on average.</div></li>
+      <li><span class="warn-icon">🔢</span><div><strong>Numbers with 2–3 method overlap are strongest.</strong> 1-method = weak. 4-method = too common (noise). Focus on yellow 🟡 and green 🟢 numbers.</div></li>
+    </ul>
+    <label class="check-label"><input type="checkbox" id="ageCheck"> I confirm I am 18 years or older and understand the risks of gambling.</label>
+    <label class="check-label"><input type="checkbox" id="respCheck"> I understand this is a statistical analysis tool for entertainment only, and I take full personal responsibility for my actions.</label>
+    <button id="enterBtn" class="btn btn-primary btn-lg" disabled style="width:100%;margin-top:.75rem;">Enter Application →</button>
+  </div>
+</div>
+
+<!-- ═══════════ FULLSCREEN AD ═══════════ -->
+<div id="adFullscreen" class="ad-fullscreen" style="display:none;">
+  <div class="ad-fullscreen-inner">
+    <div class="ad-fs-timer" id="adFsTimer">⏳ 3s</div>
+    <button class="ad-fs-close" id="adFsClose">✕</button>
+    <div style="font-size:2rem;margin-bottom:.5rem;">📢</div>
+    <div style="font-size:.9rem;font-weight:700;margin-bottom:.3rem;">Advertisement</div>
+    <div style="font-size:.75rem;color:var(--t2);margin-bottom:1rem;">Supporting Pick3Geny development</div>
+    <!-- Replace with actual AdSense interstitial:
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+         data-ad-slot="XXXXXXXXXX" data-ad-format="auto"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script> -->
+    <div style="background:rgba(79,138,255,.1);border-radius:8px;padding:1.5rem;font-size:.78rem;color:var(--t2);">
+      [Google AdSense Interstitial]<br>Replace with your ad code
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ QUARTER-SCREEN AD (after results) ═══════════ -->
+<div id="adQuarter" class="ad-quarter">
+  <button class="ad-quarter-close locked" id="adQuarterClose">✕</button>
+  <div class="ad-quarter-timer" id="adQuarterTimer">Closes in 3s</div>
+  <div class="ad-quarter-inner">
+    <div style="font-size:.72rem;color:var(--t3);margin-bottom:.3rem;">📢 Advertisement</div>
+    <!-- Replace with AdSense:
+    <ins class="adsbygoogle" style="display:block;width:100%;height:100%"
+         data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX"
+         data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script> -->
+    <div style="background:rgba(255,255,255,.04);border-radius:6px;padding:.75rem;font-size:.75rem;color:var(--t2);width:100%;text-align:center;">
+      📺 Ad Video Slot<br><span style="font-size:.65rem;">Replace with Google AdSense code<br>Closeable after 3 seconds</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ MAIN APP ═══════════ -->
+<div id="mainApp" style="display:none;">
+
+  <!-- App Header -->
+  <div style="background:linear-gradient(135deg,#08111f 0%,#0c1530 40%,#101a3a 60%,#08111f 100%);padding:.75rem .75rem .65rem;text-align:center;position:relative;overflow:hidden;border-bottom:1px solid rgba(77,139,255,.15);box-shadow:0 2px 20px rgba(0,0,0,.5);">
+    <!-- Decorative glow -->
+    <div style="position:absolute;top:-50%;left:50%;transform:translateX(-50%);width:200px;height:100px;background:radial-gradient(ellipse,rgba(77,139,255,.15) 0%,transparent 70%);pointer-events:none;"></div>
+    <!-- App Name -->
+    <div style="position:relative;z-index:1;">
+      <div style="font-size:1.6rem;font-weight:900;background:linear-gradient(135deg,#4d8bff 0%,#b06aff 40%,#00e5ff 70%,#4d8bff 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:.06em;filter:drop-shadow(0 0 20px rgba(77,139,255,.4));line-height:1.1;">Pick3Geny</div>
+      <div style="font-size:.7rem;color:#7b92c8;margin-top:.2rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600;">Statistical Number Analyzer</div>
+    </div>
+  </div>
+
+  <div class="topbar">
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="run">🏃 Run</button>
+      <button class="tab-btn" data-tab="history">📜 History</button>
+      <button class="tab-btn" data-tab="stats">📊 Stats</button>
+      <button class="tab-btn" data-tab="howto">❓ How To</button>
+      <button class="tab-btn" data-tab="support">💰 Support</button>
+    </div>
+    <div class="topbar-right">
+      <button class="btn btn-gold btn-sm" id="hdrDonate">❤️ Donate</button>
+      <button class="btn btn-purple btn-sm" id="hdrPremium" title="Go Ad-Free">⭐ Ad-Free</button>
+    </div>
+  </div>
+
+  <!-- ═══ RUN TAB ═══ -->
+  <div id="runTab" class="tab-content active">
+
+    <div class="qs-bar" id="qsBar">
+      <span class="qs-item">🎮 Runs: <strong id="qsRuns">0</strong></span>
+      <span class="qs-item qs-hit">🏆 Hits: <strong id="qsHits">0</strong></span>
+      <span class="qs-item">📈 Rate: <strong id="qsRate">0%</strong></span>
+      <span class="qs-item">📋 Avg Table: <strong id="qsAvg">—</strong></span>
+      <span class="qs-item">⭐ Best: <strong id="qsBest">—</strong></span>
+      <span class="qs-item">⚡ Avg/Hit: <strong id="qsAvgHit">—</strong></span>
+      <button class="btn btn-ghost btn-sm" style="margin-left:auto;" id="qsGoStats">Full Stats →</button>
+    </div>
+
+    <!-- No permanent ads in Run tab - keeps screen clean for YouTube recordings -->
+
+    <div class="card">
+      <div class="card-title">🎯 Select Methods</div>
+      <div class="btn-group" style="margin-bottom:.5rem;">
+        <button class="btn btn-ghost btn-sm" id="selAll">✅ All</button>
+        <button class="btn btn-ghost btn-sm" id="selNone">⬜ None</button>
+      </div>
+      <div class="btn-group" id="methodBoxes">
+        <label class="method-badge"><input type="checkbox" value="method1" checked> 1️⃣ Method 123</label>
+        <label class="method-badge"><input type="checkbox" value="method2" checked> 2️⃣ Method 60</label>
+        <label class="method-badge"><input type="checkbox" value="method3" checked> 3️⃣ X-Circle</label>
+        <label class="method-badge"><input type="checkbox" value="method4" checked> 4️⃣ Magic Pair</label>
+      </div>
+      <div class="card-sub">💡 <strong>Recommended:</strong> Use Method 60 + X-Circle together for the best hit rate among pairs. Use all 4 for ~1 hit every 1.98 runs on average. Numbers found by 2–3 methods are your strongest plays.</div>
+    </div>
+
+    <div class="card" id="inputNumbersCard">
+      <div class="card-title">📝 Input Numbers <span style="font-size:.72rem;font-weight:400;color:var(--t2);">(enter your 6 most recent draws — newest first)</span></div>
+      <div id="inputRows"></div>
+      <p class="hint">Enter the last 6 lottery results in order: Draw 1 = most recent result, Draw 2 = result before that, etc. Numbers are normalized (321 = 123 = 213). Your inputs are saved automatically.</p>
+      <div class="sep"></div>
+      <div class="btn-group" style="margin-bottom:0;">
+        <button class="btn btn-ghost btn-sm" id="shiftBtn">⬇️ Shift Down</button>
+        <button class="btn btn-ghost btn-sm" id="randBtn">🎲 Random Fill</button>
+        <button class="btn btn-ghost btn-sm" id="quickFillBtn">📋 Quick Fill</button>
+        <button class="btn btn-ghost btn-sm" id="loadLastRunBtn" title="Restore inputs and methods from your most recent saved run">⏮️ Last Run</button>
+        <button class="btn btn-danger btn-sm" id="clearInputBtn">🗑️ Clear All</button>
+      </div>
+      <p class="hint" style="margin-top:.3rem;">⬇️ Shift Down moves each row down (row 1→2, 2→3… row 6 deleted) leaving row 1 empty for your newest draw. 🎲 Random Fill only fills empty rows.</p>
+    </div>
+
+    <button id="runBtn" class="btn btn-run" style="width:100%;margin-bottom:.4rem;">🚀 RUN ANALYSIS</button>
+    <div style="text-align:center;font-size:.65rem;color:var(--t3);margin-bottom:.65rem;">⌨️ Ctrl+Enter to run</div>
+
+    <div id="aiSmartPickCard" class="card" style="display:none;background:linear-gradient(135deg,rgba(255,0,80,.07),rgba(0,242,234,.05));border-color:rgba(255,0,80,.2);">
+      <div class="card-title" style="background:var(--grad-tiktok);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;display:flex;align-items:center;justify-content:space-between;">
+        <span>✅ AI Smart Pick — Top 10 Numbers</span>
+        <button onclick="document.getElementById('aiSmartPickCard').style.display='none';" style="background:var(--red);color:#fff;border:none;border-radius:50%;width:24px;height:24px;font-size:.85rem;cursor:pointer;font-weight:900;flex-shrink:0;display:flex;align-items:center;justify-content:center;line-height:1;" title="Close AI Smart Pick">✕</button>
+      </div>
+      <p class="hint" style="margin-bottom:.6rem;">
+        <strong>How to use:</strong> Run analysis first, then click <strong>✅ AI Smart Pick</strong> in the Money Table. The AI scores every number using 5 models and shows the <strong>Top 10 ranked picks</strong> here.<br>
+        <strong>🔥</strong> = Hot (appeared 6+ times in last 10 runs) &nbsp; <strong>❄️</strong> = Cold (rarely seen, statistically due) &nbsp; <strong>⭐</strong> = Top overlap (2–3 methods agreed)<br>
+        Click any number to see all its playable variations. Track AI accuracy over time in <strong>Stats → ✅ AI Picks</strong>.
+      </p>
+      <div id="aiSmartPickNums"></div>
+      <div id="aiSmartPickMeta" style="font-size:.7rem;color:var(--t2);margin:.4rem 0;"></div>
+      <div class="card-sub">How to read scores: Higher = stronger signal. 🔥 = Hot (appeared 6+ times recently). ❄️ = Cold (rarely seen but statistically due). ⭐ = Top overlap (2-3 methods agreed). AI updates method weights every run.
+        <span id="aiSmartMeta2" style="color:var(--cyan);display:block;margin-top:.3rem;"></span>
+      </div>
+    </div>
+
+    <div class="card" id="smartPredCard" style="display:none;background:linear-gradient(135deg,rgba(77,139,255,.08),rgba(176,106,255,.08));">
+      <div class="card-title" style="background:var(--grad-blue);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;display:flex;align-items:center;justify-content:space-between;">
+        <span>🎯 Smart Prediction — Top Numbers to Watch</span>
+        <button onclick="document.getElementById('smartPredCard').style.display='none';document.getElementById('smartPredToggleBtn').textContent='👁️ Show Smart Prediction';S_smartPredUserClosed=true;" style="background:var(--red);color:#fff;border:none;border-radius:50%;width:24px;height:24px;font-size:.85rem;cursor:pointer;font-weight:900;flex-shrink:0;display:flex;align-items:center;justify-content:center;line-height:1;" title="Close Smart Prediction">✕</button>
+      </div>
+      <p class="hint" style="margin-bottom:.5rem;">Based on your hit history and overlap patterns. Click any number for variations.</p>
+      <div id="smartPredNums"></div>
+      <div class="card-sub">📌 <strong>AI Engine</strong> learns from your hits. Scores combine: pre-hit patterns (×6/4/2), overlap strength, and table consensus — weights auto-adjust after each run. <span id="aiWeightInfo" style="color:var(--cyan);"></span></div>
+    </div>
+
+    <button id="smartPredToggleBtn" class="btn btn-ghost btn-sm" style="width:100%;margin-bottom:.5rem;" onclick="(function(){var c=document.getElementById('smartPredCard');var b=document.getElementById('smartPredToggleBtn');if(c.style.display==='none'){c.style.display='block';b.textContent='🙈 Hide Smart Prediction';S_smartPredUserClosed=false;}else{c.style.display='none';b.textContent='👁️ Show Smart Prediction';S_smartPredUserClosed=true;}})()">👁️ Show Smart Prediction</button>
+
+    <div id="histNavBar" style="display:none;align-items:center;justify-content:space-between;background:var(--card2);border:1px solid var(--border);border-radius:var(--r2);padding:.5rem .75rem;margin-bottom:.65rem;font-size:.78rem;">
+      <button class="btn btn-ghost btn-sm" id="histPrevBtn">← Older</button>
+      <span id="histNavLabel" style="color:var(--t2);font-size:.72rem;"></span>
+      <button class="btn btn-ghost btn-sm" id="histNextBtn">Newer →</button>
+      <button class="btn btn-success btn-sm" id="histLiveBtn" style="margin-left:.5rem;">🔴 Live Run</button>
+    </div>
+    <div id="resultsContainer"></div>
+
+    <div id="moneyTableCard" class="card" style="display:none;">
+      <div class="card-title">💰 MONEY TABLE <span id="mtCount" style="font-weight:400;font-size:.8rem;color:var(--t2);"></span></div>
+
+      <div class="color-guide">
+        <div class="cg-item"><div class="cg-dot" style="background:linear-gradient(135deg,#ff4757,#cc1122);"></div><span>🔴 1 Method — <strong>Weak</strong> (least reliable)</span></div>
+        <div class="cg-item"><div class="cg-dot" style="background:linear-gradient(135deg,#ffb020,#d4870a);"></div><span>🟡 2 Methods — <strong>Strong</strong> ⭐ (best consensus)</span></div>
+        <div class="cg-item"><div class="cg-dot" style="background:linear-gradient(135deg,#00e599,#00a066);"></div><span>🟢 3 Methods — <strong>Strong</strong> ⭐ (great consensus)</span></div>
+        <div class="cg-item"><div class="cg-dot" style="background:linear-gradient(135deg,#c8d8f0,#a8b8d8);outline:2px solid var(--gold);border-radius:3px;"></div><span>⚪ 4 Methods — <strong>Very Weak</strong> (too obvious, often noise)</span></div>
+      </div>
+
+      <div class="btn-group" style="margin-bottom:.65rem;">
+        <button class="filter-btn btn btn-ghost btn-sm af" data-filter="all">All</button>
+        <button class="filter-btn btn btn-ghost btn-sm" data-filter="abc">ABC</button>
+        <button class="filter-btn btn btn-ghost btn-sm" data-filter="aab">AAB</button>
+        <button class="filter-btn btn btn-ghost btn-sm" data-filter="aaa">AAA</button>
+        <button class="filter-btn btn btn-ghost btn-sm" data-filter="1">🔴 1×</button>
+        <button class="filter-btn btn btn-ghost btn-sm" data-filter="2">🟡 2×</button>
+        <button class="filter-btn btn btn-ghost btn-sm" data-filter="3">🟢 3×</button>
+        <button class="filter-btn btn btn-ghost btn-sm" data-filter="4">⚪ 4×</button>
+        <button id="sortAsc" class="btn btn-ghost btn-sm">↑ A-Z</button>
+        <button id="sortDesc" class="btn btn-ghost btn-sm">↓ Z-A</button>
+        <button id="trendBtn" class="btn btn-ghost btn-sm" title="Toggle Trend mode — highlights hot numbers">🔥 Trend</button>
+      </div>
+
+      <div id="mtNumbers" style="min-height:60px;margin-bottom:.6rem;"></div>
+
+      <div class="card-sub">💡 Click any number to see all its playable variations (e.g. 123 → 123, 132, 213, 231, 312, 321). <strong>Focus on yellow 🟡 and green 🟢 numbers</strong> — they represent the strongest consensus between methods. White ⚪ (4 methods) are usually too common to be meaningful.</div>
+
+      <div class="btn-group" style="margin-top:.65rem;margin-bottom:0;">
+        <button id="printBtn" class="btn btn-ghost btn-sm">🖨️ Print</button>
+        <button id="shareBtn" class="btn btn-ghost btn-sm">📤 Share</button>
+        <button id="exportCsvBtn" class="btn btn-ghost btn-sm">📄 CSV</button>
+        <button id="copyNumbersBtn" class="btn btn-ghost btn-sm" title="Copy all numbers to clipboard">📋 Copy</button>
+        <button id="randPickBtn" class="btn btn-cyan btn-sm">🎲 Random Pick</button>
+        <button id="aiSmartPickBtn" class="btn" style="background:var(--grad-tiktok);color:#fff;box-shadow:0 3px 14px rgba(255,0,80,.35);font-size:.82rem;padding:.5rem 1rem;font-weight:700;"
+          title="AI SMART PICK — Ranks the top 10 numbers from your current Money Table using 5 scoring models: Overlap strength, Hot momentum, Breakout detector, Near-miss learning, and Method accuracy.">
+          ✅ AI Smart Pick
+        </button>
+        <button id="smartPredBtn" class="btn btn-purple btn-sm" style="font-size:.82rem;padding:.5rem 1rem;font-weight:700;"
+          title="Smart Prediction — Shows top numbers based on your hit history and overlap patterns. Learns from past results.">
+          🎯 Smart Prediction
+        </button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🎯 Actual Draw Result <span style="font-size:.7rem;font-weight:400;color:var(--t2);">(enter the real winning number to track hits)</span></div>
+      <div style="display:flex;gap:.5rem;align-items:center;flex-wrap:wrap;">
+        <input type="text" id="drawInput" class="draw-inp" maxlength="3" placeholder="e.g. 456" autocomplete="off" style="max-width:160px;font-size:1.1rem;">
+        <button id="saveDrawBtn" class="btn btn-success" style="font-size:.85rem;padding:.6rem 1rem;">💾 Save Result</button>
+      </div>
+      <div id="drawMsg" style="margin-top:.45rem;"></div>
+      <p class="hint" style="margin-top:.3rem;">After running analysis, enter the real lottery result here and click Save. The app will check if it appears in the Money Table (HIT ✅) — it will glow green automatically. This also saves the run to your history and updates your stats.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🔍 Check a Number</div>
+      <div style="display:flex;gap:.5rem;align-items:center;">
+        <input type="text" id="checkInput" class="draw-inp" maxlength="3" placeholder="e.g. 123" autocomplete="off" style="max-width:140px;">
+        <button id="checkBtn" class="btn btn-primary">Check</button>
+      </div>
+      <div id="checkResult" style="margin-top:.5rem;font-size:.82rem;"></div>
+      <p class="hint" style="margin-top:.3rem;">Enter any number to check if it appears in the current Money Table. If found, it will be highlighted in the table above with a glowing green animation.</p>
+    </div>
+
+    <!-- No permanent ad at bottom of Run tab - keep clean for YouTube -->
+
+  </div>
+
+  <!-- ═══ HISTORY TAB ═══ -->
+  <div id="historyTab" class="tab-content">
+    <div class="card">
+      <div class="card-title">📜 Run History <span style="font-size:.72rem;font-weight:400;color:var(--t2);">— all runs shown, scroll to see all</span></div>
+      <div class="card-sub" style="margin-bottom:.75rem;">
+        💾 <strong>Where is history stored?</strong> All run history is saved in your browser's <strong>localStorage</strong> — a private storage area on your device. It is never uploaded to any server. When you click "Clear All", the data is permanently deleted from your device's localStorage. Exporting to JSON first is recommended if you want to keep a backup.
+      </div>
+      <div class="btn-group">
+        <button class="btn btn-danger btn-sm" id="clearHistBtn">🗑️ Clear All</button>
+        <button class="btn btn-ghost btn-sm" id="exportJsonBtn">📥 Export JSON</button>
+        <button class="btn btn-ghost btn-sm" id="importJsonBtn">📤 Import JSON</button>
+        <button class="btn btn-primary btn-sm" id="histToStatsBtn">📊 Full Stats →</button>
+      </div>
+      <input type="file" id="importJsonFile" accept=".json" style="display:none">
+      <!-- All history rendered here, no max-height — full scroll -->
+      <div id="historyList"></div>
+      <div id="historyInfo" style="font-size:.68rem;color:var(--t3);margin-top:.5rem;padding-top:.5rem;border-top:1px solid var(--border);"></div>
+    </div>
+  </div>
+
+  <!-- ═══ STATS TAB ═══ -->
+  <div id="statsTab" class="tab-content">
+    <div class="btn-group tight" style="margin-bottom:.65rem;">
+      <button class="btn btn-ghost btn-sm" id="exportStatsBtn" title="Download your statistics as a JSON file for backup or analysis.">📥 Export Stats</button>
+      <button class="btn btn-ghost btn-sm" id="shareStatsBtn" title="Share your stats summary via WhatsApp, Email, or clipboard.">📤 Share Stats</button>
+      <button class="btn btn-primary" id="refreshStats" style="font-weight:700;" title="Recomputes all 13 statistics from your full run history. Auto-refreshes when Stats tab is open during a run or delete. Click manually if you switched here from another tab.">🔄 Refresh Stats</button>
+    </div>
+    <div class="stats-nav" id="statsNav">
+      <button class="snav-btn active" data-section="s1">1️⃣ Methods</button>
+      <button class="snav-btn" data-section="s2">2️⃣ Overlaps</button>
+      <button class="snav-btn" data-section="s3">3️⃣ Types</button>
+      <button class="snav-btn" data-section="s4">4️⃣ Sequences</button>
+      <button class="snav-btn" data-section="s5">5️⃣ Hit Source</button>
+      <button class="snav-btn" data-section="s6">6️⃣ Inputs</button>
+      <button class="snav-btn" data-section="s7">7️⃣ Top Numbers</button>
+      <button class="snav-btn" data-section="s8">8️⃣ Time</button>
+      <button class="snav-btn" data-section="s9">9️⃣ Overlap→Hit</button>
+      <button class="snav-btn" data-section="s10">⭐ Strength</button>
+      <button class="snav-btn" data-section="s11">📓 Log</button>
+      <button class="snav-btn" data-section="s12">🔢 Digits</button>
+      <button class="snav-btn" data-section="s13">📋 Summary</button>
+      <button class="snav-btn" data-section="s14">✅ AI Picks</button>
+    </div>
+    <div id="statsContainer"></div>
+  </div>
+
+  <!-- ═══ HOW TO TAB ═══ -->
+  <div id="howtoTab" class="tab-content">
+    <div class="card">
+      <div class="card-title" style="display:flex;align-items:center;justify-content:space-between;">
+        <span>❓ How To Use Pick3Geny</span>
+        <button onclick="document.querySelectorAll('#howtoTab details[open]').forEach(d=>d.removeAttribute('open'))" class="btn btn-ghost btn-sm" style="font-size:.7rem;">➖ Close All</button>
+      </div>
+
+      <details open><summary>🚀 Quick Start — Step by Step</summary><div class="det-body">
+        <p><strong>Step 1 — Select Methods:</strong> Choose which of the 4 algorithms you want to run. All 4 is recommended. Method 60 + X-Circle is the best pair.</p>
+        <p><strong>Step 2 — Enter Your Draws:</strong> In the Draw inputs, enter your 6 most recent lottery results. Draw 1 = most recent, Draw 2 = one before that, etc. Numbers must be exactly 3 digits.</p>
+        <p><strong>Step 3 — Click RUN ANALYSIS:</strong> The app runs all selected algorithms and builds your Money Table.</p>
+        <p><strong>Step 4 — Check the Money Table:</strong> Focus on 🟡 yellow (2-method) and 🟢 green (3-method) numbers. These have the strongest statistical consensus.</p>
+        <p><strong>Step 5 — Play your numbers:</strong> Click any normalized number to see all its playable variations. Example: 123 → 123, 132, 213, 231, 312, 321.</p>
+        <p><strong>Step 6 — Save the Result:</strong> After the real lottery draw, enter the winning number in "Actual Draw Result" and click 💾 Save Result. The app checks for a HIT and saves the run to your history and stats.</p>
+        <p><strong>Step 7 — Next cycle:</strong> Click ⬇️ Shift Down, enter the new draw in row 1, then Run again.</p>
+      </div></details>
+
+      <details><summary>🔢 What are normalized numbers and why?</summary><div class="det-body">
+        <p>Pick 3 numbers are "normalized" by sorting their digits in ascending order. This means all arrangements of the same digits become one entry:</p>
+        <ul>
+          <li>321, 312, 213, 231, 132, 123 all become <strong>123</strong></li>
+          <li>223, 232, 322 all become <strong>223</strong></li>
+          <li>666 stays <strong>666</strong> (only one variation)</li>
+        </ul>
+        <p>There are only ~220 unique normalized 3-digit numbers (vs 1,000 total). This is why you must play ALL variations of each number you choose. Click any number in the Money Table to see its full list of variations.</p>
+      </div></details>
+
+      <details><summary>🎨 Color System — What each color means</summary><div class="det-body">
+        <p><strong>🔴 Red — 1 Method (Weak):</strong> Only one algorithm found this number. Low confidence. These are the most numerous but least reliable numbers in your table.</p>
+        <p><strong>🟡 Yellow — 2 Methods (STRONG ⭐):</strong> Two different algorithms independently produced this number. This is the "sweet spot" — good consensus without being noise. <em>These are your best plays.</em></p>
+        <p><strong>🟢 Green — 3 Methods (STRONG ⭐):</strong> Three algorithms agree. Very strong consensus. High confidence numbers. Play these first.</p>
+        <p><strong>⚪ White/Gold — 4 Methods (Very Weak):</strong> All 4 algorithms agree — but this is actually a bad sign. When every algorithm produces the same number, it's usually because it's a statistically common or trivial result. These numbers are often "noise" and should be the last ones you consider.</p>
+        <p><strong>Bottom line:</strong> Yellow + Green = your core plays. Red = secondary. White = almost ignore.</p>
+      </div></details>
+
+      <details><summary>📥 How to enter draws correctly</summary><div class="det-body">
+        <p>The 6 input rows represent your 6 most recent lottery draws, in reverse chronological order:</p>
+        <ul>
+          <li><strong>Draw 1:</strong> The most recent lottery result (yesterday's or today's)</li>
+          <li><strong>Draw 2:</strong> The result before Draw 1</li>
+          <li><strong>Draw 3–6:</strong> Continue going back in time</li>
+        </ul>
+        <p><strong>Why this order matters:</strong> Method 60 and Magic Pair are sensitive to the relationship between consecutive draws. Correct ordering gives more accurate results.</p>
+        <p><strong>Not all rows required:</strong> Method 123 and X-Circle only need Draw 1. Method 60 needs Draws 1–2. Magic Pair needs all 6. The app adjusts input rows automatically based on selected methods.</p>
+      </div></details>
+
+      <details><summary>⬇️ Shift Down, Random Fill, and Quick Fill</summary><div class="det-body">
+        <p><strong>⬇️ Shift Down:</strong> Moves every row down by one position (Draw 1 → Draw 2, Draw 2 → Draw 3, etc.). Draw 6 is deleted, Draw 1 becomes empty. Use this after a new lottery draw: first Shift Down, then type the new draw into Draw 1. This is the fastest workflow for regular users.</p>
+        <p><strong>🎲 Random Fill:</strong> Fills ONLY empty rows with random 3-digit numbers. Already filled rows are not touched. Perfect after Shift Down — it fills just the empty Draw 1 slot.</p>
+        <p><strong>📋 Quick Fill:</strong> Enter multiple numbers separated by spaces in one text box, then click Fill. Example: type "123 456 789 012 345 678" to fill all 6 rows at once.</p>
+      </div></details>
+
+      <details><summary>📊 Understanding the Statistics</summary><div class="det-body">
+        <p><strong>Hit Rate:</strong> The percentage of runs where the actual winning number appeared in your Money Table. A 50% hit rate means 1 in 2 runs contained the winning number.</p>
+        <p><strong>Avg Between Hits:</strong> How many runs (on average) pass between successful predictions. Lower is better. Using all 4 methods averages ~1.98 runs between hits.</p>
+        <p><strong>Overlap Numbers:</strong> Numbers that appear in 2+ methods simultaneously. These are your most reliable indicators. The more runs with overlaps, the stronger your system is performing.</p>
+        <p><strong>Strength Score:</strong> A cumulative score per number based on how many methods found it, across all runs. A number with score 10 appeared in multiple methods across multiple runs — these are your "core" numbers to watch.</p>
+        <p><strong>Pre-Hit Numbers:</strong> Numbers that appeared in Money Tables 1–3 runs before a hit occurred. These may act as "warning signals" — if you see them appearing now, a hit may be coming soon.</p>
+      </div></details>
+
+      <details><summary>💾 History and Storage — Where is my data?</summary><div class="det-body">
+        <p>All your run history is stored in your browser's <strong>localStorage</strong> — a private database on your device. Key facts:</p>
+        <ul>
+          <li>✅ Data never leaves your device. No server, no cloud, no account required.</li>
+          <li>✅ Data persists when you close and reopen the app.</li>
+          <li>✅ Your 6 input numbers are also saved and restored automatically.</li>
+          <li>⚠️ <strong>If you click "Clear All History"</strong>, data is permanently deleted from localStorage on your device. This cannot be undone.</li>
+          <li>⚠️ <strong>If you clear your browser data/cookies</strong>, your history may also be deleted.</li>
+          <li>💡 Use <strong>Export JSON</strong> to create a backup file before clearing. You can import it later by contacting the developer for a future import feature.</li>
+        </ul>
+        <p><strong>Important — localStorage is per browser, per device:</strong></p>
+        <ul>
+          <li>Your history in <strong>Chrome browser</strong> is completely separate from your history in <strong>Mi Browser</strong>, Safari, Firefox, or any other browser — even on the same phone.</li>
+          <li>This is how browsers work: each browser has its own private localStorage storage area. They do NOT share data with each other.</li>
+          <li><strong>Solution:</strong> Always use the same browser for Pick3Geny. If you want to move your data from Mi Browser to Chrome (or vice versa), use <strong>Export JSON</strong> in the History tab and then <strong>Import JSON</strong> in the other browser.</li>
+        </ul>
+        <p><strong>Note:</strong> localStorage is also separate per device. Your phone and your computer have separate histories even in the same browser.</p>
+      </div></details>
+
+      <details><summary>📱 Share App Button — How it works</summary><div class="det-body">
+        <p>The <strong>Share App</strong> button in the Support tab lets you share a link to Pick3Geny with friends, family, or your social media audience.</p>
+        <p><strong>On Android / iPhone:</strong> Tapping Share App opens your phone's native share sheet — you can send to WhatsApp, Telegram, SMS, Email, Instagram, Twitter/X, Facebook, or any other app on your phone. The same way you share any link.</p>
+        <p><strong>On computer:</strong> The app link is copied to your clipboard. You can paste it anywhere — email, social media, WhatsApp Web, etc.</p>
+        <p><strong>The Share Results button</strong> (in the Run tab Money Table section) shares your actual analysis results — all method outputs separately, plus the strong numbers list. Perfect for showing your numbers to a Pick 3 group or your social media followers.</p>
+        <p>💡 <strong>Tip for YouTube:</strong> Share your Pick3Geny link in your video description. Every viewer who downloads the app is a potential repeat user who may donate or buy premium.</p>
+      </div></details>
+
+      <details><summary>🔥 Trend Button — What it does</summary><div class="det-body">
+        <p>The <strong>🔥 Trend</strong> button is in the Money Table toolbar, next to the sort buttons. It shows you which numbers are currently <strong>HOT</strong> or <strong>COLD</strong> based on the last 10 runs.</p>
+        <ul>
+          <li><strong>🔥 Fire icon</strong> = the number appeared <strong>6 or more times</strong> in the last 10 runs. This is a HOT, consistent number.</li>
+          <li><strong>~ Tilde</strong> = appeared 3–5 times. Neutral momentum.</li>
+          <li><strong>❄️ Snowflake</strong> = appeared <strong>0–2 times</strong> recently. This number is COLD — it's fading or statistically due to return.</li>
+        </ul>
+        <p><strong>How to use:</strong> Click Trend once to turn ON (button highlights). Each number shows its icon + count below it. Click again to turn OFF and return to normal view.</p>
+        <p><strong>Why it matters:</strong> Overlap tells you if multiple algorithms agree. Trend tells you if the number has been consistently appearing lately. A number that is both 🟢 Green (3-method overlap) AND 🔥 Hot is your strongest possible play.</p>
+      </div></details>
+
+      <details><summary>✅ AI Smart Pick — What it does and how to use it</summary><div class="det-body">
+        <p>The <strong>✅ AI Smart Pick</strong> button is in the Money Table toolbar. It ranks every number in your current Money Table using 5 scoring models and shows you the <strong>Top 10 picks</strong> in a card above the RUN button.</p>
+        <p><strong>The 5 models:</strong></p>
+        <ul>
+          <li><strong>(1) Overlap strength</strong> — numbers found by 2–3 methods score highest (best consensus).</li>
+          <li><strong>(2) Hot momentum</strong> — numbers that appeared frequently in the last 10 runs get a score boost.</li>
+          <li><strong>(3) Breakout detector</strong> — numbers not seen recently but statistically overdue get extra points.</li>
+          <li><strong>(4) Near-miss learning</strong> — numbers that share 2–3 digits with your recent real draw results score higher.</li>
+          <li><strong>(5) Method accuracy</strong> — each method is weighted by its actual hit rate in your personal history.</li>
+        </ul>
+        <p><strong>How to use:</strong></p>
+        <ul>
+          <li>Step 1 — Run analysis to get a Money Table.</li>
+          <li>Step 2 — Click <strong>✅ AI Smart Pick</strong>.</li>
+          <li>Step 3 — See the Top 10 picks ranked by combined score. 🥇🥈🥉 = top 3.</li>
+          <li>Step 4 — Click any number to see all its playable variations.</li>
+          <li>Step 5 — Track AI performance over time in <strong>Stats → ✅ AI Picks</strong>.</li>
+        </ul>
+        <p><strong>Reading the scores:</strong> Higher score = stronger signal from multiple models. The AI improves over time as it learns your lottery patterns. After 10+ uses, the AI Pick Rate in Stats becomes a meaningful performance indicator.</p>
+        <p><strong>Important:</strong> This is a statistical ranking tool, not a lottery prediction system. No method can guarantee wins. Use it as one additional signal alongside the Money Table.</p>
+      </div></details>
+
+      <details><summary>🔄 Refresh Stats — What it does</summary><div class="det-body">
+        <p>The <strong>🔄 Refresh Stats</strong> button is in the Stats tab header.</p>
+        <p><strong>What it does:</strong> Recomputes all 13 statistics sections from scratch using your complete run history. This includes hit rates, overlap distributions, digit frequencies, sequences, AI performance, and the summary.</p>
+        <p><strong>When to use it:</strong></p>
+        <ul>
+          <li>If you switched to the Stats tab from another tab and the data looks outdated.</li>
+          <li>After importing a JSON backup — the stats don't auto-refresh on import.</li>
+          <li>If you notice the numbers don't match your History tab count.</li>
+        </ul>
+        <p><strong>Do you need it often?</strong> Usually no. Stats auto-refresh every time you run analysis or delete a run while the Stats tab is already open. Refresh is a manual override for edge cases.</p>
+      </div></details>
+
+      <details><summary>⭐ Premium — Remove All Ads</summary><div class="det-body">
+        <p><strong>Free version:</strong> Full functionality. Ads appear as:</p>
+        <ul>
+          <li>A 3-second fullscreen ad when you first open the app</li>
+          <li>A 5-second fullscreen ad after every 5 runs</li>
+          <li>A quarter-screen video ad after clicking Run — closeable after 3 seconds</li>
+        </ul>
+        <p><strong>Premium version:</strong> Identical functionality but <em>zero ads</em> of any kind. That's the only difference. Premium is stored on your device. To activate: go to the <strong>Support</strong> tab and click "⭐ Activate Premium".</p>
+      </div></details>
+
+      <details><summary>❓ FAQ — Frequently Asked Questions</summary><div class="det-body">
+        <p><strong>Q: Why does the same input give different results with different methods?</strong><br>A: Each of the 4 algorithms uses a completely different mathematical approach. Method 123 uses modular addition patterns. Method 60 uses block calculations with forward/reverse operations. X-Circle builds a 3×3 grid. Magic Pair analyzes digit pairs across rows. They're designed to complement each other.</p>
+        <p><strong>Q: Can I use only 1 or 2 methods?</strong><br>A: Yes. Uncheck any methods you don't want. The input rows will adjust automatically. Using fewer methods produces fewer numbers in your Money Table — which may be easier to play but may lower your hit rate.</p>
+        <p><strong>Q: Why does 4-method (white) indicate weakness?</strong><br>A: When all 4 completely different algorithms independently produce the same number, it suggests that number is statistically common or trivially predictable — not a strong prediction signal. The strongest signal is 2–3 algorithms independently converging on the same number.</p>
+        <p><strong>Q: What is ABC, AAB, AAA?</strong><br>A: These describe the pattern of digits. ABC = all three digits different (e.g. 123). AAB = one digit repeated (e.g. 112, 122, 211). AAA = all three digits the same (e.g. 111, 222). Statistically, ABC numbers cover ~72% of all normalized combinations.</p>
+        <p><strong>Q: How accurate is the 1.98 average?</strong><br>A: This figure is based on historical analysis of the algorithms using real lottery data. It means that when using all 4 methods together, on average, the winning number appears in your Money Table approximately once every 2 runs. This is a statistical average — individual sessions may vary significantly.</p>
+        <p><strong>Q: Is this a gambling app?</strong><br>A: No. Pick3Geny is a statistical analysis tool. It generates number combinations based on mathematical algorithms applied to past lottery results. Whether or not to gamble — and how much — is entirely your own decision and responsibility.</p>
+      </div></details>
+    </div>
+  </div>
+
+  <!-- ═══ SUPPORT TAB ═══ -->
+  <div id="supportTab" class="tab-content">
+    <div class="card">
+      <div class="card-title" style="display:flex;align-items:center;justify-content:space-between;"><span>❤️ Support Pick3Geny Development</span><span style="font-size:.65rem;color:var(--t3);font-weight:400;">v1.5.3</span></div>
+      <p style="font-size:.82rem;color:var(--t2);margin-bottom:.75rem;line-height:1.6;">Pick3Geny is free to use. If it has helped your analysis or saved you time, consider supporting the developer. Every contribution — large or small — helps fund new features, improvements, and maintenance.</p>
+      <div class="support-grid">
+        <div class="sc" id="scPaypal"><div class="sc-icon">💳</div><div class="sc-title">PayPal</div><div class="sc-sub">paypal.me/pick3geny</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">⭐ Premium — Remove All Ads</div>
+      <p style="font-size:.82rem;color:var(--t2);margin-bottom:.65rem;line-height:1.6;">The only difference between free and premium is ads. Premium removes every ad from every screen. Full functionality is identical. One-time activation, stored on your device.</p>
+      <button class="btn btn-purple btn-lg" id="premiumBtn" style="width:100%;">⭐ Activate Premium (Ad-Free)</button>
+      <p class="hint" style="margin-top:.4rem;">Premium is stored in localStorage on your device. Clearing browser data may require reactivation.</p>
+    </div>
+    <div class="card">
+      <div class="card-title">🛒 Shop & Affiliate Partners</div>
+      <p style="font-size:.82rem;color:var(--t2);margin-bottom:.65rem;">Support at no extra cost — when you shop through these links, the developer earns a small commission from the retailer at no charge to you.</p>
+      <div class="support-grid">
+        <div class="sc" id="scAmazon"><div class="sc-icon">📦</div><div class="sc-title">Amazon</div><div class="sc-sub">Affiliate link</div></div>
+        <div class="sc" id="scEbay"><div class="sc-icon">🏷️</div><div class="sc-title">eBay</div><div class="sc-sub">Affiliate link</div></div>
+        <div class="sc" id="scWalmart"><div class="sc-icon">🏪</div><div class="sc-title">Walmart</div><div class="sc-sub">Affiliate link</div></div>
+        <div class="sc" id="scEtsy"><div class="sc-icon">🎨</div><div class="sc-title">Etsy</div><div class="sc-sub">Affiliate link</div></div>
+      </div>
+    </div>
+    <!-- AdSense banner slot for Support tab — uncomment and configure when ready:
+    <div class="ad-banner">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+           data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+    </div>
+    -->
+  </div>
+
+</div><!-- /mainApp -->
+<button id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">⬆️</button>
+
+<script>
+// ═══════════════════════════════════════
+// ALGORITHMS — identical to Python source
+// ═══════════════════════════════════════
+function normalize(n){if(!n||typeof n!=='string'||!/^\d{3}$/.test(n.trim()))return '000';return n.split('').sort().join('');}
+function modAdd(a,b){return a.map((x,i)=>(x+b[i])%10);}
+function genCycle(seed){let c=[],cur=[...seed],key=cur.join('');do{c.push([...cur]);cur=cur.map(v=>(v+1)%10);}while(cur.join('')!==key);return c;}
+
+// Code 1
+function method1(inp){
+  let a=[+inp[0],+inp[1],+inp[2]],d=[1,2,3],f=[3,2,1];
+  let g=modAdd(a,d),j=modAdd(a,f),m=modAdd(g,j),p=modAdd(g,[...j].reverse());
+  let r=modAdd(p,m),x123=modAdd(a,r),x456=modAdd(a,[...r].reverse());
+  let res=new Set();[...genCycle(x123),...genCycle(x456)].forEach(cy=>res.add(normalize(cy.join(''))));
+  return Array.from(res).sort();
+}
+
+// Code 2
+function method2(i1,i2){
+  let a=[+i1[0],+i1[1],+i1[2]],b=[+i2[0],+i2[1],+i2[2]];
+  let bl=(x,y)=>x.map((v,i)=>(v+y[i])%10),rev=arr=>[...arr].reverse();
+  let g=bl(a,b),j=bl(a,rev(b)),m=bl(g,j),p=bl(g,rev(j)),r=bl(p,m);
+  let a1=bl(bl(j,m),r),a2=bl(bl(g,p),r);
+  let res=new Set();
+  [bl(a1,r),bl(a1,m),bl(a1,j),bl(a2,r),bl(a2,p),bl(a2,g)].forEach(row=>genCycle(row).forEach(cy=>res.add(normalize(cy.join('')))));
+  return Array.from(res).sort();
+}
+
+// Code 3 — fully matching Python get_all_combinations
+function method3(inp){
+  let a=+inp[0],e=+inp[1],i=+inp[2];
+  let f=(i+1)%10,c=(f+1)%10,b=(c+1)%10,d=(b+1)%10,gv=(d+1)%10,h=(gv+1)%10;
+  let gr=[[a,b,c],[d,e,f],[gv,h,i]];
+  let res=new Set();
+  for(let x=0;x<3;x++)for(let y=0;y<3;y++)for(let z=0;z<3;z++)res.add(normalize(''+gr[0][x]+gr[1][y]+gr[2][z]));
+  gr.forEach(row=>res.add(normalize(row.join(''))));
+  // Row-pair combinations (critical — was missing in earlier versions)
+  for(let ri=0;ri<3;ri++)for(let ii=0;ii<3;ii++)for(let jj=ii+1;jj<3;jj++)
+    for(let or=0;or<3;or++)if(or!==ri)for(let k=0;k<3;k++)
+      res.add(normalize(''+gr[ri][ii]+gr[ri][jj]+gr[or][k]));
+  return Array.from(res).sort();
+}
+
+// Code 4
+function method4(rows){
+  let f=rows[0],res=new Set();
+  for(let i=0;i<3;i++)for(let j=i+1;j<3;j++)for(let k=1;k<6&&k<rows.length;k++)
+    if(rows[k]?.length===3){res.add(normalize(f[i]+f[j]+rows[k][i]));res.add(normalize(f[i]+f[j]+rows[k][j]));}
+  return Array.from(res).sort();
+}
+
+function isABC(n){let d=n.split('');return d[0]!==d[1]&&d[1]!==d[2]&&d[0]!==d[2];}
+function isAAB(n){let d=n.split('');return(d[0]===d[1]&&d[1]!==d[2])||(d[0]===d[2]&&d[0]!==d[1])||(d[1]===d[2]&&d[0]!==d[1]);}
+function isAAA(n){let d=n.split('');return d[0]===d[1]&&d[1]===d[2];}
+function numType(n){if(isAAA(n))return'AAA';if(isAAB(n))return'AAB';return'ABC';}
+
+// ═══════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════
+let S={history:[],curTable:[],curOverlap:new Map(),curResults:null,curMethods:null,curInputs:[],isPremium:false,runCount:0,totalAdCount:0,curDraw:'',curHit:false};
+
+function loadState(){
+  try{
+    let h=localStorage.getItem('p3g_hist');
+    S.history=h?JSON.parse(h):[];
+    if(!Array.isArray(S.history))S.history=[];
+  }catch(e){console.error('History load failed',e);S.history=[];}
+  S.isPremium=localStorage.getItem('p3g_premium')==='true';
+  S.runCount=parseInt(localStorage.getItem('p3g_runcount')||'0');
+  // Load AI state
+  try{
+    var aiData=localStorage.getItem('p3g_ai');
+    if(aiData){
+      var parsed=JSON.parse(aiData);
+      if(Array.isArray(parsed.history))S_aiSmartHistory=parsed.history;
+      if(parsed.weights&&typeof parsed.weights==='object'){
+        Object.assign(S_aiWeights,parsed.weights);
+      }
+      if(parsed.methodStats&&typeof parsed.methodStats==='object'){
+        Object.assign(S_methodStats,parsed.methodStats);
+      }
+    }
+  }catch(e){S_aiSmartHistory=[];}
+  // Version tracking for future migrations
+  const APP_VERSION='1.5.3';
+  const storedV=localStorage.getItem('p3g_version');
+  if(storedV&&storedV!==APP_VERSION){
+    /* migration log removed */;
+  }
+  localStorage.setItem('p3g_version',APP_VERSION);
+}
+function isLocalStorageAvailable(){
+  try{localStorage.setItem('_test','1');localStorage.removeItem('_test');return true;}
+  catch(e){return false;}
+}
+function saveHist(){
+  if(!isLocalStorageAvailable())return;
+  try{
+    localStorage.setItem('p3g_hist',JSON.stringify(S.history));
+    // Save AI state alongside history
+    localStorage.setItem('p3g_ai',JSON.stringify({
+      history:S_aiSmartHistory,
+      weights:S_aiWeights,
+      methodStats:S_methodStats
+    }));
+  }catch(e){
+    if(e.name==='QuotaExceededError'||e.code===22){
+      // Auto-remove oldest 100 runs to free space
+      S.history=S.history.slice(0,1400); // Keep newest 1400, remove oldest 100
+      try{localStorage.setItem('p3g_hist',JSON.stringify(S.history));}catch(e2){}
+      alert('Storage almost full! Oldest 100 runs auto-removed. Export JSON to keep a backup.');
+    }
+  }
+}
+function addRun(run){
+  if(!Array.isArray(S.history))S.history=[];
+  S.history.unshift(run);
+  while(S.history.length>1500)S.history.pop();
+  saveHist();
+  renderHistory();
+  updateQS();
+  // Refresh stats tab if open
+  if(document.getElementById('statsTab')?.classList.contains('active'))renderFullStats();
+  // Note: updateAIWeights is called by saveDrawBtn before addRun, not here
+  renderSmartPredictions();
+  // Backup reminder every 50 runs
+  if(S.history.length>0&&S.history.length%50===0){
+    setTimeout(()=>alert(`💾 You have ${S.history.length} runs stored.\n\nRecommended: Export JSON backup now to keep your data safe.\n\nGo to History → Export JSON.`),500);
+  }
+}
+function delRun(i){
+  if(confirm('Delete this run from history? Stats will update immediately.')){
+    S.history.splice(i,1);
+    saveHist();
+    renderHistory();
+    updateQS();
+    // If user deleted the run currently shown in histNav — go back to live view
+    if(S_histNavIdx===i||S_histNavIdx>=S.history.length){
+      S_histNavIdx=-1;
+      S_liveState=null;
+      document.getElementById('histNavBar').style.display='none';
+      document.getElementById('resultsContainer').innerHTML='';
+      document.getElementById('moneyTableCard').style.display='none';
+    }
+    // Always refresh stats after deletion
+    if(document.getElementById('statsTab')?.classList.contains('active'))renderFullStats();
+  }
+}
+function clearHist(){if(confirm('Delete ALL history permanently? This also resets AI Smart Pick history and statistics. Export JSON first if you want a backup.')){
+  S.history=[];
+  S_histNavIdx=-1;
+  S_liveState=null;
+  S_smartPredUserClosed=false;
+  S_aiSmartHistory=[];
+  S_aiWeights={overlap:0.35,recency:0.25,frequency:0.2,pattern:0.2};
+  S_methodStats={method1:{h:0,r:0},method2:{h:0,r:0},method3:{h:0,r:0},method4:{h:0,r:0}};
+  localStorage.removeItem('p3g_ai');
+  localStorage.removeItem('p3g_hist');
+  renderHistory();updateQS();renderFullStats();
+  // Reset AI Smart Pick card
+  var card=document.getElementById('aiSmartPickCard');
+  if(card)card.style.display='none';
+  var numEl=document.getElementById('aiSmartPickNums');
+  if(numEl)numEl.innerHTML='';
+  var metaEl=document.getElementById('aiSmartPickMeta');
+  if(metaEl)metaEl.innerHTML='';
+}}
+
+// ═══════════════════════════════════════
+// ADS
+// ═══════════════════════════════════════
+function showFullscreenAd(sec,cb){
+  if(S.isPremium){if(cb)cb();return;}
+  let el=document.getElementById('adFullscreen');
+  if(!el){if(cb)cb();return;}
+  let close=document.getElementById('adFsClose');
+  if(!close){if(cb)cb();return;}
+  let timer=document.getElementById('adFsTimer');
+  if(!timer){if(cb)cb();return;}
+  el.style.display='flex';
+  close.classList.remove('ready');
+  close.onclick=null;
+  let t=sec;
+  timer.textContent=`⏳ ${t}s`;
+  let iv=setInterval(()=>{
+    t--;timer.textContent=t>0?`⏳ ${t}s`:'✕ Close';
+    if(t<=0){clearInterval(iv);close.classList.add('ready');close.onclick=()=>{el.style.display='none';if(cb)cb();};}
+  },1000);
+}
+let _quarterAdTimer=null;
+function showQuarterAd(){
+  if(S.isPremium)return;
+  // Clear any existing timer to prevent stacking
+  if(_quarterAdTimer){clearInterval(_quarterAdTimer);clearTimeout(_quarterAdTimer);_quarterAdTimer=null;}
+  let ad=document.getElementById('adQuarter');
+  let close=document.getElementById('adQuarterClose');
+  let timer=document.getElementById('adQuarterTimer');
+  close.classList.add('locked');
+  close.onclick=null;
+  let t=3;timer.textContent=`Closes in ${t}s`;
+  ad.classList.add('show');
+  let totalT=8; // auto-close after 8 seconds total
+  _quarterAdTimer=setInterval(()=>{
+    t--;totalT--;
+    if(t>0){timer.textContent=`Closes in ${t}s`;}
+    else if(totalT>0){
+      // button unlocked, countdown continues silently
+      clearInterval(_quarterAdTimer);_quarterAdTimer=null;
+      timer.textContent='';close.classList.remove('locked');
+      close.onclick=()=>{ad.classList.remove('show');};
+      // Auto-close after remaining seconds
+      _quarterAdTimer=setTimeout(()=>{ad.classList.remove('show');_quarterAdTimer=null;},totalT*1000);
+    } else {
+      if(_quarterAdTimer){clearInterval(_quarterAdTimer);_quarterAdTimer=null;}
+      ad.classList.remove('show');
+    }
+  },1000);
+}
+
+// ═══════════════════════════════════════
+// INPUTS
+// ═══════════════════════════════════════
+function getReqRows(){
+  let m4=document.querySelector('input[value="method4"]')?.checked;
+  let m2=document.querySelector('input[value="method2"]')?.checked;
+  return m4?6:m2?2:1;
+}
+function renderInputs(){
+  let anyChecked=Array.from(document.querySelectorAll('#methodBoxes input')).some(c=>c.checked);
+  let inputCard=document.getElementById('inputNumbersCard');
+  if(!anyChecked){
+    if(inputCard)inputCard.style.display='none';
+    document.getElementById('inputRows').innerHTML='';
+    return;
+  }
+  if(inputCard)inputCard.style.display='block';
+  let req=getReqRows();
+  // Always read full 6-row buffer — never truncate saved data
+  let saved=[];
+  try{let s=localStorage.getItem('p3g_inputs');if(s)saved=JSON.parse(s);}catch(e){}
+  while(saved.length<6)saved.push(''); // pad to 6
+  let html='';
+  for(let i=0;i<req;i++){
+    let label=i===0?'Draw 1 <span style="color:var(--green);font-size:.65rem;">← newest</span>':i===req-1&&i>0?`Draw ${i+1} <span style="color:var(--t3);font-size:.65rem;">← oldest</span>`:`Draw ${i+1}`;
+    html+=`<div class="input-row">
+      <label style="text-align:right;font-size:.75rem;font-weight:700;">${label}</label>
+      <input type="text" class="draw-inp" data-idx="${i}" maxlength="3" value="${saved[i]||''}" placeholder="000–999" autocomplete="off">
+    </div>`;
+  }
+  document.getElementById('inputRows').innerHTML=html;
+  // Scope to #inputRows only — excludes #drawInput (Save Result field) which also has class draw-inp
+  document.querySelectorAll('#inputRows .draw-inp').forEach(el=>{
+    el.addEventListener('input',function(){
+      this.value=this.value.replace(/\D/g,'').slice(0,3);
+      this.classList.toggle('valid',this.value.length===3);
+      this.classList.toggle('partial',this.value.length>0&&this.value.length<3);
+      saveInputs();
+      // Any change to draw inputs → reset all outputs immediately
+      resetOutputs();
+    });
+    el.classList.toggle('valid',el.value.length===3);
+  });
+}
+function saveInputs(){
+  // Read current visible inputs
+  let visible=[];document.querySelectorAll('#inputRows .draw-inp').forEach(e=>visible.push(e.value));
+  // Merge into full 6-row buffer (preserve hidden rows)
+  let saved=[];
+  try{let s=localStorage.getItem('p3g_inputs');if(s)saved=JSON.parse(s);}catch(e){}
+  while(saved.length<6)saved.push('');
+  visible.forEach((v,i)=>{saved[i]=v;}); // update visible rows only
+  localStorage.setItem('p3g_inputs',JSON.stringify(saved));
+}
+function getInputs(){let v=[];document.querySelectorAll('#inputRows .draw-inp').forEach(e=>v.push(e.value));return v;}
+
+// ═══════════════════════════════════════
+// RESET OUTPUTS — called on any draw change
+// Clears save results, all output cards, and analysis state
+// Does NOT clear draw inputs (user clears those manually)
+// ═══════════════════════════════════════
+function resetOutputs(){
+  // Reset analysis state — outputs are stale when inputs change
+  S.curTable=[];S.curOverlap=new Map();S.curResults=null;S.curDraw="";S.curHit=false;S.curMethods=null;S.curInputs=[];
+  // Clear Save Result field and stored draw — no longer relevant
+  var drawInput=document.getElementById("drawInput");
+  if(drawInput)drawInput.value="";
+  localStorage.removeItem("p3g_draw");
+  // Clear old HIT/MISS message
+  var drawMsg=document.getElementById("drawMsg");
+  if(drawMsg)drawMsg.innerHTML="";
+  // Clear Check field and result
+  var checkInput=document.getElementById("checkInput");
+  if(checkInput)checkInput.value="";
+  var checkResult=document.getElementById("checkResult");
+  if(checkResult)checkResult.innerHTML="";
+  // Hide all output cards
+  document.getElementById("resultsContainer").innerHTML="";
+  document.getElementById("moneyTableCard").style.display="none";
+  var aiCard=document.getElementById("aiSmartPickCard");
+  if(aiCard)aiCard.style.display="none";
+  var aiAutoMsg=document.getElementById("aiAutoMsg");if(aiAutoMsg)aiAutoMsg.remove();
+  var spCard=document.getElementById("smartPredCard");
+  if(spCard)spCard.style.display="none";
+  var spToggle=document.getElementById("smartPredToggleBtn");
+  if(spToggle){spToggle.style.display="none";spToggle.textContent="👁️ Show Smart Prediction";}
+  // Remove stale warning if present
+  var sw=document.getElementById("staleWarning");if(sw)sw.remove();
+  // Reset histNav bar
+  S_histNavIdx=-1;var hnb=document.getElementById("histNavBar");if(hnb)hnb.style.display="none";
+  // Reset Trend mode
+  if(S_trendActive){S_trendActive=false;var tb=document.getElementById("trendBtn");if(tb){tb.classList.remove("af");tb.textContent="🔥 Trend";}}
+}
+
+function shiftDown(){
+  let inp=getInputs(),req=getReqRows();
+  for(let i=req-1;i>0;i--)inp[i]=inp[i-1];inp[0]='';
+  document.querySelectorAll('#inputRows .draw-inp').forEach((el,i)=>{el.value=inp[i]||'';el.classList.toggle('valid',el.value.length===3);});
+  saveInputs();
+  resetOutputs();
+  // Shift Down = new lottery cycle: clear Save Result field and stored draw
+  var di=document.getElementById('drawInput');if(di)di.value='';
+  localStorage.removeItem('p3g_draw');
+}
+function randomFill(){
+  let inp=getInputs(),req=getReqRows();
+  let changed=false;
+  document.querySelectorAll('#inputRows .draw-inp').forEach((el,i)=>{
+    if(i<req&&(!inp[i]||inp[i].length<3)){el.value=Math.floor(Math.random()*1000).toString().padStart(3,'0');el.classList.add('valid');changed=true;}
+  });
+  saveInputs();
+  if(changed)resetOutputs();
+}
+function clearInputs(){
+  document.querySelectorAll('#inputRows .draw-inp').forEach(el=>{el.value='';el.classList.remove('valid','partial');});
+  saveInputs();
+  resetOutputs();
+  // Clear All = full wipe: clear Save Result field and stored draw
+  var di=document.getElementById('drawInput');if(di)di.value='';
+  localStorage.removeItem('p3g_draw');
+}
+
+// ═══════════════════════════════════════
+// RUN
+// ═══════════════════════════════════════
+function runAnalysis(){
+  // Loading indicator
+  var rb=document.getElementById('runBtn');
+  if(rb){rb.disabled=true;rb.textContent='⏳ Running...';}
+  setTimeout(function(){
+    try{_runAnalysisCore();}
+    catch(e){console.error('Run error:',e);}
+    finally{if(rb){rb.disabled=false;rb.textContent='🚀 RUN ANALYSIS';}}
+  },30);
+}
+function _runAnalysisCore(){
+  // Remove stale warning if present
+  let sw=document.getElementById('staleWarning');if(sw)sw.remove();
+  // Reset trend and histNav on every new run
+  if(S_trendActive){S_trendActive=false;let tb=document.getElementById('trendBtn');if(tb){tb.classList.remove('af');tb.textContent='🔥 Trend';}}
+  S_histNavIdx=-1;let hnb=document.getElementById('histNavBar');if(hnb)hnb.style.display='none';
+  let m={method1:!!document.querySelector('input[value="method1"]')?.checked,method2:!!document.querySelector('input[value="method2"]')?.checked,method3:!!document.querySelector('input[value="method3"]')?.checked,method4:!!document.querySelector('input[value="method4"]')?.checked};
+  let inp=getInputs(),valid=inp.filter(v=>v.length===3);
+  if(!Object.values(m).some(Boolean)){
+    var mb=document.getElementById('methodBoxes');
+    if(mb){mb.style.outline='2px solid var(--red)';mb.style.borderRadius='8px';setTimeout(function(){mb.style.outline='';},2000);}
+    alert('⚠️ Please select at least one method before running.');return;
+  }
+  if(m.method4&&valid.length<6){alert('Magic Pair requires 6 valid 3-digit inputs.');return;}
+  if(m.method2&&valid.length<2){alert('Method 60 requires at least 2 valid inputs.');return;}
+  if(!valid.length){alert('Enter at least one 3-digit number.');return;}
+
+  let res={method1:[],method2:[],method3:[],method4:[]};
+  if(m.method1&&inp[0]?.length===3)res.method1=method1(inp[0]);
+  if(m.method2&&inp[0]?.length===3&&inp[1]?.length===3)res.method2=method2(inp[0],inp[1]);
+  if(m.method3&&inp[0]?.length===3)res.method3=method3(inp[0]);
+  if(m.method4&&valid.length>=6)res.method4=method4(inp);
+
+  let names={method1:'Method 123',method2:'Method 60',method3:'X-Circle',method4:'Magic Pair'};
+  let moneyMap=new Map();
+  Object.keys(res).forEach(mt=>res[mt].forEach(num=>{if(!moneyMap.has(num))moneyMap.set(num,[]);moneyMap.get(num).push(names[mt]);}));
+  let table=Array.from(moneyMap.keys()).sort();
+  let overlapMap=new Map();table.forEach(n=>overlapMap.set(n,moneyMap.get(n).length));
+
+  // Source of truth: localStorage p3g_draw (set by Save button)
+  // DOM drawInput value is secondary (may be stale after page reload)
+  let draw=localStorage.getItem('p3g_draw')||document.getElementById('drawInput').value.trim();
+  // Sync the DOM to match
+  if(draw&&document.getElementById('drawInput').value!==draw){
+    document.getElementById('drawInput').value=draw;
+  }
+  let hit=draw.length===3&&/^\d{3}$/.test(draw)&&table.includes(normalize(draw));
+
+  // Store current run state — saved to history only when user clicks Save Result
+  S.curTable=table;S.curOverlap=overlapMap;S.curResults=res;S.curDraw=draw;S.curHit=hit;
+  S.curMethods=m;S.curInputs=[...inp];
+
+  // Run count for ads
+  S.runCount++;localStorage.setItem('p3g_runcount',S.runCount);
+
+  // Results HTML
+  let rhtml='<div class="card"><div class="card-title">📊 Results by Method</div>';
+  Object.keys(res).forEach(mt=>{
+    if(!res[mt].length)return;
+    // Show ALL numbers - no slice limit
+    rhtml+=`<div class="method-block"><div style="font-size:.82rem;font-weight:700;">${names[mt]} <span style="color:var(--t2);font-weight:400;">(${res[mt].length} numbers)</span></div><div class="method-block-nums">${res[mt].map(n=>`<span class="m-chip">${n}</span>`).join('')}</div></div>`;
+  });
+  rhtml+='</div>';
+  if(hit){rhtml+=`<div class="card" style="border-color:var(--green);background:linear-gradient(135deg,rgba(0,229,153,.1),rgba(0,229,153,.03));"><div class="card-title" style="color:var(--green);font-size:1.1rem;">🎉 HIT! ${draw} → normalized: ${normalize(draw)} — found in Money Table!</div></div>`;}
+  document.getElementById('resultsContainer').innerHTML=rhtml;
+  document.getElementById('moneyTableCard').style.display='block';
+  document.getElementById('mtCount').textContent=`(${table.length} numbers)`;
+  // Reset filter buttons to "All" after each run
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('af'));
+  let allBtn=document.querySelector('.filter-btn[data-filter="all"]');
+  if(allBtn)allBtn.classList.add('af');
+  renderMT(table,draw,hit);
+
+  // Highlight draw number inside method result chips too
+  if(hit&&draw){
+    let norm=normalize(draw);
+    document.querySelectorAll('.m-chip').forEach(el=>{
+      if(normalize(el.textContent)===norm){
+        el.style.outline='3px solid var(--green)';
+        el.style.background='rgba(0,229,153,.2)';
+        el.style.fontWeight='900';
+        el.style.color='var(--green)';
+      }
+    });
+  }
+
+  // Ads — quarter screen after results, fullscreen every 5 runs
+  if(!S.isPremium){
+    showQuarterAd();
+    if(S.runCount%5===0)showFullscreenAd(5);
+  }
+  // Update Smart Prediction and AI Smart Pick after run
+  if(S.curTable.length){
+    renderSmartPredictions();
+    runAISmartPick();
+    // Show subtle "AI updated" indicator
+    var aiMsg=document.getElementById('aiAutoMsg');
+    if(!aiMsg){aiMsg=document.createElement('span');aiMsg.id='aiAutoMsg';aiMsg.style.cssText='font-size:.65rem;color:var(--cyan);margin-left:.5rem;opacity:0;transition:opacity .5s;';var aiBtn=document.getElementById('aiSmartPickBtn');if(aiBtn)aiBtn.parentNode.insertBefore(aiMsg,aiBtn.nextSibling);}
+    aiMsg.textContent='🤖 AI updated';aiMsg.style.opacity='1';
+    setTimeout(function(){aiMsg.style.opacity='0';},2500);
+  }
+}
+
+function renderMT(list,draw,hit){
+  let omap=S.curOverlap instanceof Map?S.curOverlap:new Map();
+  // Find top 3 by overlap count (ties broken by appearance in list)
+  let top3=new Set([...list].sort((a,b)=>(omap.get(b)||0)-(omap.get(a)||0)).slice(0,3));
+  let html=list.map(n=>{
+    let star=top3.has(n)&&(omap.get(n)||0)>=2?'<span style="position:absolute;top:-4px;right:-4px;font-size:.55rem;line-height:1;">⭐</span>':'';
+    return `<span class="money-number overlap-${omap.get(n)||1}" data-n="${n}" style="position:relative;">${n}${star}</span>`;
+  }).join('');
+  document.getElementById('mtNumbers').innerHTML=html;
+  document.querySelectorAll('.money-number').forEach(el=>el.onclick=()=>showVars(el.dataset.n));
+  // If trend was active, re-apply full trend view (fixes visual reset after filter/sort)
+  if(S_trendActive){
+    applyTrendView();
+  }
+  // Highlight hit number
+  if(hit&&draw){
+    let norm=normalize(draw);
+    document.querySelectorAll('.money-number').forEach(el=>{if(el.dataset.n===norm){el.classList.add('hit-highlight');requestAnimationFrame(()=>setTimeout(()=>el.scrollIntoView({behavior:'smooth',block:'center'}),50));}});
+  }
+}
+
+function showVars(n){
+  let d=n.split(''),perms=new Set();
+  (function p(a,s){if(s===a.length){perms.add(a.join(''));return;}for(let i=s;i<a.length;i++){[a[s],a[i]]=[a[i],a[s]];p(a,s+1);[a[s],a[i]]=[a[i],a[s]];}})(d,0);
+  let vars=Array.from(perms).sort();
+  // Remove existing modal if any
+  let old=document.getElementById('varsModal');if(old)old.remove();
+  let ov=document.createElement('div');
+  ov.id='varsModal';
+  ov.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:2000;display:flex;align-items:center;justify-content:center;padding:1rem;backdrop-filter:blur(4px);';
+  ov.innerHTML=`<div style="background:var(--card);border:1px solid var(--border2);border-radius:16px;padding:1.5rem;max-width:380px;width:100%;box-shadow:var(--sh);position:relative;">
+    <div style="font-size:1rem;font-weight:800;margin-bottom:.5rem;background:var(--grad-blue);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Number: ${n} <span style="font-size:.75rem;color:var(--t2);-webkit-text-fill-color:var(--t2);">(${numType(n)})</span></div>
+    <div style="font-size:.78rem;color:var(--t2);margin-bottom:.75rem;">All playable variations — play each for full coverage:</div>
+    <div style="display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1rem;">${vars.map(v=>`<span style="background:var(--bg2);border:1px solid var(--border2);border-radius:6px;padding:.3rem .55rem;font-family:monospace;font-weight:700;font-size:.9rem;">${v}</span>`).join('')}</div>
+    <button id="varsModalCopy" class="btn btn-primary" style="width:100%;margin-bottom:.5rem;">📋 Copy All</button>
+    <button onclick="document.getElementById('varsModal').remove();" class="btn btn-ghost" style="width:100%;">✕ Close</button>
+  </div>`;
+  document.body.appendChild(ov);
+  ov.addEventListener('keydown',function(e){e.stopPropagation();if(e.key==='Escape')ov.remove();});
+  ov.onclick=function(e){if(e.target===ov)ov.remove();};
+  document.getElementById('varsModalCopy').onclick=function(){
+    navigator.clipboard?navigator.clipboard.writeText(vars.join(', ')).then(function(){
+      var btn=document.getElementById('varsModalCopy');
+      if(btn){btn.textContent='✅ Copied!';setTimeout(function(){if(btn)btn.textContent='📋 Copy All';},1500);}
+    }):prompt('Copy:',vars.join(', '));
+  };
+}
+
+function checkNum(){
+  let v=document.getElementById('checkInput').value.trim();
+  if(!/^\d{3}$/.test(v)){document.getElementById('checkResult').innerHTML='<span style="color:var(--red);">Please enter a valid 3-digit number (e.g. 456)</span>';return;}
+  if(!S.curTable.length){document.getElementById('checkResult').innerHTML='<span style="color:var(--t2);">Run analysis first to populate the Money Table.</span>';return;}
+  let norm=normalize(v);
+  // Remove previous check highlights (keep real hit highlight if exists)
+  document.querySelectorAll('.money-number.check-highlight').forEach(el=>{
+    el.classList.remove('hit-highlight','check-highlight');
+  });
+  if(S.curTable.includes(norm)){
+    let ov=S.curOverlap instanceof Map?S.curOverlap.get(norm)||1:1;
+    document.getElementById('checkResult').innerHTML=`<span style="color:var(--green);font-weight:700;">✅ ${v} (normalized: ${norm}) FOUND! Overlap: ${ov} method(s). Highlighted in table above.</span>`;
+    document.querySelectorAll('.money-number').forEach(el=>{
+      if(el.dataset.n===norm){el.classList.add('hit-highlight','check-highlight');el.scrollIntoView({behavior:'smooth',block:'center'});}
+    });
+  } else {
+    document.getElementById('checkResult').innerHTML=`<span style="color:var(--red);">❌ ${v} (normalized: ${norm}) is NOT in the current Money Table.</span>`;
+  }
+}
+
+// ═══════════════════════════════════════
+// HISTORY
+// ═══════════════════════════════════════
+function renderHistory(){
+  let el=document.getElementById('historyList');
+  if(!S.history.length){
+    el.innerHTML='<div style="color:var(--t2);padding:1rem;text-align:center;font-size:.85rem;">No history yet. Run some analyses to start tracking!</div>';
+    document.getElementById('historyInfo').textContent='';
+    return;
+  }
+  el.innerHTML=S.history.map((r,i)=>{
+    let ov=Array.isArray(r.overlapMap)?r.overlapMap.filter(([n,c])=>c>=2).length:0;
+    let mNames=Object.keys(r.methods).filter(k=>r.methods[k]).map(k=>({method1:'M123',method2:'M60',method3:'X-Cir',method4:'MPair'}[k])).join(', ');
+    let isHit=r.hit;
+    // Highlight the winning draw number text if hit
+    let drawHtml='';
+    if(r.draw){
+      if(isHit){
+        drawHtml=`&nbsp;|&nbsp; 🎲 Draw: <strong style="font-size:.9rem;background:rgba(0,229,153,.15);padding:.1rem .4rem;border-radius:4px;border:1px solid var(--green);color:var(--green);">✅ ${r.draw} HIT!</strong>`;
+      } else {
+        drawHtml=`&nbsp;|&nbsp; 🎲 Draw: <strong>${r.draw}</strong> <span style="color:var(--t3);">✗</span>`;
+      }
+    } else {
+      drawHtml=`&nbsp;|&nbsp; <span style="color:var(--t3);font-size:.72rem;">No draw entered</span>`;
+    }
+    return `<div class="history-item ${isHit?'hit':'miss'}">
+      <div class="h-meta">
+        <div class="h-date">
+          <span style="color:var(--t3);font-size:.68rem;font-weight:700;margin-right:.35rem;">#${i+1}</span>📅 ${r.dateF}${r.dateISO?` &nbsp;·&nbsp; ${r.dateISO}`:''}
+          ${isHit?`<span class="hit-label"> &nbsp;✅ HIT!</span>`:`<span class="miss-label"> &nbsp;—</span>`}
+        </div>
+        <div class="h-actions">
+          <button class="btn btn-ghost btn-sm hr-view" data-i="${i}">Load</button>
+          <button class="btn btn-primary btn-sm hr-stats" data-i="${i}">📊</button>
+          <button class="btn btn-danger btn-sm hr-del" data-i="${i}">✕</button>
+        </div>
+      </div>
+      <div class="h-body">
+        📋 Table: <strong>${r.moneyTable.length}</strong> &nbsp;|&nbsp; 🔗 Overlaps(2+): <strong>${ov}</strong> &nbsp;|&nbsp; 🎯 <strong>${mNames}</strong>${drawHtml}
+      </div>
+      <div class="h-body" style="margin-top:.2rem;">
+        📥 Inputs: <span style="font-family:monospace;font-size:.72rem;">${r.inputs.filter(v=>v?.length===3).join(' · ')||'—'}</span>
+      </div>
+    </div>`;
+  }).join('');
+  document.getElementById('historyInfo').textContent=`${S.history.length} / 1500 runs stored in localStorage. ${S.history.filter(r=>r.hit).length} hits total.`;
+  document.querySelectorAll('.hr-view').forEach(b=>b.onclick=()=>loadRun(+b.dataset.i));
+  document.querySelectorAll('.hr-del').forEach(b=>b.onclick=()=>delRun(+b.dataset.i));
+  document.querySelectorAll('.hr-stats').forEach(b=>b.onclick=()=>goToStats());
+}
+
+function loadRun(i){
+  showHistRun(i);
+  let r=S.history[i];
+  document.querySelectorAll('#inputRows .draw-inp').forEach((el,j)=>{el.value=r.inputs[j]||'';el.classList.toggle('valid',el.value.length===3);});
+  saveInputs();
+  // Reset all outputs — loaded run inputs differ from current session
+  resetOutputs();
+  switchTab('run');
+}
+function goToStats(){switchTab('stats');renderFullStats();}
+
+// ═══════════════════════════════════════
+// QUICK STATS
+// ═══════════════════════════════════════
+function updateQS(){
+  if(!document.getElementById('qsRuns'))return; // not yet rendered
+  let tot=S.history.length,hits=S.history.filter(r=>r.hit).length;
+  let avg=tot?Math.round(S.history.reduce((s,r)=>s+r.moneyTable.length,0)/tot):0;
+  let mh={method1:0,method2:0,method3:0,method4:0};
+  S.history.forEach(r=>{if(r.hit&&r.draw){let n=normalize(r.draw);['method1','method2','method3','method4'].forEach(m=>{if(r.results[m]?.includes(n))mh[m]++;});}});
+  let best=Object.entries(mh).sort((a,b)=>b[1]-a[1])[0];
+  let bn=best?({method1:'M123',method2:'M60',method3:'X-Cir',method4:'MPair'}[best[0]]):'-';
+  document.getElementById('qsRuns').textContent=tot;
+  document.getElementById('qsHits').textContent=hits;
+  document.getElementById('qsRate').textContent=tot?((hits/tot)*100).toFixed(1)+'%':'0%';
+  document.getElementById('qsAvg').textContent=avg||'—';
+  document.getElementById('qsBest').textContent=bn;
+  let avgHit=hits?(tot/hits).toFixed(1):'∞';
+  let el=document.getElementById('qsAvgHit');
+  if(el)el.textContent=avgHit+' runs';
+}
+
+// ═══════════════════════════════════════
+// FULL STATS — all 13 sections
+// ═══════════════════════════════════════
+function renderFullStats(){
+  let tot=S.history.length,el=document.getElementById('statsContainer');
+  if(!tot){el.innerHTML='<div class="card"><p style="color:var(--t2);font-size:.85rem;padding:.5rem;">No history yet. Run some analyses to see statistics!</p></div>';return;}
+  let hits=S.history.filter(r=>r.hit).length;
+  let hC=[...S.history].reverse(); // chronological
+
+  let mSt={method1:{r:0,h:0},method2:{r:0,h:0},method3:{r:0,h:0},method4:{r:0,h:0}};
+  S.history.forEach(r=>{
+    ['method1','method2','method3','method4'].forEach(m=>{if(r.methods[m])mSt[m].r++;});
+    if(r.hit&&r.draw){let n=normalize(r.draw);['method1','method2','method3','method4'].forEach(m=>{if(r.results[m]?.includes(n))mSt[m].h++;});}
+  });
+
+  let oDist={1:0,2:0,3:0,4:0};
+  S.history.forEach(r=>{if(Array.isArray(r.overlapMap))r.overlapMap.forEach(([n,c])=>{if(oDist[c]!==undefined)oDist[c]++;});});
+  let totOv=Object.values(oDist).reduce((a,b)=>a+b,0);
+
+  let abc=0,aab=0,aaa=0;
+  S.history.forEach(r=>r.moneyTable.forEach(n=>{if(isABC(n))abc++;else if(isAAB(n))aab++;else aaa++;}));
+  let totT=abc+aab+aaa;
+
+  let hArr=S.history.map(r=>r.hit?1:0),seq2=0,seq3=0,missSeq=0,cur=0,curM=0,missRuns=[];
+  hArr.forEach(v=>{if(v){cur++;if(cur===2)seq2++;if(cur===3){seq3++;cur=0;}if(curM>0){missRuns.push(curM);curM=0;}}else{if(cur>0)cur=0;curM++;missSeq++;}});
+  if(curM>0)missRuns.push(curM);
+  let avgMiss=missRuns.length?(missRuns.reduce((a,b)=>a+b,0)/missRuns.length).toFixed(1):'-';
+
+  let srcH={method1:0,method2:0,method3:0,method4:0};
+  S.history.forEach(r=>{if(r.hit&&r.draw){let n=normalize(r.draw);['method1','method2','method3','method4'].forEach(m=>{if(r.results[m]?.includes(n))srcH[m]++;});}});
+
+  let inpFreq=new Map();
+  S.history.forEach(r=>r.inputs.forEach(v=>{if(v?.length===3){let n=normalize(v);inpFreq.set(n,(inpFreq.get(n)||0)+1);}}));
+  let topInp=Array.from(inpFreq.entries()).sort((a,b)=>b[1]-a[1]).slice(0,15);
+
+  let inpOvCorr=topInp.slice(0,10).map(([num,cnt])=>{
+    let ov=0,t2=0;
+    S.history.forEach(r=>{if(r.inputs.some(v=>v?.length===3&&normalize(v)===num)){t2++;if(Array.isArray(r.overlapMap)&&r.overlapMap.some(([n,c])=>c>=2))ov++;}});
+    return {num,cnt,ov,tot:t2,pct:t2?(ov/t2*100).toFixed(1):0};
+  });
+
+  let nFreq=new Map();
+  S.history.forEach(r=>r.moneyTable.forEach(n=>nFreq.set(n,(nFreq.get(n)||0)+1)));
+  let topNums=Array.from(nFreq.entries()).sort((a,b)=>b[1]-a[1]).slice(0,20);
+
+  let dI={},dM1={},dM2={},dM3={},dM4={},dAll={};
+  for(let i=0;i<10;i++){dI[i]=0;dM1[i]=0;dM2[i]=0;dM3[i]=0;dM4[i]=0;dAll[i]=0;}
+  S.history.forEach(r=>{
+    r.inputs.forEach(v=>{if(v?.length===3)v.split('').forEach(d=>dI[+d]++);});
+    (r.results.method1||[]).forEach(n=>n.split('').forEach(d=>dM1[+d]++));
+    (r.results.method2||[]).forEach(n=>n.split('').forEach(d=>dM2[+d]++));
+    (r.results.method3||[]).forEach(n=>n.split('').forEach(d=>dM3[+d]++));
+    (r.results.method4||[]).forEach(n=>n.split('').forEach(d=>dM4[+d]++));
+    r.moneyTable.forEach(n=>n.split('').forEach(d=>dAll[+d]++));
+  });
+
+  let runsOv=S.history.filter(r=>Array.isArray(r.overlapMap)&&r.overlapMap.some(([n,c])=>c>=2)).length;
+  let strMap=new Map();
+  S.history.forEach(r=>{if(Array.isArray(r.overlapMap))r.overlapMap.forEach(([n,c])=>strMap.set(n,(strMap.get(n)||0)+c));});
+  let strongNums=Array.from(strMap.entries()).sort((a,b)=>b[1]-a[1]).slice(0,20);
+
+  let hByOv={1:0,2:0,3:0,4:0};
+  S.history.forEach(r=>{if(r.hit&&r.draw&&Array.isArray(r.overlapMap)){let n=normalize(r.draw);let e=r.overlapMap.find(([x])=>x===n);if(e)hByOv[e[1]]=(hByOv[e[1]]||0)+1;}});
+
+  let waveData=[];
+  for(let i=0;i<hC.length;i+=10){let ch=hC.slice(i,i+10);waveData.push({s:i+1,e:Math.min(i+10,hC.length),h:ch.filter(r=>r.hit).length,t:ch.length});}
+  let periods=[];
+  for(let i=0;i<hC.length;i+=5){let ch=hC.slice(i,i+5);let sD=hC[i]?.dateF||'?',eD=hC[Math.min(i+4,hC.length-1)]?.dateF||'?';periods.push({rs:i+1,re:Math.min(i+ch.length,hC.length),h:ch.filter(r=>r.hit).length,t:ch.length,sD,eD});}
+  let hotP=periods.filter(p=>p.h>=3),coldP=periods.filter(p=>p.h===0&&p.t>=5);
+
+  let preHit=new Map();
+  for(let i=1;i<hC.length;i++){if(hC[i].hit)for(let b=1;b<=3&&i-b>=0;b++)hC[i-b].moneyTable.forEach(n=>preHit.set(n,(preHit.get(n)||0)+1));}
+  let topPreHit=Array.from(preHit.entries()).sort((a,b)=>b[1]-a[1]).slice(0,10);
+
+  function bar(val,max,color,label,extra){let pct=max?(val/max*100).toFixed(0):0;return `<div class="bar-row"><span class="bar-lbl">${label}</span><div class="bar-track"><div class="bar-fill" style="width:${pct}%;background:${color};"></div></div><span class="bar-val">${extra||val}</span></div>`;}
+  let mNames={method1:'Method 123',method2:'Method 60',method3:'X-Circle',method4:'Magic Pair'};
+
+  let s1=`<div class="card"><div class="card-title">📊 1️⃣ Method Performance</div><div class="table-wrap"><table class="mini-table"><thead><tr><th>Method</th><th>Hits</th><th>Runs Active</th><th>Hit Rate</th><th>Avg Between Hits</th></tr></thead><tbody>${Object.entries(mSt).map(([m,s])=>`<tr><td><strong>${mNames[m]}</strong></td><td style="color:var(--green)">${s.h}</td><td>${s.r}</td><td>${s.r?((s.h/s.r)*100).toFixed(1):0}%</td><td>${s.h?(s.r/s.h).toFixed(1):'∞'} runs</td></tr>`).join('')}</tbody></table></div><div class="card-sub">📌 <strong>What this shows:</strong> How often each method successfully predicted the actual draw result. <strong>Lower "avg between hits"</strong> = more frequent success. Hit rate = % of runs where this method's output contained the winning number. Compare methods to see which performs best for your specific inputs.</div></div>`;
+
+  let ovC=['','#ff4757','#ffb020','#00e599','#888'];
+  let s2=`<div class="card"><div class="card-title">🔗 2️⃣ Overlap Distribution</div>${[1,2,3,4].map(c=>bar(oDist[c],totOv||1,ovC[c],`${c}×`,`${oDist[c]} (${totOv?((oDist[c]/totOv)*100).toFixed(1):0}%)`)).join('')}<div style="margin-top:.6rem;font-size:.8rem;">Runs with 2+ method overlaps: <strong>${runsOv} / ${tot}</strong> (${tot?((runsOv/tot)*100).toFixed(1):0}%)</div><div class="card-sub">📌 <strong>What this shows:</strong> For every number across all Money Tables, how many methods produced it. The ideal system has most numbers in the 2-method (yellow) zone. Numbers that appear in 1 method only are weak. Numbers in 4 methods are noise — all algorithms agree but that's suspicious. <strong>A high % of runs with overlaps means your system is consistently producing strong candidate numbers.</strong></div></div>`;
+
+  let s3=`<div class="card"><div class="card-title">📈 3️⃣ Number Type Distribution</div>${[['ABC (all different)',abc,'#3b7eff'],['AAB (one pair)',aab,'#ffb020'],['AAA (triple)',aaa,'#ff4757']].map(([l,v,c])=>bar(v,totT||1,c,l,`${v} (${totT?((v/totT)*100).toFixed(1):0}%)`)).join('')}<div class="card-sub">📌 <strong>What this shows:</strong> The structure of numbers your algorithms produce. <strong>ABC</strong> (e.g. 123) = all different digits. <strong>AAB</strong> (e.g. 112, 122) = one digit repeated. <strong>AAA</strong> (e.g. 111) = all same digit. Statistically, ABC covers ~72% of all 220 normalized combinations. If your system produces a very different ratio, it reveals a bias in the algorithms for your specific inputs.</div></div>`;
+
+  let missDist={};missRuns.forEach(m=>{let k=Math.min(m,10);missDist[k]=(missDist[k]||0)+1;});
+  let missDistHtml=Object.entries(missDist).sort((a,b)=>+a[0]-+b[0]).map(([k,v])=>`<span style="background:var(--card2);padding:.15rem .4rem;border-radius:3px;font-size:.72rem;margin:.1rem;">${k==='10'?'10+':k} miss: ${v}×</span>`).join(' ');
+  let cycHtml='';for(let c of[20,30]){let cy=[];for(let i=0;i<hC.length;i+=c){let ch=hC.slice(i,i+c);cy.push(ch.filter(r=>r.hit).length);}if(cy.length>1)cycHtml+=`<div style="font-size:.75rem;color:var(--t2);margin-top:.3rem;">Per-${c}-run cycles (oldest→newest): <strong>${cy.join(' | ')}</strong> hits</div>`;}
+  let s4=`<div class="card"><div class="card-title">⏱️ 4️⃣ Hit Sequences & Patterns</div><div class="stat-grid"><div class="stat-tile"><div class="sv">${seq2}</div><div class="sl">2 Consecutive Hits</div></div><div class="stat-tile"><div class="sv">${seq3}</div><div class="sl">3 Consecutive Hits</div></div><div class="stat-tile"><div class="sv">${missSeq}</div><div class="sl">Total Miss Runs</div></div><div class="stat-tile"><div class="sv gold">${avgMiss}</div><div class="sl">Avg Misses/Hit</div></div></div><div style="font-size:.75rem;color:var(--t2);margin-bottom:.35rem;">Miss run distribution: <br>${missDistHtml||'—'}</div>${cycHtml}<div class="card-sub">📌 <strong>What this shows:</strong> Patterns in your win/loss streak. If you see high consecutive hits, your inputs were in a "hot zone." Long miss sequences indicate cold periods. The cycle data (20-run, 30-run windows) helps identify if there's a repeating pattern in your hit frequency — useful for timing your plays.</div></div>`;
+
+  let s5=`<div class="card"><div class="card-title">🎯 5️⃣ Hit Source by Method</div><div class="table-wrap"><table class="mini-table"><thead><tr><th>Method</th><th>Hits Produced</th><th>% of Total Hits</th></tr></thead><tbody>${Object.entries(srcH).sort((a,b)=>b[1]-a[1]).map(([m,h])=>`<tr><td><strong>${mNames[m]}</strong></td><td style="color:var(--green);">${h}</td><td>${hits?((h/hits)*100).toFixed(1):0}%</td></tr>`).join('')}</tbody></table></div><div class="card-sub">📌 <strong>What this shows:</strong> Which algorithm's output actually contained the winning number when a hit occurred. Note that a single hit can be attributed to multiple methods if multiple methods produced the winning number. This tells you which methods are most "lucky" for your specific input style. Use this to decide which methods to prioritize.</div></div>`;
+
+  let s6=`<div class="card"><div class="card-title">📥 6️⃣ Most Frequent Input Numbers</div><div class="table-wrap"><table class="mini-table"><thead><tr><th>Number</th><th>Times Used as Input</th></tr></thead><tbody>${topInp.map(([n,c])=>`<tr><td style="font-family:monospace;font-weight:700;">${n}</td><td>${c}×</td></tr>`).join('')||'<tr><td colspan="2">No data</td></tr>'}</tbody></table></div><div class="card-sub">📌 <strong>What this shows:</strong> The normalized numbers you have used most often as inputs. These are your most "trusted" draw results. A number that dominates your inputs will also dominate your outputs — this is how the system learns your lottery's pattern. If one number appears far more than others, it may be a recurring draw result worth noting.</div></div><div class="card"><div class="card-title">🔗 Input → Overlap Correlation</div><div class="table-wrap"><table class="mini-table"><thead><tr><th>Input</th><th>Used</th><th>Runs w/ Overlaps</th><th>Overlap Rate</th></tr></thead><tbody>${inpOvCorr.map(d=>`<tr><td style="font-family:monospace;font-weight:700;">${d.num}</td><td>${d.cnt}×</td><td>${d.ov}/${d.tot}</td><td><strong style="color:${d.pct>=60?'var(--green)':d.pct>=40?'var(--gold)':'var(--red)'};">${d.pct}%</strong></td></tr>`).join('')||'<tr><td colspan="4">Not enough data yet</td></tr>'}</tbody></table></div><div class="card-sub">📌 <strong>What this shows:</strong> When you use a specific number as input, how often does the resulting run contain numbers found by 2+ methods (strong overlaps)? High overlap rate = that input number is a "powerful trigger" that makes the algorithms agree more. Green = strong, Gold = medium, Red = weak trigger.</div></div>`;
+
+  let maxN=Math.max(...topNums.map(([n,c])=>c),1);
+  let s7=`<div class="card"><div class="card-title">⭐ 7️⃣ Most Frequent Numbers in Money Tables</div><div class="scroll-box" style="max-height:360px;">${topNums.map(([n,c])=>bar(c,maxN,'linear-gradient(90deg,var(--blue),var(--cyan))',n,`${c}×`)).join('')||'No data'}</div><div class="card-sub">📌 <strong>What this shows:</strong> Numbers that appear most often across ALL your Money Tables combined. High frequency = your algorithms consistently produce this number regardless of input changes. These are your "system constants" — numbers the algorithms are structurally biased toward. They may not always hit, but they're always present. Consider these your core play list.</div></div>`;
+
+  let wMax=waveData.length?Math.max(...waveData.map(w=>w.h),1):1;
+  let waveBars=waveData.map(w=>{let h=Math.max(4,Math.round((w.h/wMax)*44));let col=w.h>=3?'var(--green)':w.h>=2?'var(--gold)':w.h===0?'var(--blue)':'var(--red)';return `<div class="wave-bar" style="height:${h}px;background:${col};" title="Runs ${w.s}–${w.e}: ${w.h}/${w.t} hits"></div>`;}).join('');
+  let hotH=hotP.slice(0,6).map(p=>`<div class="hot-pill">🔥 Runs ${p.rs}–${p.re}: ${p.h}/${p.t} hits (${p.sD} – ${p.eD})</div>`).join('')||'<p style="font-size:.75rem;color:var(--t2);">No hot periods detected yet (need 3+ hits in any 5 consecutive runs)</p>';
+  let coldH=coldP.slice(0,6).map(p=>`<div class="cold-pill">❄️ Runs ${p.rs}–${p.re}: 0/${p.t} hits (${p.sD} – ${p.eD})</div>`).join('')||'<p style="font-size:.75rem;color:var(--t2);">No cold periods detected yet</p>';
+  let cyc2='';for(let c of[20,30]){let cy=[];for(let i=0;i<hC.length;i+=c){let ch=hC.slice(i,i+c);cy.push(ch.filter(r=>r.hit).length);}if(cy.length>1)cyc2+=`<div style="font-size:.75rem;color:var(--t2);margin:.2rem 0;">Per-${c}-run: <strong>${cy.join(' | ')}</strong> hits</div>`;}
+  let s8=`<div class="card"><div class="card-title">📅 8️⃣ Hit Wave — Oldest → Newest</div><p style="font-size:.68rem;color:var(--t2);margin-bottom:.3rem;">Each bar = 10 runs &nbsp; 🟢 ≥3 hits &nbsp; 🟡 2 hits &nbsp; 🔴 1 hit &nbsp; 🔵 0 hits</p><div class="wave-wrap">${waveBars||'Not enough data'}</div>${cyc2}<div class="card-sub">📌 <strong>What this shows:</strong> A visual timeline of your hit frequency over time. Left = oldest runs, Right = most recent. Tall green bars = hot streaks. Flat blue bars = cold periods. Use this to identify if you're currently in a hot or cold phase, and whether there's a recurring cycle (every 20–30 runs).</div></div><div class="card"><div class="card-title">🔥 Hot Periods (3+ hits in 5 consecutive runs)</div>${hotH}</div><div class="card"><div class="card-title">❄️ Cold Periods (0 hits in 5+ consecutive runs)</div>${coldH}</div>`;
+
+  let s9=`<div class="card"><div class="card-title">🔗 9️⃣ Hits by Overlap Count</div><div class="table-wrap"><table class="mini-table"><thead><tr><th>Overlap</th><th>Hits</th><th>% of Hits</th><th>Total Numbers</th></tr></thead><tbody>${[1,2,3,4].map(c=>{let h=hByOv[c]||0;let badge=['','badge-red','badge-yellow','badge-green','badge-white'][c];return `<tr><td><span class="badge ${badge}">${c} Method${c>1?'s':''}</span></td><td style="color:var(--green);">${h}</td><td>${hits?((h/hits)*100).toFixed(1):0}%</td><td>${oDist[c]||0}</td></tr>`;}).join('')}</tbody></table></div><div class="card-sub">📌 <strong>What this shows:</strong> When a hit occurred, how many methods had independently produced that winning number? If most of your hits came from 2-method (yellow) or 3-method (green) numbers, your system is working correctly — the overlap is a real signal. If most hits come from 1-method numbers, the overlaps are not providing useful signal for your inputs.</div></div>`;
+
+  let s10=`<div class="card"><div class="card-title">⭐ Strength Ranking — Top Numbers</div><p style="font-size:.73rem;color:var(--t2);margin-bottom:.4rem;">Score = total method appearances across all runs. 🟢 ≥6 = Core number &nbsp; 🟡 3–5 = Solid &nbsp; 🔴 &lt;3 = Weak</p><div class="scroll-box" style="max-height:360px;"><div class="table-wrap"><table class="mini-table"><thead><tr><th>#</th><th>Number</th><th>Score</th><th>Type</th></tr></thead><tbody>${strongNums.slice(0,15).map(([n,s],i)=>{let badge=s>=6?'badge-green':s>=3?'badge-yellow':'badge-red';return `<tr><td>${i+1}</td><td style="font-family:monospace;font-weight:800;">${n}</td><td><span class="badge ${badge}">${s}</span></td><td>${numType(n)}</td></tr>`;}).join('')||'<tr><td colspan="4">No data</td></tr>'}</tbody></table></div></div><div class="card-sub">📌 <strong>What this shows:</strong> Numbers that have accumulated the highest score across all your runs. Score = sum of method-counts (a 3-method number adds 3 to the score each time it appears). Numbers with score ≥6 have been consistently produced by multiple methods across multiple runs — these are your most statistically reliable candidate numbers. Consider these your personal "core play list."</div></div>`;
+
+  let logH=S.history.slice(0,50).map((r,i)=>{
+    let ov=Array.isArray(r.overlapMap)?r.overlapMap:[];
+    let n2=ov.filter(([n,c])=>c===2).map(([n])=>n),n3=ov.filter(([n,c])=>c===3).map(([n])=>n),n4=ov.filter(([n,c])=>c===4).map(([n])=>n);
+    return `<div class="log-item ${r.hit?'has-hit':''}">
+      <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:.2rem;margin-bottom:.2rem;">
+        <strong style="font-size:.75rem;">Run #${i+1}</strong>
+        <span style="font-size:.69rem;color:var(--t2);">${r.dateF} &nbsp;|&nbsp; Table: ${r.moneyTable.length} &nbsp;|&nbsp; Overlaps(2+): ${ov.filter(([n,c])=>c>=2).length}${r.hit?`&nbsp;<span style="color:var(--green);font-weight:700;">✅ HIT: ${r.draw}</span>`:''}</span>
+      </div>
+      <div style="font-size:.68rem;color:var(--t3);">Inputs: ${r.inputs.filter(v=>v?.length===3).join(' · ')||'—'}</div>
+      ${n2.length?`<div style="font-size:.72rem;margin-top:.15rem;">🟡 2-method (${n2.length}): ${n2.slice(0,15).join(' ')}${n2.length>15?` +${n2.length-15}`:''}</div>`:''}
+      ${n3.length?`<div style="font-size:.72rem;">🟢 3-method (${n3.length}): ${n3.slice(0,15).join(' ')}${n3.length>15?` +${n3.length-15}`:''}</div>`:''}
+      ${n4.length?`<div style="font-size:.72rem;">⚪ 4-method (${n4.length}): ${n4.slice(0,15).join(' ')}${n4.length>15?` +${n4.length-15}`:''}</div>`:''}
+      ${!ov.filter(([n,c])=>c>=2).length?`<div style="font-size:.72rem;color:var(--t3);">— No overlaps this run</div>`:''}
+    </div>`;
+  }).join('');
+  let s11=`<div class="card"><div class="card-title">📓 Overlap Log — Last ${Math.min(50,S.history.length)} of ${S.history.length} Runs</div><p style="font-size:.7rem;color:var(--t2);margin-bottom:.4rem;">Newest first. Shows which numbers appeared in 2+ methods per run.</p><div class="scroll-box" style="max-height:520px;">${logH||'No data'}</div><div class="card-sub">📌 <strong>What this shows:</strong> A run-by-run log of overlap numbers. This is how you spot patterns over time — not just summary statistics. Look for: which numbers keep appearing across many consecutive runs (stability signal), which inputs lead to many overlaps (trigger inputs), and whether hot periods correlate with specific inputs.</div></div>`;
+
+  let dMax=Math.max(...Object.values(dAll),1);
+  let dT=`<div class="scroll-box" style="max-height:280px;"><div class="table-wrap"><table class="mini-table"><thead><tr><th>Digit</th><th>In Inputs</th><th>M123</th><th>M60</th><th>X-Cir</th><th>MPair</th><th>All Tables</th></tr></thead><tbody>${Object.keys(dAll).map(d=>`<tr><td style="font-weight:800;">${d}</td><td>${dI[d]}</td><td>${dM1[d]}</td><td>${dM2[d]}</td><td>${dM3[d]}</td><td>${dM4[d]}</td><td><strong>${dAll[d]}</strong></td></tr>`).join('')}</tbody></table></div></div>`;
+  let dBars=Object.keys(dAll).map(d=>bar(dAll[d],dMax,'linear-gradient(90deg,var(--purple),var(--blue))',d,`${dAll[d]}`)).join('');
+  let preH=topPreHit.map(([n,c])=>`<span style="background:var(--card2);padding:.2rem .48rem;border-radius:3px;font-family:monospace;font-size:.79rem;font-weight:700;margin:.15rem;display:inline-block;border:1px solid var(--border2);">${n} (${c}×)</span>`).join('')||'<span style="color:var(--t2);font-size:.8rem;">Not enough data yet (need 5+ hits in history)</span>';
+  let s12=`<div class="card"><div class="card-title">🔢 Digit Frequency by Source</div>${dT}<div class="card-sub">📌 <strong>What this shows:</strong> Which digits (0–9) appear most often in your inputs vs. each method's output vs. all Money Tables combined. A digit that dominates across ALL columns is a structural feature of your lottery's recent history. Build your strongest plays around these dominant digits.</div></div><div class="card"><div class="card-title">📊 Digit Bar Chart (All Money Tables)</div>${dBars}</div><div class="card"><div class="card-title">⚡ Numbers Appearing 1–3 Runs Before a Hit</div><div style="margin:.35rem 0;">${preH}</div><div class="card-sub">📌 <strong>What this shows:</strong> Numbers that consistently appeared in Money Tables 1, 2, or 3 runs BEFORE a hit occurred. These are potential "early warning" numbers. If you see these numbers appearing in your current table, a hit may be approaching. The more times a number appears here, the stronger its predictive pattern.</div></div>`;
+
+  let bestM=Object.entries(mSt).filter(([m,s])=>s.r>0).sort((a,b)=>(b[1].h/b[1].r)-(a[1].h/a[1].r))[0];
+  let s13=`<div class="card"><div class="card-title">📋 Overall Summary</div><div class="stat-grid"><div class="stat-tile"><div class="sv">${tot}</div><div class="sl">Total Runs</div></div><div class="stat-tile"><div class="sv green">${hits}</div><div class="sl">Total Hits</div></div><div class="stat-tile"><div class="sv">${tot?((hits/tot)*100).toFixed(1):0}%</div><div class="sl">Hit Rate</div></div><div class="stat-tile"><div class="sv">${hits?(tot/hits).toFixed(1):'∞'}</div><div class="sl">Avg Runs Per Hit</div></div><div class="stat-tile"><div class="sv gold">${runsOv}</div><div class="sl">Runs w/ Overlaps</div></div><div class="stat-tile"><div class="sv" style="font-size:.9rem;">${bestM?({method1:'M123',method2:'M60',method3:'X-Cir',method4:'MPair'}[bestM[0]]):'-'}</div><div class="sl">Best Method</div></div><div class="stat-tile"><div class="sv" style="font-size:.9rem;">${(topNums.length>0&&topNums[0])?topNums[0][0]:'—'}</div><div class="sl">Most Frequent #</div></div><div class="stat-tile"><div class="sv" style="font-size:.9rem;">${(strongNums.length>0&&strongNums[0])?strongNums[0][0]:'—'}</div><div class="sl">Strongest #</div></div></div><div class="card-sub">📌 All statistics are computed live from your localStorage history. Click Refresh to update after new runs. Export JSON regularly to keep a backup.</div></div>`;
+
+  // S14: AI Smart Pick performance
+  var aiTot=S_aiSmartHistory.length;
+  var aiHits=S_aiSmartHistory.filter(function(r){return r.hit;}).length;
+  var aiRate=aiTot?(aiHits/aiTot*100).toFixed(1):0;
+  var aiRunsPerHit=aiHits?(aiTot/aiHits).toFixed(1):'-';
+  var aiAvgSize=aiTot?Math.round(S_aiSmartHistory.reduce(function(a,r){return a+r.tableSize;},0)/aiTot):0;
+  var mNamesAI={method1:'Method 123',method2:'Method 60',method3:'X-Circle',method4:'Magic Pair'};
+  var mAccuRows='';
+  ['method1','method2','method3','method4'].forEach(function(m){
+    var ms=S_methodStats[m];
+    var rate=ms.r>0?((ms.h/ms.r)*100).toFixed(1):0;
+    var col=+rate>=50?'var(--green)':+rate>=30?'var(--gold)':'var(--red)';
+    mAccuRows+='<tr><td><strong>'+mNamesAI[m]+'</strong></td><td>'+ms.r+'</td><td style="color:var(--green);">'+ms.h+'</td>'
+      +'<td><strong style="color:'+col+';">'+rate+'%</strong></td></tr>';
+  });
+  var aiLogRows='';
+  S_aiSmartHistory.slice(0,15).forEach(function(r){
+    var tp=r.picks[0]?r.picks[0].n:'-';
+    var ts=r.picks[0]?r.picks[0].s:0;
+    var t5=r.picks.slice(0,5).map(function(p){return p.n;}).join(' ');
+    var hitColor=r.hit?'var(--green)':'var(--t3)';
+    var hitTxt=r.hit?'HIT':'miss';
+    aiLogRows+='<tr><td style="font-size:.68rem;color:var(--t3);">'+r.dateF+'</td>'
+      +'<td style="font-family:monospace;font-weight:700;">'+tp+'</td>'
+      +'<td style="text-align:center;">'+ts+'</td>'
+      +'<td style="text-align:center;">'+r.tableSize+'</td>'
+      +'<td style="text-align:center;color:'+hitColor+';">'+hitTxt+'</td>'
+      +'<td style="font-size:.67rem;color:var(--t2);">'+t5+'</td></tr>';
+  });
+  var aiLogHtml=aiLogRows
+    ?('<div class="card"><div class="card-title">Recent AI Pick Log (last 15)</div>'
+      +'<div class="table-wrap"><table class="mini-table"><thead><tr><th>Date</th><th>Top Pick</th><th>Score</th><th>Table</th><th>Result</th><th>Top 5 picks</th></tr></thead><tbody>'
+      +aiLogRows+'</tbody></table></div>'
+      +'<div class="card-sub">A HIT means the actual draw result appeared in the AI top 10 for that run. Use this to judge if the AI is improving over time.</div></div>')
+    :'<div class="card"><p style="color:var(--t2);padding:.5rem;">No AI picks yet. Run analysis, then click the AI Smart Pick button to start tracking.</p></div>';
+  var s14='<div class="card"><div class="card-title">✅ AI Smart Pick — Performance</div>'
+    +'<div class="stat-grid">'
+    +'<div class="stat-tile"><div class="sv">'+aiTot+'</div><div class="sl">Times AI Used</div></div>'
+    +'<div class="stat-tile"><div class="sv green">'+aiHits+'</div><div class="sl">AI Hits</div></div>'
+    +'<div class="stat-tile"><div class="sv">'+aiRate+'%</div><div class="sl">AI Hit Rate</div></div>'
+    +'<div class="stat-tile"><div class="sv gold">'+aiRunsPerHit+'</div><div class="sl">Runs Per AI Hit</div></div>'
+    +'<div class="stat-tile"><div class="sv">'+aiAvgSize+'</div><div class="sl">Avg Table Size</div></div>'
+    +'</div>'
+    +'<div class="card-sub">AI Hit Rate = how often the real draw appeared in the AI top 10. Runs Per AI Hit is the key number — the lower the better. This improves as the AI learns your patterns. Needs at least 5 uses to become meaningful.</div>'
+    +'</div>'
+    +'<div class="card"><div class="card-title">Method Accuracy (AI weights)</div>'
+    +'<div class="table-wrap"><table class="mini-table"><thead><tr><th>Method</th><th>Runs Active</th><th>Hits Produced</th><th>Hit Rate</th></tr></thead><tbody>'
+    +mAccuRows+'</tbody></table></div>'
+    +'<div class="card-sub">Each method is weighted in the AI by its real hit rate from your history. Green = strong method, Gold = decent, Red = weak. The AI automatically gives stronger methods more influence.</div>'
+    +'</div>'
+    +aiLogHtml;
+
+    el.innerHTML=`<div id="stats-s1" class="stats-section active">${s1}</div><div id="stats-s2" class="stats-section">${s2}</div><div id="stats-s3" class="stats-section">${s3}</div><div id="stats-s4" class="stats-section">${s4}</div><div id="stats-s5" class="stats-section">${s5}</div><div id="stats-s6" class="stats-section">${s6}</div><div id="stats-s7" class="stats-section">${s7}</div><div id="stats-s8" class="stats-section">${s8}</div><div id="stats-s9" class="stats-section">${s9}</div><div id="stats-s10" class="stats-section">${s10}</div><div id="stats-s11" class="stats-section">${s11}</div><div id="stats-s12" class="stats-section">${s12}</div><div id="stats-s13" class="stats-section">${s13}</div><div id="stats-s14" class="stats-section">${s14}</div>`;
+  document.querySelectorAll('.snav-btn').forEach(b=>b.onclick=()=>{document.querySelectorAll('.snav-btn').forEach(x=>x.classList.remove('active'));document.querySelectorAll('.stats-section').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.getElementById('stats-'+b.dataset.section).classList.add('active');});
+}
+
+// ═══════════════════════════════════════
+// TAB SWITCH
+// ═══════════════════════════════════════
+function switchTab(name){
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.toggle('active',b.dataset.tab===name));
+  document.querySelectorAll('.tab-content').forEach(t=>t.classList.toggle('active',t.id===name+'Tab'));
+  if(name==='stats')renderFullStats();
+  if(name==='history')renderHistory();
+}
+
+// ═══════════════════════════════════════
+// EXPORT / SHARE
+// ═══════════════════════════════════════
+function exportCSV(){
+  if(!S.curTable.length){alert('Run analysis first.');return;}
+  var NL='\r\n';
+  var header='Number,Overlap_Count,Type,Method_123,Method_60,X_Circle,Magic_Pair';
+  var rows=S.curTable.map(function(n){
+    var ov=S.curOverlap.get(n)||0;
+    var m1=S.curResults&&S.curResults.method1&&S.curResults.method1.indexOf(n)>=0?1:0;
+    var m2=S.curResults&&S.curResults.method2&&S.curResults.method2.indexOf(n)>=0?1:0;
+    var m3=S.curResults&&S.curResults.method3&&S.curResults.method3.indexOf(n)>=0?1:0;
+    var m4=S.curResults&&S.curResults.method4&&S.curResults.method4.indexOf(n)>=0?1:0;
+    return n+','+ov+','+numType(n)+','+m1+','+m2+','+m3+','+m4;
+  });
+  var csv=header+NL+rows.join(NL);
+  var mNames={method1:'Method 123',method2:'Method 60',method3:'X-Circle',method4:'Magic Pair'};
+  if(S.curResults){
+    Object.keys(mNames).forEach(function(k){
+      if(S.curResults[k]&&S.curResults[k].length){
+        csv+=NL+NL+mNames[k]+' Output'+NL+'Number,Type'+NL;
+        csv+=S.curResults[k].map(function(n){return n+','+numType(n);}).join(NL);
+      }
+    });
+  }
+  var a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'}));
+  a.download='pick3geny_'+Date.now()+'.csv';
+  a.click();
+}
+
+function exportJSON(){let a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(S.history,null,2)],{type:'application/json'}));a.download=`pick3geny_history_${Date.now()}.json`;a.click();}
+function shareResults(){
+  if(!S.curTable.length){alert('Run analysis first.');return;}
+  let names={method1:'Method 123',method2:'Method 60',method3:'X-Circle',method4:'Magic Pair'};
+  // Build full share text: each method separately + strong numbers
+  let parts=['🎰 Pick3Geny Results\n'];
+  if(S.curResults){
+    Object.keys(S.curResults).forEach(mt=>{
+      if(S.curResults[mt]?.length)
+        parts.push(`\n📌 ${names[mt]} (${S.curResults[mt].length} numbers):\n${S.curResults[mt].join(', ')}`);
+    });
+  }
+  let strong=S.curTable.filter(n=>(S.curOverlap.get(n)||0)>=2);
+  parts.push(`\n\n⭐ Strong Numbers (2-3 methods, ${strong.length} total):\n${strong.join(', ')}`);
+  parts.push('\n\n🔗 Pick3Geny — Free Pick 3 Analyzer: https://michaelsasonov7-arch.github.io/Pick3geny-/');
+  let txt=parts.join('');
+  if(navigator.share){
+    navigator.share({title:'Pick3Geny Results 🎰',text:txt})
+      .catch(()=>{navigator.clipboard?.writeText(txt);alert('Copied to clipboard! Paste to share anywhere.');});
+  } else {
+    navigator.clipboard?.writeText(txt).then(()=>alert('✅ Results copied to clipboard!\n\nPaste in WhatsApp, Telegram, SMS, Email, Twitter/X, or anywhere you like.')).catch(()=>alert('Share text:\n\n'+txt.slice(0,500)+'...'));
+  }
+}
+
+// ═══════════════════════════════════════
+// HOT & COLD TREND
+// ═══════════════════════════════════════
+let S_trendActive=false;
+function applyTrendView(){
+  // Compute trend from the numbers currently rendered in mtNumbers
+  let omap=S.curOverlap instanceof Map?S.curOverlap:new Map();
+  let last10=S.history.slice(0,10);
+  let freq=new Map();
+  last10.forEach(r=>r.moneyTable.forEach(n=>freq.set(n,(freq.get(n)||0)+1)));
+  // Get the currently rendered numbers (respects active filter/sort)
+  let rendered=Array.from(document.querySelectorAll('#mtNumbers .money-number')).map(el=>el.dataset.n);
+  let html=rendered.map(n=>{
+    let cnt=freq.get(n)||0;
+    let col=cnt>=6?'#00f0a0':cnt>=3?'#ffbe00':'#ff3d55';
+    // Bug fix: Use ⚡ in trend mode instead of ⭐ to avoid confusion
+    let icon=cnt>=6?'🔥':cnt>=3?'~':'❄️';
+    let ov=omap.get(n)||1;
+    let trendBadge=`<span style="font-size:.55rem;display:block;text-align:center;color:${col};">${icon}${cnt}</span>`;
+    return `<span class="money-number overlap-${ov}" data-n="${n}" style="position:relative;" onclick="showVars('${n}')">${n}${trendBadge}</span>`;
+  }).join('');
+  document.getElementById('mtNumbers').innerHTML=html;
+  let btn=document.getElementById('trendBtn');
+  if(btn){btn.classList.add('af');btn.textContent='🔥 Trend ON';}
+  // Re-apply hit highlight
+  if(S.curHit&&S.curDraw){
+    let norm=normalize(S.curDraw);
+    let el=document.querySelector(`.money-number[data-n="${norm}"]`);
+    if(el){el.classList.add('hit-highlight');setTimeout(()=>el.scrollIntoView({behavior:'smooth',block:'center'}),50);}
+  }
+}
+
+function toggleTrend(){
+  if(!S.curTable.length){alert("Run analysis first to see Trend data.");return;}
+  S_trendActive=!S_trendActive;
+  let btn=document.getElementById('trendBtn');
+  if(!S_trendActive){
+    btn.classList.remove('af');btn.textContent='🔥 Trend';
+    renderMT(S.curTable,S.curDraw,S.curHit);return;
+  }
+  applyTrendView();
+}
+
+// ═══════════════════════════════════════
+// HISTORY NAVIGATION IN RUN TAB
+// ═══════════════════════════════════════
+let S_histNavIdx = -1; // -1 = live run, 0 = most recent, 1 = second, etc.
+let S_smartPredUserClosed = false; // true if user manually closed Smart Prediction
+// Snapshot of live run state — saved before browsing history, restored on Live Run
+let S_liveState = null;
+
+function showHistRun(idx){
+  if(!S.history.length||idx<0||idx>=S.history.length)return;
+  // Save live state before overwriting with historical data
+  if(S_histNavIdx===-1){
+    S_liveState={curTable:[...S.curTable],curOverlap:new Map(S.curOverlap),curResults:S.curResults,curDraw:S.curDraw,curHit:S.curHit};
+  }
+  S_histNavIdx=idx;
+  let r=S.history[idx];
+  // Reset Trend mode — historical data should show in normal view
+  if(S_trendActive){S_trendActive=false;let tb=document.getElementById('trendBtn');if(tb){tb.classList.remove('af');tb.textContent='🔥 Trend';}}
+  // Reset filter buttons to "All"
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('af'));
+  let allFBtn=document.querySelector('.filter-btn[data-filter="all"]');
+  if(allFBtn)allFBtn.classList.add('af');
+  // Restore state from history run
+  let omap=new Map(Array.isArray(r.overlapMap)?r.overlapMap:[]);
+  S.curTable=r.moneyTable||[];
+  S.curOverlap=omap;
+  S.curResults=r.results||{};
+  S.curDraw=r.draw||'';
+  S.curHit=r.hit||false;
+  // Render results
+  let names={method1:'Method 123',method2:'Method 60',method3:'X-Circle',method4:'Magic Pair'};
+  let rhtml='<div class="card" style="border-color:var(--gold);"><div class="card-title" style="color:var(--gold);">📜 Viewing Historical Run #'+(idx+1)+' — '+r.dateF+'</div></div>';
+  rhtml+='<div class="card"><div class="card-title">📊 Results by Method</div>';
+  Object.keys(r.results||{}).forEach(mt=>{
+    if(!r.results[mt]?.length)return;
+    rhtml+=`<div class="method-block"><div style="font-size:.82rem;font-weight:700;">${names[mt]} <span style="color:var(--t2);font-weight:400;">(${r.results[mt].length} numbers)</span></div><div class="method-block-nums">${r.results[mt].map(n=>`<span class="m-chip">${n}</span>`).join('')}</div></div>`;
+  });
+  rhtml+='</div>';
+  document.getElementById('resultsContainer').innerHTML=rhtml;
+  document.getElementById('moneyTableCard').style.display='block';
+  document.getElementById('mtCount').textContent='('+S.curTable.length+' numbers)';
+  renderMT(S.curTable,r.draw,r.hit);
+  // Show nav bar
+  let nav=document.getElementById('histNavBar');
+  nav.style.display='flex';
+  document.getElementById('histNavLabel').textContent='Run #'+(idx+1)+' of '+S.history.length+' — '+r.dateF;
+  document.getElementById('histPrevBtn').disabled=(idx>=S.history.length-1);
+  document.getElementById('histNextBtn').disabled=(idx<=0);
+}
+function goLiveRun(){
+  S_histNavIdx=-1;
+  // Reset Trend mode when returning to live run
+  if(S_trendActive){S_trendActive=false;let tb=document.getElementById('trendBtn');if(tb){tb.classList.remove('af');tb.textContent='🔥 Trend';}}
+  document.getElementById('histNavBar').style.display='none';
+  // Restore live run state if it was saved
+  if(S_liveState){
+    S.curTable=S_liveState.curTable;
+    S.curOverlap=S_liveState.curOverlap;
+    S.curResults=S_liveState.curResults;
+    S.curDraw=S_liveState.curDraw;
+    S.curHit=S_liveState.curHit;
+    S_liveState=null;
+    if(S.curTable.length){
+      document.getElementById('moneyTableCard').style.display='block';
+      document.getElementById('mtCount').textContent='('+S.curTable.length+' numbers)';
+      renderMT(S.curTable,S.curDraw,S.curHit);
+    } else {
+      document.getElementById('resultsContainer').innerHTML='';
+      document.getElementById('moneyTableCard').style.display='none';
+    }
+  } else {
+    document.getElementById('resultsContainer').innerHTML='';
+    document.getElementById('moneyTableCard').style.display='none';
+  }
+}
+
+// ═══════════════════════════════════════
+// SMART PREDICTION ENGINE
+// ═══════════════════════════════════════
+// AI adaptive weights — updated each run based on outcome
+let S_aiWeights={overlap:0.35,recency:0.25,frequency:0.2,pattern:0.2};
+let S_methodStats={method1:{h:0,r:0},method2:{h:0,r:0},method3:{h:0,r:0},method4:{h:0,r:0}};
+
+function updateAIWeights(hit){
+  if(hit){S_aiWeights.overlap=Math.min(0.6,S_aiWeights.overlap+0.02);S_aiWeights.pattern=Math.min(0.4,S_aiWeights.pattern+0.01);}
+  else{S_aiWeights.recency=Math.min(0.5,S_aiWeights.recency+0.015);S_aiWeights.frequency=Math.max(0.05,S_aiWeights.frequency-0.01);}
+  let sum=Object.values(S_aiWeights).reduce((a,b)=>a+b,0);
+  for(let k in S_aiWeights)S_aiWeights[k]=+(S_aiWeights[k]/sum).toFixed(3);
+  Object.keys(S_methodStats).forEach(m=>{if(S.curResults&&S.curResults[m]?.length>0){S_methodStats[m].r++;if(hit&&S.curDraw&&S.curResults[m].includes(normalize(S.curDraw)))S_methodStats[m].h++;}});
+}
+
+function getSmartPredictions(){
+  if(S.history.length<3)return[];
+  let hC=[...S.history].reverse(); // chronological
+  let scores=new Map();
+  // Weight 1: Numbers appearing 1-3 runs BEFORE a hit
+  for(let i=1;i<hC.length;i++){
+    if(hC[i].hit){
+      for(let j=1;j<=3&&i-j>=0;j++){
+        hC[i-j].moneyTable.forEach(n=>{
+          scores.set(n,(scores.get(n)||0)+(4-j)*2); // weight: 6,4,2
+        });
+      }
+    }
+  }
+  // Weight 2: Strong overlap in recent runs (last 10)
+  S.history.slice(0,10).forEach(r=>{
+    if(Array.isArray(r.overlapMap)){
+      r.overlapMap.forEach(([n,c])=>{
+        if(c>=2)scores.set(n,(scores.get(n)||0)+c);
+      });
+    }
+  });
+  // Weight 3: Numbers in current money table with overlap
+  if(S.curTable.length&&S.curOverlap instanceof Map){
+    S.curTable.forEach(n=>{
+      let ov=S.curOverlap.get(n)||1;
+      if(ov>=2)scores.set(n,(scores.get(n)||0)+ov*3);
+    });
+  }
+  return Array.from(scores.entries())
+    .sort((a,b)=>b[1]-a[1]).slice(0,10)
+    .map(([num,score])=>({num,score,type:numType(num),overlap:S.curOverlap instanceof Map?(S.curOverlap.get(num)||0):0}));
+}
+
+function renderSmartPredictions(){
+  let preds=getSmartPredictions();
+  let el=document.getElementById('smartPredCard');
+  let toggleBtn=document.getElementById('smartPredToggleBtn');
+  if(!el)return;
+  if(preds.length===0){
+    el.style.display='none';
+    if(toggleBtn)toggleBtn.style.display='none';
+    return;
+  }
+  // Show the toggle button (the card stays hidden unless user opens it)
+  if(toggleBtn)toggleBtn.style.display='block';
+  // Auto-show Smart Prediction card after 5+ runs — only if user hasn't closed it manually
+  if(S.history.length>=5&&el.style.display==='none'&&!S_smartPredUserClosed){
+    el.style.display='block';
+    if(toggleBtn)toggleBtn.textContent='🙈 Hide Smart Prediction';
+  }
+  let maxScore=preds[0]?.score||1;
+  let _spDrawNorm=S.curDraw&&S.curDraw.length===3?normalize(S.curDraw):'';
+  let html=preds.map((p,i)=>{
+    let pct=Math.round((p.score/maxScore)*100);
+    let badge=p.overlap>=3?'badge-green':p.overlap>=2?'badge-yellow':'badge-red';
+    let isSpHit=_spDrawNorm&&normalize(p.num)===_spDrawNorm;
+    // Use hit-highlight class (same pulsing glow as Money Table) when there's a hit
+    let hitClass=isSpHit?' hit-highlight':'';
+    let spHitBadge=isSpHit?'<span style="font-size:.65rem;color:var(--green);font-weight:800;margin-left:.2rem;">✅ HIT</span>':'';
+    return `<div style="display:flex;align-items:center;gap:.5rem;margin:.2rem 0;">
+      <span style="font-size:.7rem;color:var(--t3);min-width:16px;">${i+1}.</span>
+      <span class="money-number overlap-${p.overlap||1}${hitClass}" style="cursor:pointer;margin:0;" onclick="showVars('${p.num}')">${p.num}</span>
+      <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:8px;overflow:hidden;">
+        <div style="width:${pct}%;height:100%;background:${isSpHit?'var(--grad-green)':'var(--grad-blue)'};border-radius:3px;"></div>
+      </div>
+      <span class="badge ${badge}" style="font-size:.62rem;">${p.overlap?p.overlap+'×':''}</span>
+      ${spHitBadge}
+    </div>`;
+  }).join('');
+  document.getElementById('smartPredNums').innerHTML=html;
+  // Show AI state
+  let wi=document.getElementById('aiWeightInfo');
+  if(wi)wi.textContent=`Overlap×${(S_aiWeights.overlap*100).toFixed(0)}% · Recency×${(S_aiWeights.recency*100).toFixed(0)}% · Freq×${(S_aiWeights.frequency*100).toFixed(0)}%`;
+}
+
+// ═══════════════════════════════════════
+// STATS EXPORT / SHARE
+// ═══════════════════════════════════════
+function exportStatsJSON(){
+  if(!S.history.length){alert('No history to export.');return;}
+  let tot=S.history.length,hits=S.history.filter(r=>r.hit).length;
+  let avg=tot?Math.round(S.history.reduce((s,r)=>s+r.moneyTable.length,0)/tot):0;
+  let mh={method1:0,method2:0,method3:0,method4:0};
+  S.history.forEach(r=>{if(r.hit&&r.draw){let n=normalize(r.draw);['method1','method2','method3','method4'].forEach(m=>{if(r.results[m]?.includes(n))mh[m]++;});}});
+  let statsObj={exported:new Date().toISOString(),summary:{totalRuns:tot,totalHits:hits,hitRate:(tot?(hits/tot*100).toFixed(1):0)+'%',avgTableSize:avg,avgRunsPerHit:hits?(tot/hits).toFixed(1):'∞'},methodStats:mh,recentHits:S.history.filter(r=>r.hit).slice(0,20).map(r=>({date:r.dateF,draw:r.draw,tableSize:r.moneyTable.length}))};
+  let blob=new Blob([JSON.stringify(statsObj,null,2)],{type:'application/json'});
+  let a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='pick3geny_stats_'+new Date().toISOString().slice(0,10)+'.json';a.click();
+}
+function shareStatsText(){
+  if(!S.history.length){alert('No history to share.');return;}
+  let tot=S.history.length,hits=S.history.filter(r=>r.hit).length;
+  let rate=tot?(hits/tot*100).toFixed(1):0;
+  let avg=tot?Math.round(S.history.reduce((s,r)=>s+r.moneyTable.length,0)/tot):0;
+  let avgHit=hits?(tot/hits).toFixed(1):'∞';
+  let mNames={method1:'Method 123',method2:'Method 60',method3:'X-Circle',method4:'Magic Pair'};
+  let mh={method1:0,method2:0,method3:0,method4:0};
+  S.history.forEach(r=>{if(r.hit&&r.draw){let n=normalize(r.draw);Object.keys(mh).forEach(m=>{if(r.results[m]?.includes(n))mh[m]++;});}});
+  let best=Object.entries(mh).sort((a,b)=>b[1]-a[1])[0];
+  let txt=`🎰 Pick3Geny Statistics Summary
+📅 ${new Date().toLocaleDateString()}
+
+📊 Total Runs: ${tot}
+🏆 Hits: ${hits} (${rate}%)
+⚡ Avg Runs/Hit: ${avgHit}
+📋 Avg Table Size: ${avg}
+⭐ Best Method: ${best?mNames[best[0]]:'-'} (${best?best[1]:0} hits)
+
+🔗 Try Pick3Geny free: https://michaelsasonov7-arch.github.io/Pick3geny-/`;
+  if(navigator.share){navigator.share({title:'Pick3Geny Stats',text:txt}).catch(()=>{navigator.clipboard?.writeText(txt);alert('Copied!');});}
+  else{navigator.clipboard?.writeText(txt).then(()=>alert('✅ Stats copied! Paste in WhatsApp, Email, or anywhere.')).catch(()=>alert(txt));}
+}
+
+// ═══════════════════════════════════════
+// AI SMART PICK ENGINE
+// ═══════════════════════════════════════
+var S_aiSmartHistory = [];
+
+function runAISmartPick(){
+  // Only show alert when called manually by user — not in auto-run from runAnalysis
+  if(!S.curTable.length){if(runAISmartPick._manual)alert('Run analysis first — AI Smart Pick needs a Money Table.');runAISmartPick._manual=false;return;}
+
+  var omap = (S.curOverlap instanceof Map) ? S.curOverlap : new Map();
+  var last10 = S.history.slice(0,10);
+  var scores = {};
+
+  // MODEL 1: Overlap strength (2-3 methods = strong)
+  S.curTable.forEach(function(n){
+    var ov = omap.get(n)||1;
+    scores[n] = (scores[n]||0) + (ov===2?30:ov===3?35:ov===4?5:8);
+  });
+
+  // MODEL 2: Hot momentum (appearances in last 10 runs)
+  var freq10 = {};
+  last10.forEach(function(r){r.moneyTable.forEach(function(n){freq10[n]=(freq10[n]||0)+1;});});
+  S.curTable.forEach(function(n){
+    var cnt=freq10[n]||0;
+    scores[n]=(scores[n]||0)+(cnt>=7?25:cnt>=5?18:cnt>=3?10:cnt>=1?4:0);
+  });
+
+  // MODEL 3: Breakout — not seen recently but due
+  var lastSeen = {};
+  S.history.forEach(function(r,i){r.moneyTable.forEach(function(n){if(lastSeen[n]===undefined)lastSeen[n]=i;});});
+  S.curTable.forEach(function(n){
+    var ago=(lastSeen[n]!==undefined)?lastSeen[n]:999;
+    scores[n]=(scores[n]||0)+(ago>30?20:ago>20?14:ago>10?8:ago>5?3:0);
+  });
+
+  // MODEL 4: Near-miss — shares digits with recent real draws
+  var recentDraws=S.history.slice(0,5).map(function(r){return r.draw;}).filter(function(d){return d&&d.length===3;});
+  if(recentDraws.length){
+    S.curTable.forEach(function(n){
+      var maxM=0;
+      recentDraws.forEach(function(d){
+        var nd=normalize(d),m=0;
+        for(var ci=0;ci<nd.length;ci++)if(n.indexOf(nd[ci])>=0)m++;
+        if(m>maxM)maxM=m;
+      });
+      scores[n]=(scores[n]||0)+(maxM>=3?15:maxM===2?8:maxM===1?2:0);
+    });
+  }
+
+  // MODEL 5: Method accuracy weight
+  var mAcc={method1:0.25,method2:0.25,method3:0.25,method4:0.25};
+  ['method1','method2','method3','method4'].forEach(function(m){
+    var ms=S_methodStats[m];
+    if(ms&&ms.r>0)mAcc[m]=ms.h/ms.r;
+  });
+  if(S.curResults){
+    S.curTable.forEach(function(n){
+      var bonus=0;
+      ['method1','method2','method3','method4'].forEach(function(m){
+        if(S.curResults[m]&&S.curResults[m].indexOf(n)>=0)bonus+=mAcc[m]*20;
+      });
+      scores[n]=(scores[n]||0)+Math.round(bonus);
+    });
+  }
+
+  // Rank top 10
+  var ranked=S.curTable.slice().sort(function(a,b){return (scores[b]||0)-(scores[a]||0);}).slice(0,10);
+  var maxScore=scores[ranked[0]]||1;
+  var medals=['🥇','🥈','🥉'];
+
+  // Build HTML display (string concat only)
+  var numHtml='';
+  var curDrawNorm=S.curDraw&&S.curDraw.length===3?normalize(S.curDraw):'';
+  ranked.forEach(function(n,i){
+    var sc=scores[n]||0;
+    var pct=Math.round((sc/maxScore)*100);
+    var ov=omap.get(n)||1;
+    var hot=freq10[n]||0;
+    var hotIcon=hot>=6?'🔥':hot>=3?'~':'❄️';
+    var ovCls=ov>=3?'badge-green':ov>=2?'badge-yellow':'badge-red';
+    var medal=medals[i]||'⭐';
+    var isAIHit=curDrawNorm&&curDrawNorm===n;
+    // Use hit-highlight class (same pulsing glow as Money Table) when there's a hit
+    var hitClass=isAIHit?' hit-highlight':'';
+    numHtml+='<div style="display:flex;align-items:center;gap:.45rem;margin:.25rem 0;">'
+      +'<span style="font-size:.75rem;min-width:20px;">'+medal+'</span>'
+      +'<span class="money-number overlap-'+ov+hitClass+'" style="cursor:pointer;margin:0;font-size:.82rem;" data-n="'+n+'" onclick="showVars(this.dataset.n)">'+n+'</span>'
+      +'<span style="font-size:.65rem;color:var(--t2);">'+hotIcon+'</span>'
+      +'<div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:7px;overflow:hidden;">'
+      +'<div style="width:'+pct+'%;height:100%;background:'+(isAIHit?'var(--grad-green)':'var(--grad-tiktok)')+';border-radius:3px;"></div>'
+      +'</div>'
+      +'<span style="font-size:.67rem;color:var(--t2);min-width:32px;text-align:right;">'+sc+'pts</span>'
+      +'<span class="badge '+ovCls+'" style="font-size:.6rem;">'+ov+'x</span>'
+      +'</div>';
+  });
+
+  // Show the card
+  var card=document.getElementById('aiSmartPickCard');
+  // If called manually (user clicked button) → open card. If auto-run → only update content silently.
+  if(card&&runAISmartPick._manual){card.style.display='block';}
+  var numEl=document.getElementById('aiSmartPickNums');
+  if(numEl)numEl.innerHTML=numHtml||'<span style="color:var(--t2);">No numbers scored.</span>';
+  var metaEl=document.getElementById('aiSmartPickMeta');
+  if(metaEl)metaEl.innerHTML='<strong style="color:var(--cyan);">Top picks:</strong> '+ranked.join(', ');
+  var meta2=document.getElementById('aiSmartMeta2');
+  if(meta2){
+    var wTxt='AI weights: Overlap x'+Math.round(S_aiWeights.overlap*100)+'% · Recency x'+Math.round(S_aiWeights.recency*100)+'% · Freq x'+Math.round(S_aiWeights.frequency*100)+'%';
+    meta2.textContent=wTxt;
+  }
+  if(card&&runAISmartPick._manual)card.scrollIntoView({behavior:'smooth',block:'start'});
+  runAISmartPick._manual=false;
+
+  // Track for stats — prevent duplicate entries for same run
+  var lastTs=S_aiSmartHistory.length>0?S_aiSmartHistory[0].date:'';
+  var nowTs=new Date().toISOString().slice(0,16);// minute precision
+  if(lastTs.slice(0,16)===nowTs&&S_aiSmartHistory[0].tableSize===S.curTable.length){
+    // Same run, same minute — skip duplicate
+  } else {
+  var isHit=ranked.some(function(n){return S.curDraw&&normalize(S.curDraw)===n;});
+  S_aiSmartHistory.unshift({
+    date:new Date().toISOString(),
+    dateF:new Date().toLocaleDateString('en-US',{month:'2-digit',day:'2-digit',year:'numeric'}),
+    picks:ranked.map(function(n){return {n:n,s:scores[n]||0};}),
+    tableSize:S.curTable.length,
+    draw:S.curDraw||'',
+    hit:isHit
+  });
+  if(S_aiSmartHistory.length>200)S_aiSmartHistory.pop();
+  } // end duplicate check
+  // Persist AI state to localStorage immediately
+  try{localStorage.setItem('p3g_ai',JSON.stringify({history:S_aiSmartHistory,weights:S_aiWeights,methodStats:S_methodStats}));}catch(e){}
+  // Refresh stats if open
+  if(document.getElementById('statsTab')&&document.getElementById('statsTab').classList.contains('active'))renderFullStats();
+}
+
+// HIT CELEBRATION removed — no popup on hit
+
+// ═══════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════
+document.addEventListener('DOMContentLoaded',()=>{
+  loadState();
+
+  // Sync across browser tabs
+  window.addEventListener('storage',e=>{
+    if(e.key==='p3g_hist'){
+      try{S.history=JSON.parse(e.newValue)||[];}catch(ex){S.history=[];}
+      renderHistory();updateQS();
+      if(document.getElementById('statsTab')?.classList.contains('active'))renderFullStats();
+    }
+  });
+
+  // Save state when app goes to background (fixes Mi Browser data loss)
+  document.addEventListener('visibilitychange',function(){
+    if(document.visibilityState==='hidden'){
+      // Save current inputs and draw before app might be killed
+      saveInputs();
+      try{localStorage.setItem('p3g_hist',JSON.stringify(S.history));}catch(e){}
+    } else if(document.visibilityState==='visible'){
+      // Re-sync history when app becomes visible again (in case it was paused)
+      try{
+        var h=localStorage.getItem('p3g_hist');
+        if(h){var parsed=JSON.parse(h);if(Array.isArray(parsed)&&parsed.length!==S.history.length){S.history=parsed;renderHistory();updateQS();}}
+      }catch(e){}
+    }
+  });
+  // Also save on page hide (iOS/Android back button)
+  window.addEventListener('pagehide',function(){
+    saveInputs();
+    try{localStorage.setItem('p3g_hist',JSON.stringify(S.history));}catch(e){}
+  });
+
+  // Warning modal
+  let age=document.getElementById('ageCheck'),resp=document.getElementById('respCheck'),enter=document.getElementById('enterBtn');
+  function chk(){enter.disabled=!(age.checked&&resp.checked);}
+  age.onchange=chk;resp.onchange=chk;
+  enter.onclick=()=>{
+    if(!(age.checked&&resp.checked))return;
+    document.getElementById('warningOverlay').style.display='none';
+    document.getElementById('mainApp').style.display='block';
+    // First-open fullscreen ad (3 seconds)
+    if(!S.isPremium)showFullscreenAd(3);
+  };
+
+  // Tabs
+  document.querySelectorAll('.tab-btn').forEach(b=>b.onclick=()=>switchTab(b.dataset.tab));
+
+  // Methods — update checkbox state AND badge visual directly
+  function updateMethodBadges(){
+    document.querySelectorAll('#methodBoxes .method-badge').forEach(badge=>{
+      const cb=badge.querySelector('input[type="checkbox"]');
+      if(cb.checked){
+        badge.style.borderColor='var(--blue)';
+        badge.style.background='rgba(79,138,255,.15)';
+        badge.style.color='var(--t1)';
+      } else {
+        badge.style.borderColor='var(--border2)';
+        badge.style.background='var(--card2)';
+        badge.style.color='var(--t2)';
+      }
+    });
+  }
+  function syncAllNoneBtns(){
+    let anyChecked=Array.from(document.querySelectorAll('#methodBoxes input')).some(c=>c.checked);
+    let allChecked=Array.from(document.querySelectorAll('#methodBoxes input')).every(c=>c.checked);
+    let btnAll=document.getElementById('selAll');
+    let btnNone=document.getElementById('selNone');
+    if(allChecked){
+      btnAll.style.background='linear-gradient(135deg,var(--green),var(--green2))';btnAll.style.color='#031a0f';
+      btnNone.style.background='rgba(255,255,255,.06)';btnNone.style.color='var(--t2)';
+    } else if(!anyChecked){
+      btnNone.style.background='linear-gradient(135deg,var(--red),var(--red2))';btnNone.style.color='#fff';
+      btnAll.style.background='rgba(255,255,255,.06)';btnAll.style.color='var(--t2)';
+    } else {
+      btnAll.style.background='rgba(255,255,255,.06)';btnAll.style.color='var(--t2)';
+      btnNone.style.background='rgba(255,255,255,.06)';btnNone.style.color='var(--t2)';
+    }
+  }
+  document.getElementById('selAll').onclick=()=>{
+    document.querySelectorAll('#methodBoxes input').forEach(c=>c.checked=true);
+    updateMethodBadges();syncAllNoneBtns();renderInputs();
+    resetOutputs();
+  };
+  document.getElementById('selNone').onclick=()=>{
+    document.querySelectorAll('#methodBoxes input').forEach(c=>c.checked=false);
+    updateMethodBadges();syncAllNoneBtns();renderInputs();
+    resetOutputs();
+  };
+  document.querySelectorAll('#methodBoxes input').forEach(c=>c.onchange=()=>{
+    // Save focused input index before re-rendering
+    let focusedIdx=null;
+    let focusedEl=document.activeElement;
+    if(focusedEl&&focusedEl.classList.contains('draw-inp'))focusedIdx=focusedEl.dataset.idx;
+    updateMethodBadges();syncAllNoneBtns();renderInputs();
+    // Method change → reset outputs (results are no longer valid)
+    resetOutputs();
+    // Restore focus after re-render
+    if(focusedIdx!==null){
+      let target=document.querySelector('.draw-inp[data-idx="'+focusedIdx+'"]');
+      if(target)target.focus();
+    }
+  });
+  updateMethodBadges();syncAllNoneBtns(); // init on load
+
+  // Inputs
+  document.getElementById('shiftBtn').onclick=shiftDown;
+  document.getElementById('randBtn').onclick=randomFill;
+  document.getElementById('clearInputBtn').onclick=clearInputs;
+  document.getElementById('loadLastRunBtn').onclick=()=>{
+    if(!S.history.length){alert('No history yet.');return;}
+    let r=S.history[0];
+    // Reset all outputs before restoring — old results no longer valid
+    resetOutputs();
+    // Restore inputs
+    document.querySelectorAll('#inputRows .draw-inp').forEach((el,i)=>{el.value=r.inputs[i]||'';el.classList.toggle('valid',el.value.length===3);});
+    saveInputs();
+    // Restore draw result
+    if(r.draw){document.getElementById('drawInput').value=r.draw;localStorage.setItem('p3g_draw',r.draw);}
+    // Restore methods
+    if(r.methods){
+      document.querySelectorAll('#methodBoxes input').forEach(cb=>{
+        cb.checked=!!(r.methods[cb.value]);
+      });
+      updateMethodBadges();syncAllNoneBtns();renderInputs();
+    }
+    alert('Last run restored — inputs, draw result, and methods loaded!');
+  };
+  document.getElementById('quickFillBtn').onclick=()=>{
+    let v=prompt('Paste numbers separated by spaces (e.g. 123 456 789 012 345 678):');
+    if(!v)return;
+    let nums=v.trim().split(/\s+/).filter(n=>/^\d{3}$/.test(n));
+    if(!nums.length){alert('No valid 3-digit numbers found.');return;}
+    document.querySelectorAll('#inputRows .draw-inp').forEach((el,i)=>{if(nums[i]){el.value=nums[i];el.classList.add('valid');}});
+    saveInputs();
+    resetOutputs();
+  };
+
+  // Run
+  document.getElementById('runBtn').onclick=function(){
+    if(navigator.vibrate)navigator.vibrate(30);
+    runAnalysis();
+  };
+  document.getElementById('histPrevBtn').onclick=()=>showHistRun(S_histNavIdx+1);
+  document.getElementById('histNextBtn').onclick=()=>showHistRun(S_histNavIdx-1);
+  document.getElementById('histLiveBtn').onclick=goLiveRun;
+
+  // Draw Save button — saves draw result for the NEXT run
+  var _drawMsgTimer=null;
+  document.getElementById('saveDrawBtn').onclick=()=>{
+    var _sb=document.getElementById('saveDrawBtn');
+    if(_sb.disabled)return; // prevent double-click
+    let v=document.getElementById('drawInput').value.trim();
+    if(!/^\d{3}$/.test(v)){
+      document.getElementById('drawMsg').innerHTML='<span style="color:var(--red);">✗ Enter a valid 3-digit number (e.g. 456)</span>';
+      return;
+    }
+    if(!S.curTable.length){
+      document.getElementById('drawMsg').innerHTML='<span style="color:var(--red);">✗ Run analysis first before saving.</span>';
+      return;
+    }
+    _sb.disabled=true;setTimeout(function(){_sb.disabled=false;},1500);
+    localStorage.setItem('p3g_draw',v);
+    S.curDraw=v;
+    let hitNow=false;
+    if(S.curTable.length){
+      let norm=normalize(v);
+      hitNow=S.curTable.includes(norm);
+      S.curHit=hitNow;
+      // Build and save the run to history now
+      var run={
+        id:Date.now(),
+        date:new Date().toISOString(),
+        dateF:new Date().toLocaleDateString('en-US',{month:'2-digit',day:'2-digit',year:'numeric'}),
+        dateISO:new Date().toLocaleDateString('en-CA'),
+        methods:S.curMethods||{},
+        inputs:S.curInputs||[],
+        results:S.curResults||{},
+        moneyTable:S.curTable,
+        overlapMap:Array.from(S.curOverlap instanceof Map?S.curOverlap:new Map()),
+        draw:v,
+        hit:hitNow
+      };
+      // Update AI weights based on hit outcome
+      updateAIWeights(hitNow);
+      addRun(run);
+      // Re-render money table with highlight
+      renderMT(S.curTable,v,hitNow);
+      // Highlight in method chips
+      if(hitNow){
+        document.querySelectorAll('.m-chip').forEach(el=>{
+          if(normalize(el.textContent)===norm){
+            el.style.outline='3px solid var(--green)';
+            el.style.background='rgba(0,229,153,.2)';
+            el.style.fontWeight='900';el.style.color='var(--green)';
+          }
+        });
+      }
+      // Update AI Smart Pick history if it matches this draw
+      if(S_aiSmartHistory.length>0&&!S_aiSmartHistory[0].hit){
+        var normDraw=normalize(v);
+        var aiHitNow=S_aiSmartHistory[0].picks.some(function(p){return p.n===normDraw;});
+        if(aiHitNow){
+          S_aiSmartHistory[0].hit=true;
+          S_aiSmartHistory[0].draw=v;
+          try{localStorage.setItem('p3g_ai',JSON.stringify({history:S_aiSmartHistory,weights:S_aiWeights,methodStats:S_methodStats}));}catch(e){}
+        }
+      }
+    }
+    let msg=hitNow
+      ?`<span style="color:var(--green);font-weight:700;font-size:.85rem;">🎉 HIT! "${v}" saved & found in Money Table!</span>`
+      :`<span style="color:var(--gold);font-weight:700;font-size:.82rem;">💾 "${v}" saved — ✗ MISS (not in current table).</span>
+        <span style="font-size:.72rem;color:var(--t2);display:block;margin-top:.15rem;">Run again with a new draw to check fresh results.</span>`;
+    let msgEl=document.getElementById('drawMsg');
+    msgEl.innerHTML=msg;
+    msgEl.dataset.savedDraw=v;
+    // Auto-clear message after 7 seconds
+    if(_drawMsgTimer)clearTimeout(_drawMsgTimer);
+    _drawMsgTimer=setTimeout(()=>{
+      let el=document.getElementById('drawMsg');
+      if(el&&el.dataset.savedDraw===v)el.innerHTML='';
+      _drawMsgTimer=null;
+    },7000);
+  };
+  // Restore saved draw on load
+  let savedDraw=localStorage.getItem('p3g_draw');
+  if(savedDraw){document.getElementById('drawInput').value=savedDraw;document.getElementById('drawMsg').innerHTML=`<span style="color:var(--t2);font-size:.75rem;">Previous result: "${savedDraw}" — run analysis then save again, or clear.</span>`;}
+  document.getElementById('drawInput').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('saveDrawBtn').click();});
+
+  // Check number
+  document.getElementById('checkBtn').onclick=checkNum;
+  document.getElementById('checkInput').addEventListener('keydown',e=>{if(e.key==='Enter')checkNum();});
+
+  // Keyboard shortcuts
+  document.addEventListener('keydown',e=>{
+    // Ctrl/Cmd + Enter → Run Analysis
+    if((e.ctrlKey||e.metaKey)&&e.key==='Enter'){e.preventDefault();runAnalysis();return;}
+    // Escape → close modals/ads
+    if(e.key==='Escape'){
+      document.getElementById('adFullscreen').style.display='none';
+      document.getElementById('adQuarter').classList.remove('show');
+      if(_quarterAdTimer){clearInterval(_quarterAdTimer);clearTimeout(_quarterAdTimer);_quarterAdTimer=null;}
+    }
+  });
+
+  // Money table filters
+  document.querySelectorAll('.filter-btn').forEach(btn=>btn.onclick=()=>{
+    document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('af'));
+    btn.classList.add('af');
+    let f=btn.dataset.filter,list=[...S.curTable];
+    let omap=S.curOverlap instanceof Map?S.curOverlap:new Map();
+    if(f!=='all'){if(f==='abc')list=list.filter(isABC);else if(f==='aab')list=list.filter(isAAB);else if(f==='aaa')list=list.filter(isAAA);else list=list.filter(n=>omap.get(n)===+f);}
+    renderMT(list,S.curDraw,S.curHit);
+    document.getElementById('mtCount').textContent='('+list.length+' numbers)';
+  });
+  document.getElementById('sortAsc').onclick=()=>{let l=[...S.curTable].sort();renderMT(l,S.curDraw,S.curHit);document.getElementById('mtCount').textContent='('+l.length+' numbers)';};
+  document.getElementById('trendBtn').onclick=toggleTrend;
+  document.getElementById('sortDesc').onclick=()=>{let l=[...S.curTable].sort().reverse();renderMT(l,S.curDraw,S.curHit);document.getElementById('mtCount').textContent='('+l.length+' numbers)';}; 
+  document.getElementById('printBtn').onclick=()=>window.print();
+  document.getElementById('shareBtn').onclick=shareResults;
+  document.getElementById('exportCsvBtn').onclick=exportCSV;
+  document.getElementById('copyNumbersBtn').onclick=function(){
+    if(!S.curTable.length){alert('Run analysis first.');return;}
+    var nums=S.curTable.join(', ');
+    navigator.clipboard?navigator.clipboard.writeText(nums).then(function(){
+      var btn=document.getElementById('copyNumbersBtn');
+      var orig=btn.textContent;btn.textContent='✅ Copied!';
+      setTimeout(function(){btn.textContent=orig;},1500);
+    }):prompt('Copy these numbers:',nums);
+  };
+  // Scroll to top button visibility
+  window.addEventListener('scroll',function(){
+    var btn=document.getElementById('scrollTopBtn');
+    if(btn)btn.style.display=window.scrollY>300?'flex':'none';
+  },{passive:true});
+  document.getElementById('randPickBtn').onclick=()=>{if(!S.curTable.length){alert('Run analysis first.');return;}showVars(S.curTable[Math.floor(Math.random()*S.curTable.length)]);};
+  document.getElementById('aiSmartPickBtn').onclick=function(){runAISmartPick._manual=true;runAISmartPick();};
+  document.getElementById('smartPredBtn').onclick=function(){
+    if(!S.curTable.length){alert('Run analysis first — Smart Prediction needs a Money Table.');return;}
+    var c=document.getElementById('smartPredCard');
+    var b=document.getElementById('smartPredToggleBtn');
+    if(!c)return;
+    if(c.style.display==='none'||c.style.display===''){
+      c.style.display='block';
+      if(b){b.style.display='block';b.textContent='🙈 Hide Smart Prediction';}
+      S_smartPredUserClosed=false;
+      c.scrollIntoView({behavior:'smooth',block:'start'});
+    } else {
+      c.style.display='none';
+      if(b)b.textContent='👁️ Show Smart Prediction';
+      S_smartPredUserClosed=true;
+    }
+  };
+
+  // History
+  document.getElementById('clearHistBtn').onclick=clearHist;
+  document.getElementById('exportJsonBtn').onclick=exportJSON;
+  document.getElementById('histToStatsBtn').onclick=goToStats;
+  document.getElementById('importJsonBtn').onclick=()=>document.getElementById('importJsonFile').click();
+  document.getElementById('importJsonFile').onchange=e=>{
+    let file=e.target.files[0];if(!file)return;
+    let reader=new FileReader();
+    reader.onload=ev=>{
+      try{
+        let imported=JSON.parse(ev.target.result);
+        if(!Array.isArray(imported)){alert('Invalid file: expected an array of runs.');return;}
+        // Validate run structure — filter out corrupt entries
+        let validRuns=imported.filter(r=>r&&(typeof r.id==='number'||typeof r.id==='string')&&Array.isArray(r.moneyTable)&&r.methods&&typeof r.methods==='object'&&r.date&&!isNaN(new Date(r.date).getTime()));
+        if(validRuns.length===0){alert('No valid runs found in this file. File may be corrupt or from a different app.');return;}
+        if(validRuns.length<imported.length){
+          if(!confirm(`${imported.length-validRuns.length} runs were invalid and will be skipped.\nImport ${validRuns.length} valid runs?`))return;
+        }
+        imported=validRuns;
+        if(!confirm(`Import ${imported.length} runs?\nThis will MERGE with your existing ${S.history.length} runs (newest first, max 1500 total).`))return;
+        // Merge: imported + existing, deduplicate by id, cap at 1500
+        let merged=[...imported,...S.history];
+        let seen=new Set();
+        merged=merged.filter(r=>{if(seen.has(r.id))return false;seen.add(r.id);return true;});
+        merged.sort((a,b)=>new Date(b.date)-new Date(a.date));
+        S.history=merged.slice(0,1500);
+        saveHist();renderHistory();updateQS();
+        alert(`✅ Imported successfully! Total runs: ${S.history.length}`);
+      }catch(err){alert('Failed to import: '+err.message);e.target.value='';}
+      e.target.value='';
+    };
+    reader.readAsText(file);
+  };
+
+  // Stats
+  document.getElementById('refreshStats').onclick=renderFullStats;
+  document.getElementById('exportStatsBtn').onclick=exportStatsJSON;
+  document.getElementById('shareStatsBtn').onclick=shareStatsText;
+  document.getElementById('qsGoStats').onclick=goToStats;
+
+  // Header
+  document.getElementById('hdrDonate').onclick=()=>switchTab('support');
+  document.getElementById('hdrPremium').onclick=()=>switchTab('support');
+
+  // Support
+  document.getElementById('scPaypal').onclick=()=>window.open('https://paypal.me/pick3geny','_blank');
+  document.getElementById('scAmazon').onclick=()=>{history.pushState(null,'',location.href);window.open('https://amazon.com','_blank');}; // Replace with affiliate URL
+  document.getElementById('scEbay').onclick=()=>{history.pushState(null,'',location.href);window.open('https://ebay.com','_blank');}; // Replace with affiliate URL
+  document.getElementById('scWalmart').onclick=()=>{history.pushState(null,'',location.href);window.open('https://walmart.com','_blank');}; // Replace with affiliate URL
+  document.getElementById('scEtsy').onclick=()=>{history.pushState(null,'',location.href);window.open('https://etsy.com','_blank');}; // Replace with affiliate URL
+  document.getElementById('premiumBtn').onclick=()=>{
+    if(confirm('Activate Premium?\n\n✅ Removes ALL ads from every screen\n✅ Stored on your device\n✅ No account required\n\nThe only difference from free is: no ads. All features remain identical.')){
+      S.isPremium=true;localStorage.setItem('p3g_premium','true');
+      document.getElementById('premiumBtn').textContent='✅ Premium Active — Thank You!';
+      document.getElementById('premiumBtn').disabled=true;
+      // Immediately hide all ad elements — no reload needed
+      ['adFullscreen','adQuarter'].forEach(id=>{
+        let el=document.getElementById(id);
+        if(el){el.style.display='none';el.classList.remove('show');}
+      });
+      document.querySelectorAll('.ad-banner').forEach(el=>el.style.display='none');
+      // Stop any running ad timers
+      if(_quarterAdTimer){clearInterval(_quarterAdTimer);_quarterAdTimer=null;}
+      alert('Premium activated! ✅ All ads removed immediately. Thank you for supporting Pick3Geny! ❤️');
+    }
+  };
+
+  // Draw input: digits only
+  document.getElementById('drawInput').addEventListener('input',function(){this.value=this.value.replace(/\D/g,'').slice(0,3);});
+
+  // Init
+  renderInputs();
+  renderHistory();
+  updateQS();
+  renderSmartPredictions();
+});
+</script>
+</body>
+</html>
