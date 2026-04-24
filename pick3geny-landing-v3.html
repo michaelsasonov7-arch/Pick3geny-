@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pick3Geny — Statistical Number Analyzer</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0D1117;
+    --card: #161B22;
+    --card2: #1C2230;
+    --border: rgba(255,255,255,0.08);
+    --green: #00C896;
+    --purple: #7B5CF5;
+    --cyan: #06B6D4;
+    --gold: #FFD700;
+    --red: #FF453A;
+    --text: #E6EDF3;
+    --muted: rgba(255,255,255,0.45);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+    padding-bottom: 90px; /* space for sticky btn */
+  }
+
+  /* HEADER */
+  .header {
+    text-align: center;
+    padding: 2.5rem 1.5rem 1.5rem;
+    background: linear-gradient(180deg, rgba(123,92,245,0.18) 0%, transparent 100%);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .app-title {
+    font-size: 2.8rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, #8B5CF6, #06B6D4, #8B5CF6);
+    background-size: 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradientShift 4s ease infinite;
+    letter-spacing: -1px;
+    margin-bottom: 0.2rem;
+  }
+  @keyframes gradientShift {
+    0%,100%{background-position:0%} 50%{background-position:100%}
+  }
+
+  .app-subtitle {
+    font-size: 0.68rem;
+    letter-spacing: 3px;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+  }
+
+  .badge-row {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+  .badge {
+    background: var(--card2);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 0.3rem 0.8rem;
+    font-size: 0.75rem;
+    color: var(--muted);
+  }
+  .badge.green { border-color: rgba(0,200,150,0.3); color: var(--green); }
+  .badge.purple { border-color: rgba(123,92,245,0.3); color: #a78bfa; }
+
+  /* MAIN */
+  .main {
+    max-width: 440px;
+    margin: 0 auto;
+    padding: 1.2rem 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  /* Card */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.1rem;
+  }
+
+  .card-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  /* Methods */
+  .methods-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+  }
+  .method-btn {
+    background: var(--card2);
+    border: 1.5px solid rgba(123,92,245,0.4);
+    border-radius: 10px;
+    padding: 0.55rem 0.7rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+  .check { color: var(--green); }
+
+  .tip-box {
+    margin-top: 0.8rem;
+    background: rgba(123,92,245,0.08);
+    border-left: 3px solid var(--purple);
+    border-radius: 0 8px 8px 0;
+    padding: 0.7rem 0.9rem;
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.6;
+  }
+  .tip-box strong { color: var(--text); }
+
+  /* Money table balls */
+  .balls-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+  .ball {
+    width: 42px; height: 42px;
+    border-radius: 9px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.8rem;
+    font-weight: 700;
+    animation: ballIn 0.3s ease both;
+  }
+  @keyframes ballIn {
+    from{transform:scale(0.7);opacity:0}
+    to{transform:scale(1);opacity:1}
+  }
+  .b-r { background:#C0392B; color:#fff; }
+  .b-o { background:#E67E22; color:#fff; }
+  .b-y { background:#F39C12; color:#000; }
+  .b-g { background:#00C896; color:#000; }
+  .b-t { background:#16A085; color:#fff; position:relative; }
+  .b-t::after { content:'⭐'; position:absolute; top:-5px; right:-5px; font-size:0.55rem; }
+
+  /* Legend compact */
+  .legend {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    margin-bottom: 0.9rem;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    color: var(--muted);
+  }
+  .dot {
+    width: 14px; height: 14px;
+    border-radius: 3px;
+    flex-shrink: 0;
+  }
+  .d-r{background:#C0392B} .d-y{background:#F39C12}
+  .d-g{background:#00C896} .d-w{background:rgba(255,255,255,0.25); border:1px solid rgba(255,255,255,0.2)}
+
+  /* Stats row */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.6rem;
+  }
+  .stat {
+    background: var(--card2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 0.7rem 0.5rem;
+    text-align: center;
+  }
+  .stat-val {
+    font-size: 1.3rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--gold), var(--cyan));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .stat-lbl {
+    font-size: 0.65rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 0.15rem;
+  }
+
+  /* Warning */
+  .warn-box {
+    background: rgba(255,69,58,0.08);
+    border: 1px solid rgba(255,69,58,0.2);
+    border-radius: 12px;
+    padding: 0.9rem;
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.7;
+    text-align: center;
+  }
+  .warn-box strong { color: var(--red); }
+
+  /* ===== STICKY CTA BUTTON ===== */
+  .sticky-cta {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    z-index: 999;
+    padding: 0.9rem 1.2rem 1.1rem;
+    background: linear-gradient(180deg, transparent 0%, var(--bg) 25%);
+  }
+
+  .cta-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    width: 100%;
+    max-width: 440px;
+    margin: 0 auto;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, #7B5CF5 0%, #06B6D4 100%);
+    border: none;
+    border-radius: 14px;
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+    letter-spacing: 0.3px;
+    box-shadow:
+      0 0 0 1px rgba(255,255,255,0.1) inset,
+      0 6px 30px rgba(123,92,245,0.5),
+      0 0 60px rgba(6,182,212,0.2);
+    animation: ctaPulse 2.5s ease-in-out infinite;
+    transition: transform 0.15s;
+  }
+  .cta-btn:active { transform: scale(0.97); }
+
+  @keyframes ctaPulse {
+    0%,100% {
+      box-shadow: 0 0 0 1px rgba(255,255,255,0.1) inset,
+                  0 6px 30px rgba(123,92,245,0.5),
+                  0 0 60px rgba(6,182,212,0.2);
+    }
+    50% {
+      box-shadow: 0 0 0 1px rgba(255,255,255,0.15) inset,
+                  0 8px 40px rgba(123,92,245,0.7),
+                  0 0 80px rgba(6,182,212,0.35);
+    }
+  }
+
+  .cta-icon { font-size: 1.4rem; }
+  .cta-text { display: flex; flex-direction: column; line-height: 1.2; }
+  .cta-main { font-size: 1rem; font-weight: 800; }
+  .cta-sub { font-size: 0.7rem; font-weight: 500; opacity: 0.8; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="app-title">Pick3GEny</div>
+  <div class="app-subtitle">Statistical Number Analyzer</div>
+  <div class="badge-row">
+    <span class="badge green">✅ Free</span>
+    <span class="badge purple">🧪 Beta Test</span>
+    <span class="badge">📱 Android</span>
+    <span class="badge">18+</span>
+  </div>
+</div>
+
+<div class="main">
+
+  <!-- Stats -->
+  <div class="card">
+    <div class="card-title">📊 Performance</div>
+    <div class="stats-row">
+      <div class="stat">
+        <div class="stat-val">4</div>
+        <div class="stat-lbl">Algorithms</div>
+      </div>
+      <div class="stat">
+        <div class="stat-val">~50%</div>
+        <div class="stat-lbl">Hit Rate</div>
+      </div>
+      <div class="stat">
+        <div class="stat-val">1.98</div>
+        <div class="stat-lbl">Runs/Hit</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Methods -->
+  <div class="card">
+    <div class="card-title">🎯 4 Algorithms</div>
+    <div class="methods-grid">
+      <div class="method-btn"><span class="check">✅</span> 1️⃣ Method 123</div>
+      <div class="method-btn"><span class="check">✅</span> 2️⃣ Method 60</div>
+      <div class="method-btn"><span class="check">✅</span> 3️⃣ X-Circle</div>
+      <div class="method-btn"><span class="check">✅</span> 4️⃣ Magic Pair</div>
+    </div>
+    <div class="tip-box">
+      💡 <strong>Recommended:</strong> Method 60 + X-Circle = best pair. All 4 = ~1 hit every 1.98 runs.
+    </div>
+  </div>
+
+  <!-- Money Table -->
+  <div class="card">
+    <div class="card-title">💰 MONEY TABLE <span style="color:var(--muted);font-weight:400;font-size:0.8rem"> — sample</span></div>
+    <div class="legend">
+      <div class="legend-item"><div class="dot d-r"></div>1 Method — Weak</div>
+      <div class="legend-item"><div class="dot d-y"></div>2 Methods — Strong ⭐</div>
+      <div class="legend-item"><div class="dot d-g"></div>3 Methods — Strong ⭐</div>
+      <div class="legend-item"><div class="dot d-w"></div>4 Methods — Noise</div>
+    </div>
+    <div class="balls-grid" id="ballsGrid"></div>
+  </div>
+
+  <!-- Warning -->
+  <div class="warn-box">
+    ⚠️ Statistical tool only — <strong>does NOT guarantee wins</strong>.<br>
+    Gamble responsibly. <strong>Adults 18+ only.</strong>
+  </div>
+
+</div>
+
+<!-- STICKY CTA -->
+<div class="sticky-cta">
+  <a href="https://play.google.com/apps/internaltest/4701641986458248667" class="cta-btn">
+    <span class="cta-icon">📲</span>
+    <span class="cta-text">
+      <span class="cta-main">Join Beta — Download Free</span>
+      <span class="cta-sub">Tap "Join the test" → Install on Google Play</span>
+    </span>
+  </a>
+</div>
+
+<script>
+  const numbers = [
+    {n:'012',c:'b-y'},{n:'013',c:'b-r'},{n:'014',c:'b-t'},
+    {n:'016',c:'b-r'},{n:'018',c:'b-r'},{n:'019',c:'b-r'},
+    {n:'023',c:'b-o'},{n:'024',c:'b-y'},{n:'028',c:'b-y'},
+    {n:'029',c:'b-r'},{n:'034',c:'b-r'},{n:'038',c:'b-r'},
+    {n:'039',c:'b-t'},{n:'045',c:'b-o'},{n:'048',c:'b-r'},
+    {n:'049',c:'b-r'},{n:'059',c:'b-r'},{n:'067',c:'b-o'},
+    {n:'068',c:'b-r'},{n:'079',c:'b-r'},{n:'088',c:'b-o'},
+    {n:'089',c:'b-g'},{n:'099',c:'b-r'},{n:'123',c:'b-y'},
+    {n:'125',c:'b-y'},{n:'127',c:'b-r'},{n:'129',c:'b-y'},
+    {n:'134',c:'b-o'},{n:'135',c:'b-y'},{n:'139',c:'b-y'},
+    {n:'178',c:'b-y'},{n:'188',c:'b-y'},{n:'189',c:'b-y'},
+    {n:'236',c:'b-y'},{n:'238',c:'b-y'},{n:'245',c:'b-o'},
+    {n:'289',c:'b-t'},{n:'347',c:'b-y'},{n:'349',c:'b-y'},
+    {n:'388',c:'b-y'},{n:'389',c:'b-y'},{n:'458',c:'b-y'},
+    {n:'467',c:'b-o'},{n:'488',c:'b-y'},{n:'489',c:'b-g'},
+    {n:'569',c:'b-y'},{n:'578',c:'b-o'},{n:'689',c:'b-y'},
+    {n:'789',c:'b-y'},{n:'889',c:'b-y'}
+  ];
+
+  const grid = document.getElementById('ballsGrid');
+  numbers.forEach((item, i) => {
+    const ball = document.createElement('div');
+    ball.className = `ball ${item.c}`;
+    ball.textContent = item.n;
+    ball.style.animationDelay = (i * 0.018) + 's';
+    grid.appendChild(ball);
+  });
+</script>
+
+</body>
+</html>
